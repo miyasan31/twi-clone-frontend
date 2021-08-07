@@ -1,3 +1,24 @@
+# ドキュメント
+> https://hackmd.io/@Persona/SynxeQ3kK
+
+# 環境構築
+- yarnを使う
+- nodeのバージョンは v14.15.1
+- nodenvを使うと便利
+
+1. ローカルにクローンする
+```
+git clone "URL"
+```
+2. node_modulesをインストールする
+```
+yarn install
+```
+3. 起動
+```
+yarn dev
+```
+
 # git コミットルール
 1. コミットメッセージの先頭にはGitmojiとプレフィックスをつける  
 2. 絵文字の後は半角スペース
@@ -23,7 +44,7 @@
   - style: cssを変数化して共通化した時など
 - 🚚
   - move: ファイル移動
-- 🛠
+- 🔧
   - add: configファイルのruleとか追加した時
 - ➕
   - add: ライブラリ追加
