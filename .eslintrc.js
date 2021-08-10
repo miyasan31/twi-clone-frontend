@@ -65,7 +65,7 @@ module.exports = {
 		// https://github.com/yannickcr/eslint-plugin-react
 		"react/prop-types": "off", //
 		"react/react-in-jsx-scope": "off",
-		"react/display-name": "error",
+		"react/display-name": "off", // コンポーネントのdisplaynameをoff
 		// JSX内のイベントハンドラについて
 		"react/jsx-handler-names": [
 			"error",
