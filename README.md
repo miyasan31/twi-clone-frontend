@@ -7,17 +7,32 @@
 - nodenvを使うと便利
 
 1. ローカルにクローンする
-```
+```git
 git clone "URL"
 ```
 2. node_modulesをインストールする
-```
+```yarn
 yarn install
 ```
 3. 起動
-```
+```yarn
 yarn dev
 ```
+
+# json-server起動
+
+1. 起動
+```yarn
+yarn api
+```
+2. エンドポイントにアクセス
+
+> http://localhost:3001/posts　　
+> http://localhost:3001/comments　　
+> http://localhost:3001/profile
+
+3. フロント側で各エンドポイントのAPIを叩くと、src/db/db.jsonに記述したjsonデータを受け取ることができる
+
 
 # git コミットルール
 1. コミットメッセージの先頭にはGitmojiとプレフィックスをつける  
@@ -28,33 +43,34 @@ yarn dev
 > ✨ event:データベースに保存するhandleSave()を作成
 
 - 🔥
-  - cmt: コメント削除 
-  - file: fileごと削除した時
-  - log: 不要なconsole.log等を削除した時
-  - lib: package.jsonのパッケージを削除した時
-  - config: configのruleとか削除した時
+  - cmt:コメント削除 
+  - file:fileごと削除した時
+  - log:不要なconsole.log等を削除した時
+  - lib:package.jsonのパッケージを削除した時
+  - config:configのruleとか削除した時
 - ✨
-  - ui: コンポーネント作成
-  - page: 新規ページ作成
-  - event:イベント関数作成
+  - ui:コンポーネント作成・更新
+  - page:新規ページ作成・更新
+  - event:イベント関数作成・更新
+  - db:json-server作成・更新
 - ♻️ 
-  - cmt: 詳解コメント追加した時など
-  - ui: コンポーネント共通化した時など
+  - cmt:詳解コメント追加した時など
+  - ui:コンポーネント共通化した時など
   - event:イベント関数を共通化した時など
-  - style: cssを変数化して共通化した時など
+  - style:cssを変数化して共通化した時など
 - 🚚
-  - move: ファイル移動
+  - move:ファイル移動
 - 🔧
-  - add: configファイルのruleとか追加した時
+  - add:configファイルのruleとか追加した時
 - ➕
-  - add: ライブラリ追加
-  - update: バージョン更新
+  - add:ライブラリ追加
+  - update:バージョン更新
 - 🐛
-  - fix: 重度のバグ
+  - fix:重度のバグ
 - 🩹
-  - fix: 軽度のバグ
+  - fix:軽度のバグ
 - 📝
-  - update: README更新時
+  - update:README更新時
 
 # デザイン
 
