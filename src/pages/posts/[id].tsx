@@ -1,9 +1,8 @@
-import type { GetStaticPaths, GetStaticProps } from "next";
-import type { FC } from "react";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Layout } from "src/components/Layout";
 import type { PostType } from "src/models/types";
 
-const PostPage: FC<{ data: PostType }> = (props) => {
+const PostPage: NextPage<{ data: PostType }> = (props) => {
 	return (
 		<Layout>
 			<div className="flex h-screen">

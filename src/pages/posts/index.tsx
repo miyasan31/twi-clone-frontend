@@ -1,10 +1,9 @@
-import type { GetServerSideProps } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
-import type { FC } from "react";
 import { Layout } from "src/components/Layout";
 import type { PostType } from "src/models/types";
 
-const PostsPage: FC<{ data: PostType[] }> = (props) => {
+const PostsPage: NextPage<{ data: PostType[] }> = (props) => {
 	return (
 		<Layout>
 			<>
