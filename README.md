@@ -23,7 +23,7 @@ yarn dev
 
 1. 起動
 ```yarn
-yarn api
+yarn api-json
 ```
 2. エンドポイントにアクセス
 
@@ -32,6 +32,30 @@ yarn api
 > http://localhost:3001/profile
 
 3. フロント側で各エンドポイントのAPIを叩くと、src/db/db.jsonに記述したjsonデータを受け取ることができる
+
+# graphql-json-server起動
+
+1. 起動
+```yarn
+yarn api
+```
+2. エンドポイントにアクセス
+
+> http://localhost:4000
+
+3. フロント側でエンドポイントにアクセスしてクエリーを投げると、src/database/graphql_db.jsに記述したjsonデータを受け取ることができる
+
+4. http://localhost:4000でエミュレーターを起動して次のクエリーを投げてみる
+```gql
+{
+  appPosts{
+    id
+    title
+    view
+  }
+}
+```
+
 
 
 # git コミットルール
