@@ -39,8 +39,8 @@ module.exports = {
 		"comma-dangle": "off",
 		// 宣言されていない変数をどうするか
 		"no-undef": "warn",
-		// 出しても良いコンソールタイプ
-		"no-console": ["error", { allow: ["warn", "info", "error"] }],
+		// 出しても良いコンソールタイプ（log以外はOK）
+		"no-console": ["warn", { allow: ["warn", "info", "error"] }],
 		// 禁止構文を設定
 		"no-restricted-syntax": [
 			"error",
@@ -126,14 +126,15 @@ module.exports = {
 			{ selector: ["typeAlias", "typeParameter"], format: ["PascalCase"] },
 			// 型定義のpropsはキャメルケースで命名する
 			{ selector: ["property", "method"], format: ["camelCase"] },
-			// 型の変数(variable)の命名規則
-			{
-				selector: "variable", // 変数のみ
-				types: ["boolean"], // 真偽型
-				format: ["PascalCase"], // パスカルケース
-				prefix: ["no", "is", "has", "should"], // 接頭辞に付ける文字
-				filter: { regex: "^_", match: false }, // ^と_は禁止
-			},
+			// 変数(variable)の命名規則
+			// ****************今回はuseQuery()の戻り値の変数が固定なのかもしれないから{data, error, loading}の型に従う****************
+			// {
+			// 	selector: "variable", // 変数のみ
+			// 	types: ["boolean"], // 真偽型
+			// 	format: ["PascalCase"], // パスカルケース
+			// 	prefix: ["no", "is", "has", "should"], // 接頭辞に付ける文字
+			// 	filter: { regex: "^_", match: false }, // ^と_は禁止
+			// },
 		],
 
 		// jsx-a11yのドキュメント
