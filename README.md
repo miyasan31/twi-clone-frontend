@@ -71,6 +71,12 @@ yarn api
   - fix:軽度のバグ
 - 📝
   - update:README更新時
+- ✅
+  - test:テストコード&サンプルコード
+
+# データベース
+<img width="731" alt="スクリーンショット 2021-08-19 15 26 14" src="https://user-images.githubusercontent.com/71614432/130018787-36f8c990-5edb-43c7-a986-1b40eb34eb58.png">
+
 
 # デザイン
 
