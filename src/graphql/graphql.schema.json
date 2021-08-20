@@ -961,7 +961,7 @@
             "deprecationReason": null
           },
           {
-            "name": "createTweetBody",
+            "name": "createTweet",
             "description": null,
             "args": [
               {
@@ -1043,14 +1043,14 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "TweetBody",
+              "name": "Tweet",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "createManyTweetBody",
+            "name": "createManyTweet",
             "description": null,
             "args": [
               {
@@ -1061,7 +1061,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "TweetBodyInput",
+                    "name": "TweetInput",
                     "ofType": null
                   }
                 },
@@ -1075,7 +1075,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "TweetBody",
+                "name": "Tweet",
                 "ofType": null
               }
             },
@@ -1083,7 +1083,7 @@
             "deprecationReason": null
           },
           {
-            "name": "updateTweetBody",
+            "name": "updateTweet",
             "description": null,
             "args": [
               {
@@ -1149,14 +1149,14 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "TweetBody",
+              "name": "Tweet",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "removeTweetBody",
+            "name": "removeTweet",
             "description": null,
             "args": [
               {
@@ -1178,7 +1178,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "TweetBody",
+              "name": "Tweet",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1751,7 +1751,7 @@
             "deprecationReason": null
           },
           {
-            "name": "TweetBody",
+            "name": "Tweet",
             "description": null,
             "args": [
               {
@@ -1773,14 +1773,14 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "TweetBody",
+              "name": "Tweet",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "allTweetBodies",
+            "name": "allTweets",
             "description": null,
             "args": [
               {
@@ -1836,7 +1836,7 @@
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "TweetBodyFilter",
+                  "name": "TweetFilter",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -1849,7 +1849,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "TweetBody",
+                "name": "Tweet",
                 "ofType": null
               }
             },
@@ -1857,7 +1857,7 @@
             "deprecationReason": null
           },
           {
-            "name": "_allTweetBodiesMeta",
+            "name": "_allTweetsMeta",
             "description": null,
             "args": [
               {
@@ -1889,7 +1889,7 @@
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "TweetBodyFilter",
+                  "name": "TweetFilter",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -2223,7 +2223,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "TweetBody",
+        "name": "Tweet",
         "description": null,
         "fields": [
           {
@@ -2310,7 +2310,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "TweetBodyFilter",
+        "name": "TweetFilter",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -2469,7 +2469,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "TweetBodyInput",
+        "name": "TweetInput",
         "description": null,
         "fields": null,
         "inputFields": [

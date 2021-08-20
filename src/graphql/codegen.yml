@@ -10,7 +10,7 @@ schema: "http://localhost:4000"
 #   ]
 
 # どのコードファイルを見るか
-documents: "src/**/*.{ts,tsx,graphql}"
+documents: "src/{pages,components}/**/*.{ts,tsx}"
 
 overwrite: true
 

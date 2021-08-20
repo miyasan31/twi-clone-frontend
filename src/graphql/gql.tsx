@@ -89,10 +89,10 @@ export type Mutation = {
   createManyUser?: Maybe<Array<Maybe<User>>>;
   updateUser?: Maybe<User>;
   removeUser?: Maybe<User>;
-  createTweetBody?: Maybe<TweetBody>;
-  createManyTweetBody?: Maybe<Array<Maybe<TweetBody>>>;
-  updateTweetBody?: Maybe<TweetBody>;
-  removeTweetBody?: Maybe<TweetBody>;
+  createTweet?: Maybe<Tweet>;
+  createManyTweet?: Maybe<Array<Maybe<Tweet>>>;
+  updateTweet?: Maybe<Tweet>;
+  removeTweet?: Maybe<Tweet>;
   createLike?: Maybe<Like>;
   createManyLike?: Maybe<Array<Maybe<Like>>>;
   updateLike?: Maybe<Like>;
@@ -132,7 +132,7 @@ export type MutationRemoveUserArgs = {
 };
 
 
-export type MutationCreateTweetBodyArgs = {
+export type MutationCreateTweetArgs = {
   tweetId: Scalars['String'];
   userId: Scalars['String'];
   tweetBody: Scalars['String'];
@@ -141,12 +141,12 @@ export type MutationCreateTweetBodyArgs = {
 };
 
 
-export type MutationCreateManyTweetBodyArgs = {
-  data?: Maybe<Array<Maybe<TweetBodyInput>>>;
+export type MutationCreateManyTweetArgs = {
+  data?: Maybe<Array<Maybe<TweetInput>>>;
 };
 
 
-export type MutationUpdateTweetBodyArgs = {
+export type MutationUpdateTweetArgs = {
   tweetId?: Maybe<Scalars['String']>;
   userId?: Maybe<Scalars['String']>;
   tweetBody?: Maybe<Scalars['String']>;
@@ -155,7 +155,7 @@ export type MutationUpdateTweetBodyArgs = {
 };
 
 
-export type MutationRemoveTweetBodyArgs = {
+export type MutationRemoveTweetArgs = {
   id: Scalars['ID'];
 };
 
@@ -216,9 +216,9 @@ export type Query = {
   User?: Maybe<User>;
   allUsers?: Maybe<Array<Maybe<User>>>;
   _allUsersMeta?: Maybe<ListMetadata>;
-  TweetBody?: Maybe<TweetBody>;
-  allTweetBodies?: Maybe<Array<Maybe<TweetBody>>>;
-  _allTweetBodiesMeta?: Maybe<ListMetadata>;
+  Tweet?: Maybe<Tweet>;
+  allTweets?: Maybe<Array<Maybe<Tweet>>>;
+  _allTweetsMeta?: Maybe<ListMetadata>;
   Like?: Maybe<Like>;
   allLikes?: Maybe<Array<Maybe<Like>>>;
   _allLikesMeta?: Maybe<ListMetadata>;
@@ -249,24 +249,24 @@ export type Query_AllUsersMetaArgs = {
 };
 
 
-export type QueryTweetBodyArgs = {
+export type QueryTweetArgs = {
   id: Scalars['ID'];
 };
 
 
-export type QueryAllTweetBodiesArgs = {
+export type QueryAllTweetsArgs = {
   page?: Maybe<Scalars['Int']>;
   perPage?: Maybe<Scalars['Int']>;
   sortField?: Maybe<Scalars['String']>;
   sortOrder?: Maybe<Scalars['String']>;
-  filter?: Maybe<TweetBodyFilter>;
+  filter?: Maybe<TweetFilter>;
 };
 
 
-export type Query_AllTweetBodiesMetaArgs = {
+export type Query_AllTweetsMetaArgs = {
   page?: Maybe<Scalars['Int']>;
   perPage?: Maybe<Scalars['Int']>;
-  filter?: Maybe<TweetBodyFilter>;
+  filter?: Maybe<TweetFilter>;
 };
 
 
@@ -311,8 +311,8 @@ export type Query_AllFollowsMetaArgs = {
   filter?: Maybe<FollowFilter>;
 };
 
-export type TweetBody = {
-  __typename?: 'TweetBody';
+export type Tweet = {
+  __typename?: 'Tweet';
   tweetId: Scalars['String'];
   userId: Scalars['String'];
   tweetBody: Scalars['String'];
@@ -320,7 +320,7 @@ export type TweetBody = {
   createdAt: Scalars['String'];
 };
 
-export type TweetBodyFilter = {
+export type TweetFilter = {
   q?: Maybe<Scalars['String']>;
   ids?: Maybe<Array<Maybe<Scalars['ID']>>>;
   tweetId?: Maybe<Scalars['String']>;
@@ -335,7 +335,7 @@ export type TweetBodyFilter = {
   createdAt_neq?: Maybe<Scalars['String']>;
 };
 
-export type TweetBodyInput = {
+export type TweetInput = {
   tweetId: Scalars['String'];
   userId: Scalars['String'];
   tweetBody: Scalars['String'];
