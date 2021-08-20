@@ -1,10 +1,10 @@
 import { gql } from "@apollo/client";
 import type { NextPage } from "next";
 import { Layout } from "src/components/Layout";
-import { usePostsQuery } from "src/graphql/gql";
+import { useUsersQuery } from "src/graphql/gql";
 
 const HomePage: NextPage = () => {
-	const { loading, error, data } = usePostsQuery();
+	const { loading, error, data } = useUsersQuery();
 	console.info(data);
 
 	if (loading) return <div>Loading...</div>;
@@ -25,12 +25,13 @@ const HomePage: NextPage = () => {
 export default HomePage;
 
 gql`
-	query Posts {
-		allPosts {
-			id
-			title
-			views
+	query Users {
+		allUsers {
 			userId
+			userName
+			profile
+			iconPath
+			createdAt
 		}
 	}
 `;
