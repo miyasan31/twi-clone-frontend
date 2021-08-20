@@ -76,7 +76,7 @@ module.exports = {
 		},
 	],
 
-	tweetBody: [
+	tweet: [
 		{
 			tweetId: "19454729505651412742",
 			userId: "miyasan_0301",

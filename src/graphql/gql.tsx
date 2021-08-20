@@ -12,17 +12,14 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** Date type */
-  Date: any;
 };
-
 
 export type Follow = {
   __typename?: 'Follow';
   followId: Scalars['Int'];
   userId: Scalars['String'];
   followingId: Scalars['String'];
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 export type FollowFilter = {
@@ -31,7 +28,7 @@ export type FollowFilter = {
   followId?: Maybe<Scalars['Int']>;
   userId?: Maybe<Scalars['String']>;
   followingId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
+  createdAt?: Maybe<Scalars['String']>;
   followId_lt?: Maybe<Scalars['Int']>;
   followId_lte?: Maybe<Scalars['Int']>;
   followId_gt?: Maybe<Scalars['Int']>;
@@ -39,18 +36,14 @@ export type FollowFilter = {
   followId_neq?: Maybe<Scalars['Int']>;
   userId_neq?: Maybe<Scalars['String']>;
   followingId_neq?: Maybe<Scalars['String']>;
-  createdAt_lt?: Maybe<Scalars['Date']>;
-  createdAt_lte?: Maybe<Scalars['Date']>;
-  createdAt_gt?: Maybe<Scalars['Date']>;
-  createdAt_gte?: Maybe<Scalars['Date']>;
-  createdAt_neq?: Maybe<Scalars['Date']>;
+  createdAt_neq?: Maybe<Scalars['String']>;
 };
 
 export type FollowInput = {
   followId: Scalars['Int'];
   userId: Scalars['String'];
   followingId: Scalars['String'];
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 export type Like = {
@@ -58,7 +51,7 @@ export type Like = {
   likeId: Scalars['Int'];
   userId: Scalars['String'];
   tweetId: Scalars['String'];
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 export type LikeFilter = {
@@ -67,7 +60,7 @@ export type LikeFilter = {
   likeId?: Maybe<Scalars['Int']>;
   userId?: Maybe<Scalars['String']>;
   tweetId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
+  createdAt?: Maybe<Scalars['String']>;
   likeId_lt?: Maybe<Scalars['Int']>;
   likeId_lte?: Maybe<Scalars['Int']>;
   likeId_gt?: Maybe<Scalars['Int']>;
@@ -75,18 +68,14 @@ export type LikeFilter = {
   likeId_neq?: Maybe<Scalars['Int']>;
   userId_neq?: Maybe<Scalars['String']>;
   tweetId_neq?: Maybe<Scalars['String']>;
-  createdAt_lt?: Maybe<Scalars['Date']>;
-  createdAt_lte?: Maybe<Scalars['Date']>;
-  createdAt_gt?: Maybe<Scalars['Date']>;
-  createdAt_gte?: Maybe<Scalars['Date']>;
-  createdAt_neq?: Maybe<Scalars['Date']>;
+  createdAt_neq?: Maybe<Scalars['String']>;
 };
 
 export type LikeInput = {
   likeId: Scalars['Int'];
   userId: Scalars['String'];
   tweetId: Scalars['String'];
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 export type ListMetadata = {
@@ -120,7 +109,7 @@ export type MutationCreateUserArgs = {
   userName: Scalars['String'];
   profile: Scalars['String'];
   iconPath: Scalars['String'];
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 
@@ -134,7 +123,7 @@ export type MutationUpdateUserArgs = {
   userName?: Maybe<Scalars['String']>;
   profile?: Maybe<Scalars['String']>;
   iconPath?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
+  createdAt?: Maybe<Scalars['String']>;
 };
 
 
@@ -148,7 +137,7 @@ export type MutationCreateTweetBodyArgs = {
   userId: Scalars['String'];
   tweetBody: Scalars['String'];
   retweetId?: Maybe<Scalars['String']>;
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 
@@ -162,7 +151,7 @@ export type MutationUpdateTweetBodyArgs = {
   userId?: Maybe<Scalars['String']>;
   tweetBody?: Maybe<Scalars['String']>;
   retweetId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
+  createdAt?: Maybe<Scalars['String']>;
 };
 
 
@@ -175,7 +164,7 @@ export type MutationCreateLikeArgs = {
   likeId: Scalars['Int'];
   userId: Scalars['String'];
   tweetId: Scalars['String'];
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 
@@ -188,7 +177,7 @@ export type MutationUpdateLikeArgs = {
   likeId?: Maybe<Scalars['Int']>;
   userId?: Maybe<Scalars['String']>;
   tweetId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
+  createdAt?: Maybe<Scalars['String']>;
 };
 
 
@@ -201,7 +190,7 @@ export type MutationCreateFollowArgs = {
   followId: Scalars['Int'];
   userId: Scalars['String'];
   followingId: Scalars['String'];
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 
@@ -214,7 +203,7 @@ export type MutationUpdateFollowArgs = {
   followId?: Maybe<Scalars['Int']>;
   userId?: Maybe<Scalars['String']>;
   followingId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
+  createdAt?: Maybe<Scalars['String']>;
 };
 
 
@@ -328,7 +317,7 @@ export type TweetBody = {
   userId: Scalars['String'];
   tweetBody: Scalars['String'];
   retweetId?: Maybe<Scalars['String']>;
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 export type TweetBodyFilter = {
@@ -338,16 +327,12 @@ export type TweetBodyFilter = {
   userId?: Maybe<Scalars['String']>;
   tweetBody?: Maybe<Scalars['String']>;
   retweetId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
+  createdAt?: Maybe<Scalars['String']>;
   tweetId_neq?: Maybe<Scalars['String']>;
   userId_neq?: Maybe<Scalars['String']>;
   tweetBody_neq?: Maybe<Scalars['String']>;
   retweetId_neq?: Maybe<Scalars['String']>;
-  createdAt_lt?: Maybe<Scalars['Date']>;
-  createdAt_lte?: Maybe<Scalars['Date']>;
-  createdAt_gt?: Maybe<Scalars['Date']>;
-  createdAt_gte?: Maybe<Scalars['Date']>;
-  createdAt_neq?: Maybe<Scalars['Date']>;
+  createdAt_neq?: Maybe<Scalars['String']>;
 };
 
 export type TweetBodyInput = {
@@ -355,7 +340,7 @@ export type TweetBodyInput = {
   userId: Scalars['String'];
   tweetBody: Scalars['String'];
   retweetId?: Maybe<Scalars['String']>;
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 export type User = {
@@ -364,7 +349,7 @@ export type User = {
   userName: Scalars['String'];
   profile: Scalars['String'];
   iconPath: Scalars['String'];
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 export type UserFilter = {
@@ -374,16 +359,12 @@ export type UserFilter = {
   userName?: Maybe<Scalars['String']>;
   profile?: Maybe<Scalars['String']>;
   iconPath?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
+  createdAt?: Maybe<Scalars['String']>;
   userId_neq?: Maybe<Scalars['String']>;
   userName_neq?: Maybe<Scalars['String']>;
   profile_neq?: Maybe<Scalars['String']>;
   iconPath_neq?: Maybe<Scalars['String']>;
-  createdAt_lt?: Maybe<Scalars['Date']>;
-  createdAt_lte?: Maybe<Scalars['Date']>;
-  createdAt_gt?: Maybe<Scalars['Date']>;
-  createdAt_gte?: Maybe<Scalars['Date']>;
-  createdAt_neq?: Maybe<Scalars['Date']>;
+  createdAt_neq?: Maybe<Scalars['String']>;
 };
 
 export type UserInput = {
@@ -391,13 +372,13 @@ export type UserInput = {
   userName: Scalars['String'];
   profile: Scalars['String'];
   iconPath: Scalars['String'];
-  createdAt: Scalars['Date'];
+  createdAt: Scalars['String'];
 };
 
 export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type UsersQuery = { __typename?: 'Query', allUsers?: Maybe<Array<Maybe<{ __typename?: 'User', userId: string, userName: string, profile: string, iconPath: string, createdAt: any }>>> };
+export type UsersQuery = { __typename?: 'Query', allUsers?: Maybe<Array<Maybe<{ __typename?: 'User', userId: string, userName: string, profile: string, iconPath: string, createdAt: string }>>> };
 
 
 export const UsersDocument = gql`
