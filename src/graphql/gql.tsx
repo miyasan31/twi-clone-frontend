@@ -12,71 +12,10 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  JSON: any;
 };
 
-export type Follow = {
-  __typename?: 'Follow';
-  followId: Scalars['Int'];
-  userId: Scalars['String'];
-  followingId: Scalars['String'];
-  createdAt: Scalars['String'];
-};
-
-export type FollowFilter = {
-  q?: Maybe<Scalars['String']>;
-  ids?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  followId?: Maybe<Scalars['Int']>;
-  userId?: Maybe<Scalars['String']>;
-  followingId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['String']>;
-  followId_lt?: Maybe<Scalars['Int']>;
-  followId_lte?: Maybe<Scalars['Int']>;
-  followId_gt?: Maybe<Scalars['Int']>;
-  followId_gte?: Maybe<Scalars['Int']>;
-  followId_neq?: Maybe<Scalars['Int']>;
-  userId_neq?: Maybe<Scalars['String']>;
-  followingId_neq?: Maybe<Scalars['String']>;
-  createdAt_neq?: Maybe<Scalars['String']>;
-};
-
-export type FollowInput = {
-  followId: Scalars['Int'];
-  userId: Scalars['String'];
-  followingId: Scalars['String'];
-  createdAt: Scalars['String'];
-};
-
-export type Like = {
-  __typename?: 'Like';
-  likeId: Scalars['Int'];
-  userId: Scalars['String'];
-  tweetId: Scalars['String'];
-  createdAt: Scalars['String'];
-};
-
-export type LikeFilter = {
-  q?: Maybe<Scalars['String']>;
-  ids?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  likeId?: Maybe<Scalars['Int']>;
-  userId?: Maybe<Scalars['String']>;
-  tweetId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['String']>;
-  likeId_lt?: Maybe<Scalars['Int']>;
-  likeId_lte?: Maybe<Scalars['Int']>;
-  likeId_gt?: Maybe<Scalars['Int']>;
-  likeId_gte?: Maybe<Scalars['Int']>;
-  likeId_neq?: Maybe<Scalars['Int']>;
-  userId_neq?: Maybe<Scalars['String']>;
-  tweetId_neq?: Maybe<Scalars['String']>;
-  createdAt_neq?: Maybe<Scalars['String']>;
-};
-
-export type LikeInput = {
-  likeId: Scalars['Int'];
-  userId: Scalars['String'];
-  tweetId: Scalars['String'];
-  createdAt: Scalars['String'];
-};
 
 export type ListMetadata = {
   __typename?: 'ListMetadata';
@@ -85,50 +24,10 @@ export type ListMetadata = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createUser?: Maybe<User>;
-  createManyUser?: Maybe<Array<Maybe<User>>>;
-  updateUser?: Maybe<User>;
-  removeUser?: Maybe<User>;
   createTweet?: Maybe<Tweet>;
   createManyTweet?: Maybe<Array<Maybe<Tweet>>>;
   updateTweet?: Maybe<Tweet>;
   removeTweet?: Maybe<Tweet>;
-  createLike?: Maybe<Like>;
-  createManyLike?: Maybe<Array<Maybe<Like>>>;
-  updateLike?: Maybe<Like>;
-  removeLike?: Maybe<Like>;
-  createFollow?: Maybe<Follow>;
-  createManyFollow?: Maybe<Array<Maybe<Follow>>>;
-  updateFollow?: Maybe<Follow>;
-  removeFollow?: Maybe<Follow>;
-};
-
-
-export type MutationCreateUserArgs = {
-  userId: Scalars['String'];
-  userName: Scalars['String'];
-  profile: Scalars['String'];
-  iconPath: Scalars['String'];
-  createdAt: Scalars['String'];
-};
-
-
-export type MutationCreateManyUserArgs = {
-  data?: Maybe<Array<Maybe<UserInput>>>;
-};
-
-
-export type MutationUpdateUserArgs = {
-  userId?: Maybe<Scalars['String']>;
-  userName?: Maybe<Scalars['String']>;
-  profile?: Maybe<Scalars['String']>;
-  iconPath?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['String']>;
-};
-
-
-export type MutationRemoveUserArgs = {
-  id: Scalars['ID'];
 };
 
 
@@ -138,6 +37,9 @@ export type MutationCreateTweetArgs = {
   tweetBody: Scalars['String'];
   retweetId?: Maybe<Scalars['String']>;
   createdAt: Scalars['String'];
+  like: Scalars['Int'];
+  retweet: Scalars['Int'];
+  userInfo: Scalars['JSON'];
 };
 
 
@@ -152,6 +54,9 @@ export type MutationUpdateTweetArgs = {
   tweetBody?: Maybe<Scalars['String']>;
   retweetId?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['String']>;
+  like?: Maybe<Scalars['Int']>;
+  retweet?: Maybe<Scalars['Int']>;
+  userInfo?: Maybe<Scalars['JSON']>;
 };
 
 
@@ -159,93 +64,11 @@ export type MutationRemoveTweetArgs = {
   id: Scalars['ID'];
 };
 
-
-export type MutationCreateLikeArgs = {
-  likeId: Scalars['Int'];
-  userId: Scalars['String'];
-  tweetId: Scalars['String'];
-  createdAt: Scalars['String'];
-};
-
-
-export type MutationCreateManyLikeArgs = {
-  data?: Maybe<Array<Maybe<LikeInput>>>;
-};
-
-
-export type MutationUpdateLikeArgs = {
-  likeId?: Maybe<Scalars['Int']>;
-  userId?: Maybe<Scalars['String']>;
-  tweetId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['String']>;
-};
-
-
-export type MutationRemoveLikeArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationCreateFollowArgs = {
-  followId: Scalars['Int'];
-  userId: Scalars['String'];
-  followingId: Scalars['String'];
-  createdAt: Scalars['String'];
-};
-
-
-export type MutationCreateManyFollowArgs = {
-  data?: Maybe<Array<Maybe<FollowInput>>>;
-};
-
-
-export type MutationUpdateFollowArgs = {
-  followId?: Maybe<Scalars['Int']>;
-  userId?: Maybe<Scalars['String']>;
-  followingId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['String']>;
-};
-
-
-export type MutationRemoveFollowArgs = {
-  id: Scalars['ID'];
-};
-
 export type Query = {
   __typename?: 'Query';
-  User?: Maybe<User>;
-  allUsers?: Maybe<Array<Maybe<User>>>;
-  _allUsersMeta?: Maybe<ListMetadata>;
   Tweet?: Maybe<Tweet>;
   allTweets?: Maybe<Array<Maybe<Tweet>>>;
   _allTweetsMeta?: Maybe<ListMetadata>;
-  Like?: Maybe<Like>;
-  allLikes?: Maybe<Array<Maybe<Like>>>;
-  _allLikesMeta?: Maybe<ListMetadata>;
-  Follow?: Maybe<Follow>;
-  allFollows?: Maybe<Array<Maybe<Follow>>>;
-  _allFollowsMeta?: Maybe<ListMetadata>;
-};
-
-
-export type QueryUserArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type QueryAllUsersArgs = {
-  page?: Maybe<Scalars['Int']>;
-  perPage?: Maybe<Scalars['Int']>;
-  sortField?: Maybe<Scalars['String']>;
-  sortOrder?: Maybe<Scalars['String']>;
-  filter?: Maybe<UserFilter>;
-};
-
-
-export type Query_AllUsersMetaArgs = {
-  page?: Maybe<Scalars['Int']>;
-  perPage?: Maybe<Scalars['Int']>;
-  filter?: Maybe<UserFilter>;
 };
 
 
@@ -269,48 +92,6 @@ export type Query_AllTweetsMetaArgs = {
   filter?: Maybe<TweetFilter>;
 };
 
-
-export type QueryLikeArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type QueryAllLikesArgs = {
-  page?: Maybe<Scalars['Int']>;
-  perPage?: Maybe<Scalars['Int']>;
-  sortField?: Maybe<Scalars['String']>;
-  sortOrder?: Maybe<Scalars['String']>;
-  filter?: Maybe<LikeFilter>;
-};
-
-
-export type Query_AllLikesMetaArgs = {
-  page?: Maybe<Scalars['Int']>;
-  perPage?: Maybe<Scalars['Int']>;
-  filter?: Maybe<LikeFilter>;
-};
-
-
-export type QueryFollowArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type QueryAllFollowsArgs = {
-  page?: Maybe<Scalars['Int']>;
-  perPage?: Maybe<Scalars['Int']>;
-  sortField?: Maybe<Scalars['String']>;
-  sortOrder?: Maybe<Scalars['String']>;
-  filter?: Maybe<FollowFilter>;
-};
-
-
-export type Query_AllFollowsMetaArgs = {
-  page?: Maybe<Scalars['Int']>;
-  perPage?: Maybe<Scalars['Int']>;
-  filter?: Maybe<FollowFilter>;
-};
-
 export type Tweet = {
   __typename?: 'Tweet';
   tweetId: Scalars['String'];
@@ -318,6 +99,9 @@ export type Tweet = {
   tweetBody: Scalars['String'];
   retweetId?: Maybe<Scalars['String']>;
   createdAt: Scalars['String'];
+  like: Scalars['Int'];
+  retweet: Scalars['Int'];
+  userInfo: Scalars['JSON'];
 };
 
 export type TweetFilter = {
@@ -328,11 +112,25 @@ export type TweetFilter = {
   tweetBody?: Maybe<Scalars['String']>;
   retweetId?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['String']>;
+  like?: Maybe<Scalars['Int']>;
+  retweet?: Maybe<Scalars['Int']>;
+  userInfo?: Maybe<Scalars['JSON']>;
   tweetId_neq?: Maybe<Scalars['String']>;
   userId_neq?: Maybe<Scalars['String']>;
   tweetBody_neq?: Maybe<Scalars['String']>;
   retweetId_neq?: Maybe<Scalars['String']>;
   createdAt_neq?: Maybe<Scalars['String']>;
+  like_lt?: Maybe<Scalars['Int']>;
+  like_lte?: Maybe<Scalars['Int']>;
+  like_gt?: Maybe<Scalars['Int']>;
+  like_gte?: Maybe<Scalars['Int']>;
+  like_neq?: Maybe<Scalars['Int']>;
+  retweet_lt?: Maybe<Scalars['Int']>;
+  retweet_lte?: Maybe<Scalars['Int']>;
+  retweet_gt?: Maybe<Scalars['Int']>;
+  retweet_gte?: Maybe<Scalars['Int']>;
+  retweet_neq?: Maybe<Scalars['Int']>;
+  userInfo_neq?: Maybe<Scalars['JSON']>;
 };
 
 export type TweetInput = {
@@ -341,81 +139,53 @@ export type TweetInput = {
   tweetBody: Scalars['String'];
   retweetId?: Maybe<Scalars['String']>;
   createdAt: Scalars['String'];
+  like: Scalars['Int'];
+  retweet: Scalars['Int'];
+  userInfo: Scalars['JSON'];
 };
 
-export type User = {
-  __typename?: 'User';
-  userId: Scalars['String'];
-  userName: Scalars['String'];
-  profile: Scalars['String'];
-  iconPath: Scalars['String'];
-  createdAt: Scalars['String'];
-};
-
-export type UserFilter = {
-  q?: Maybe<Scalars['String']>;
-  ids?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  userId?: Maybe<Scalars['String']>;
-  userName?: Maybe<Scalars['String']>;
-  profile?: Maybe<Scalars['String']>;
-  iconPath?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['String']>;
-  userId_neq?: Maybe<Scalars['String']>;
-  userName_neq?: Maybe<Scalars['String']>;
-  profile_neq?: Maybe<Scalars['String']>;
-  iconPath_neq?: Maybe<Scalars['String']>;
-  createdAt_neq?: Maybe<Scalars['String']>;
-};
-
-export type UserInput = {
-  userId: Scalars['String'];
-  userName: Scalars['String'];
-  profile: Scalars['String'];
-  iconPath: Scalars['String'];
-  createdAt: Scalars['String'];
-};
-
-export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
+export type AllTweetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type UsersQuery = { __typename?: 'Query', allUsers?: Maybe<Array<Maybe<{ __typename?: 'User', userId: string, userName: string, profile: string, iconPath: string, createdAt: string }>>> };
+export type AllTweetsQuery = { __typename?: 'Query', allTweets?: Maybe<Array<Maybe<{ __typename?: 'Tweet', userId: string, tweetId: string, tweetBody: string, retweetId?: Maybe<string>, createdAt: string, userInfo: any }>>> };
 
 
-export const UsersDocument = gql`
-    query Users {
-  allUsers {
+export const AllTweetsDocument = gql`
+    query AllTweets {
+  allTweets {
     userId
-    userName
-    profile
-    iconPath
+    tweetId
+    tweetBody
+    retweetId
     createdAt
+    userInfo
   }
 }
     `;
 
 /**
- * __useUsersQuery__
+ * __useAllTweetsQuery__
  *
- * To run a query within a React component, call `useUsersQuery` and pass it any options that fit your needs.
- * When your component renders, `useUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useAllTweetsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllTweetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useUsersQuery({
+ * const { data, loading, error } = useAllTweetsQuery({
  *   variables: {
  *   },
  * });
  */
-export function useUsersQuery(baseOptions?: Apollo.QueryHookOptions<UsersQuery, UsersQueryVariables>) {
+export function useAllTweetsQuery(baseOptions?: Apollo.QueryHookOptions<AllTweetsQuery, AllTweetsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<UsersQuery, UsersQueryVariables>(UsersDocument, options);
+        return Apollo.useQuery<AllTweetsQuery, AllTweetsQueryVariables>(AllTweetsDocument, options);
       }
-export function useUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UsersQuery, UsersQueryVariables>) {
+export function useAllTweetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllTweetsQuery, AllTweetsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<UsersQuery, UsersQueryVariables>(UsersDocument, options);
+          return Apollo.useLazyQuery<AllTweetsQuery, AllTweetsQueryVariables>(AllTweetsDocument, options);
         }
-export type UsersQueryHookResult = ReturnType<typeof useUsersQuery>;
-export type UsersLazyQueryHookResult = ReturnType<typeof useUsersLazyQuery>;
-export type UsersQueryResult = Apollo.QueryResult<UsersQuery, UsersQueryVariables>;
+export type AllTweetsQueryHookResult = ReturnType<typeof useAllTweetsQuery>;
+export type AllTweetsLazyQueryHookResult = ReturnType<typeof useAllTweetsLazyQuery>;
+export type AllTweetsQueryResult = Apollo.QueryResult<AllTweetsQuery, AllTweetsQueryVariables>;

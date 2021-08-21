@@ -6,8 +6,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"api-json": "json-server --watch src/database/json_db.json --port 3001",
-		"api": "json-graphql-server src/database/graphql_db.js --p 4000",
+		"api-json": "json-server --watch src/database/json_db.json --port 400",
+		"api": "json-graphql-server src/database/test_db.js --p 4000",
 		"codegen": "graphql-codegen --config src/graphql/codegen.yml"
 	},
 	"dependencies": {
