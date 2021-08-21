@@ -1,14 +1,15 @@
 // ホーム画面（"/home"）
 import { gql } from "@apollo/client";
 
-export const user = gql`
-	query Users {
-		allUsers {
+gql`
+	query AllTweets {
+		allTweets {
 			userId
-			userName
-			profile
-			iconPath
+			tweetId
+			tweetBody
+			retweetId
 			createdAt
+			userInfo
 		}
 	}
 `;
