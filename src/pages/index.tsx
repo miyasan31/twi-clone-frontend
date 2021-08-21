@@ -1,10 +1,10 @@
 import { gql } from "@apollo/client";
 import type { NextPage } from "next";
 import { Layout } from "src/components/Layout";
-import { useUsersQuery } from "src/graphql/gql";
+import { useAllTweetsQuery } from "src/graphql/gql";
 
 const HomePage: NextPage = () => {
-	const { loading, error, data } = useUsersQuery();
+	const { loading, error, data } = useAllTweetsQuery();
 	console.info(data);
 
 	if (loading) return <div>Loading...</div>;
@@ -25,13 +25,14 @@ const HomePage: NextPage = () => {
 export default HomePage;
 
 gql`
-	query Users {
-		allUsers {
+	query AllTweets {
+		allTweets {
 			userId
-			userName
-			profile
-			iconPath
+			tweetId
+			tweetBody
+			retweetId
 			createdAt
+			userInfo
 		}
 	}
 `;
