@@ -1,4 +1,3 @@
-import { gql } from "@apollo/client";
 import type { NextPage } from "next";
 import { Layout } from "src/components/Layout";
 import { useAllTweetsQuery } from "src/graphql/gql";
@@ -23,16 +22,3 @@ const HomePage: NextPage = () => {
 
 // eslint-disable-next-line import/no-default-export
 export default HomePage;
-
-gql`
-	query AllTweets {
-		allTweets {
-			userId
-			tweetId
-			tweetBody
-			retweetId
-			createdAt
-			userInfo
-		}
-	}
-`;
