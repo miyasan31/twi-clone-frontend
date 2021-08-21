@@ -1,10 +1,16 @@
 import "src/styles/globals.css";
 
+import { ApolloProvider } from "@apollo/client";
+import type { NextPage } from "next";
 import type { AppProps } from "next/app";
-import type { FC } from "react";
+import { client } from "src/graphql/apollo-client";
 
-const MyApp: FC<AppProps> = (props) => {
-	return <props.Component {...props.pageProps} />;
+const MyApp: NextPage<AppProps> = (props) => {
+	return (
+		<ApolloProvider client={client}>
+			<props.Component {...props.pageProps} />
+		</ApolloProvider>
+	);
 };
 
 // eslint-disable-next-line import/no-default-export

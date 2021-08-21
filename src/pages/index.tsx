@@ -1,7 +1,15 @@
-import type { FC } from "react";
+import { gql } from "@apollo/client";
+import type { NextPage } from "next";
 import { Layout } from "src/components/Layout";
+import { usePostsQuery } from "src/graphql/gql";
 
-const HomePage: FC = () => {
+const HomePage: NextPage = () => {
+	const { loading, error, data } = usePostsQuery();
+	console.info(data);
+
+	if (loading) return <div>Loading...</div>;
+	if (error) return <div>{error.message}</div>;
+
 	return (
 		<Layout>
 			<div className="flex h-screen">
@@ -15,3 +23,14 @@ const HomePage: FC = () => {
 
 // eslint-disable-next-line import/no-default-export
 export default HomePage;
+
+gql`
+	query Posts {
+		allPosts {
+			id
+			title
+			views
+			userId
+		}
+	}
+`;
