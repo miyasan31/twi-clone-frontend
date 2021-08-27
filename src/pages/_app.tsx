@@ -1,17 +1,20 @@
 import "src/styles/globals.css";
 
 import { ApolloProvider } from "@apollo/client";
-import type { NextPage } from "next";
+import { IdProvider } from "@radix-ui/react-id";
 import type { AppProps } from "next/app";
+import { WithTheme } from "src/components/theme";
 import { client } from "src/graphql/apollo-client";
 
-const MyApp: NextPage<AppProps> = (props) => {
+const MyApp = (props: AppProps) => {
 	return (
-		<ApolloProvider client={client}>
-			<props.Component {...props.pageProps} />
-		</ApolloProvider>
+		<IdProvider>
+			<ApolloProvider client={client}>
+				<props.Component {...props.pageProps} />
+			</ApolloProvider>
+		</IdProvider>
 	);
 };
 
 // eslint-disable-next-line import/no-default-export
-export default MyApp;
+export default WithTheme(MyApp);
