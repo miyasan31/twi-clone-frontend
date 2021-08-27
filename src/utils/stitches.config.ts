@@ -1,4 +1,4 @@
-import { amber, blue, crimson, gray, grayA, green, orange, red, slate, slateA, violet } from "@radix-ui/colors";
+import { amber, blue, crimson, green, orange, red, slate, slateA, violet } from "@radix-ui/colors";
 import { createCss } from "@stitches/react";
 
 import { utils } from "./utils";
@@ -18,8 +18,6 @@ export const { styled, css, global, keyframes, getCssString, theme } = createCss
 		colors: {
 			...blue,
 			...red,
-			...gray,
-			...grayA,
 			...slate,
 			...slateA,
 			...amber,
@@ -32,14 +30,40 @@ export const { styled, css, global, keyframes, getCssString, theme } = createCss
 			// 1: "5px",
 		},
 		fontSizes: {
-			// 1: "12px",
+			xs: "0.75rem;",
+			sm: "0.875rem",
+			base: "1rem",
+			lg: "1.125rem",
+			xl: "1.25rem",
+			x2l: "1.5rem",
+			x3l: "1.875rem",
+			x4l: "2.25rem",
+			x5l: "3rem",
+			x6l: "3.75rem",
+			x7l: "4.5rem",
+			x8l: "6rem",
+			x9l: "8rem",
 		},
 		fonts: {
 			untitled: "Untitled Sans, apple-system, sans-serif",
 			mono: "Söhne Mono, menlo, monospace",
 		},
 		fontWeights: {},
-		lineHeights: {},
+		lineHeights: {
+			xs: "1rem;",
+			sm: "1.25rem",
+			base: "1.5rem",
+			lg: "1.75rem",
+			xl: "1.75rem",
+			x2l: "2rem",
+			x3l: "2.25rem",
+			x4l: "2.5rem",
+			x5l: "1rem",
+			x6l: "1rem",
+			x7l: "1rem",
+			x8l: "1rem",
+			x9l: "1rem",
+		},
 		letterSpacings: {},
 		sizes: {},
 		borderWidths: {},
@@ -57,5 +81,5 @@ export const { styled, css, global, keyframes, getCssString, theme } = createCss
 global({
 	html: { fontSize: "16px" },
 	// "@md": { html: { fontSize: "16px" } },
-	body: { lineHeight: 1.6, color: "$gray12", backgroundColor: "$gray1" },
+	body: { lineHeight: 1.6, color: "$slate12", backgroundColor: "$slate2" },
 })();

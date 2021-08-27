@@ -1,24 +1,24 @@
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import type { VFC } from "react";
+import type { MouseEvent, VFC } from "react";
 import { Flex, Label } from "src/components/shared";
 import { styled } from "src/utils";
 
 const RadioGroupRadio = styled(RadioGroupPrimitive.Item, {
 	all: "unset",
-	backgroundColor: "white",
 	width: 25,
 	height: 25,
 	borderRadius: "100%",
-	boxShadow: "$sm",
+	border: "1px solid $slate11",
+	boxSizing: "border-box",
 
 	variants: {
 		color: {
-			blue: { "&:hover": { backgroundColor: "$blue3" } },
-			amber: { "&:hover": { backgroundColor: "$amber3" } },
-			crimson: { "&:hover": { backgroundColor: "$crimson3" } },
-			violet: { "&:hover": { backgroundColor: "$violet3" } },
-			orange: { "&:hover": { backgroundColor: "$orange3" } },
-			green: { "&:hover": { backgroundColor: "$green3" } },
+			blue: { "&:hover": { backgroundColor: "$blue5" } },
+			amber: { "&:hover": { backgroundColor: "$amber5" } },
+			crimson: { "&:hover": { backgroundColor: "$crimson5" } },
+			violet: { "&:hover": { backgroundColor: "$violet5" } },
+			orange: { "&:hover": { backgroundColor: "$orange5" } },
+			green: { "&:hover": { backgroundColor: "$green5" } },
 		},
 	},
 });
@@ -56,14 +56,19 @@ type OptionsProps = {
 	value: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
 };
 
-export const RadioGroup: VFC<{ options: OptionsProps[] }> = (props) => {
+type Props = {
+	options: OptionsProps[];
+	onClick?: (event: MouseEvent<HTMLElement>) => void;
+};
+
+export const RadioGroup: VFC<Props> = (props) => {
 	return (
 		<RadioGroupPrimitive.Root defaultValue="blue" aria-label="View density">
 			<Flex items="center">
 				{props?.options.map((item) => {
 					return (
-						<Flex key={item.id} items="center" gap={0.75}>
-							<RadioGroupRadio id={item.id} value={item.value} color={item.value}>
+						<Flex key={item.id} items="center">
+							<RadioGroupRadio id={item.id} value={item.value} color={item.value} onClick={props.onClick}>
 								<RadioGroupIndicator color={item.value} />
 							</RadioGroupRadio>
 							<Label htmlFor={item.id}>{item.label}</Label>

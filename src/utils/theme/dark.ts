@@ -2,15 +2,12 @@ import {
 	amberDark,
 	blueDark,
 	crimsonDark,
-	grayDark,
-	grayDarkA,
 	greenDark,
 	orangeDark,
 	redDark,
 	slateDark,
 	slateDarkA,
 	violetDark,
-	yellowDark,
 } from "@radix-ui/colors";
 
 import { theme } from "../stitches.config";
@@ -23,14 +20,11 @@ export const dark = theme("dark", {
 		...amberDark,
 		...blueDark,
 		...crimsonDark,
-		...grayDark,
-		...grayDarkA,
-		...greenDark,
 		...slateDark,
 		...slateDarkA,
+		...greenDark,
 		...orangeDark,
 		...redDark,
 		...violetDark,
-		...yellowDark,
 	},
 });
