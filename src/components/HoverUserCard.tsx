@@ -1,14 +1,14 @@
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
 import type { VFC } from "react";
-import { Button, Flex, Img, NextLink, Text } from "src/components/shared";
+import { Button, CircleImg, Flex, NextLink, Text } from "src/components/shared";
 import { slideDownAndFade, slideLeftAndFade, slideRightAndFade, slideUpAndFade } from "src/components/shared/animation";
 import { styled } from "src/utils";
 
 export const HoverCardContent = styled(HoverCardPrimitive.Content, {
-	borderRadius: 6,
-	padding: 20,
 	width: 300,
-	backgroundColor: "white",
+	borderRadius: "1rem",
+	padding: "1.25rem",
+	backgroundColor: "$slate3",
 	boxShadow: "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
 	"@media (prefers-reduced-motion: no-preference)": {
 		animationDuration: "400ms",
@@ -24,7 +24,7 @@ export const HoverCardContent = styled(HoverCardPrimitive.Content, {
 });
 
 export const HoverCardArrow = styled(HoverCardPrimitive.Arrow, {
-	fill: "white",
+	fill: "$slate2",
 });
 
 const ImageTrigger = styled("a", {
@@ -50,7 +50,7 @@ export const HoverUserCard: VFC<Props> = (props) => {
 	return (
 		<HoverCardPrimitive.Root>
 			<HoverCardPrimitive.Trigger as={ImageTrigger} href="#" rel="noreferrer noopener">
-				<Img src={props.iconPath} />
+				<CircleImg src={props.iconPath} />
 			</HoverCardPrimitive.Trigger>
 
 			<HoverCardContent sideOffset={5}>
@@ -58,12 +58,12 @@ export const HoverUserCard: VFC<Props> = (props) => {
 
 				<Flex direction="col">
 					<Flex justify="between">
-						<Img size="large" src={props.iconPath} />
+						<CircleImg size="lg" src={props.iconPath} />
 						<Button color="blue">Following</Button>
 					</Flex>
 
 					<Flex direction="col" gap={1}>
-						<Text>
+						<Text pt={0.5}>
 							<Text bold>{props.userName}</Text>
 							<NextLink href="/">
 								<Text faded>

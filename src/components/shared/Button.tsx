@@ -8,18 +8,22 @@ export const Button = styled("button", {
 	gap: "0.25rem",
 	borderRadius: 99999,
 	fontWeight: 500,
-	boxShadow: "$sm",
 	cursor: "pointer",
 
 	variants: {
+		under: {
+			true: { "&:hover": { textDecoration: "underline" } },
+		},
+
 		size: {
 			base: { fontSize: "0.9rem", height: "2rem", paddingX: "1rem" },
-			md: { fontSize: "1rem", height: "2.5rem", paddingX: "1.75rem" },
-			lg: {
+			lg: { fontSize: "1rem", height: "2.5rem", paddingX: "1.75rem" },
+			xl: {
 				fontSize: "1.1rem",
 				height: "3.25rem",
 				paddingX: "5rem",
 			},
+
 			// ここでレスポンシブ定義する
 			// ここでやるなら"@initial"は定義せずに普通に書くだけ
 			responsive: {
@@ -33,63 +37,59 @@ export const Button = styled("button", {
 
 		color: {
 			blue: {
-				backgroundColor: "$blue9",
 				color: "white",
+				backgroundColor: "$blue9",
 				"&:hover": { backgroundColor: "$blue11" },
 			},
 			blueWhite: {
-				backgroundColor: "white",
 				color: "$blue9",
 				border: "1px solid $blue9",
 				boxSizing: "border-box",
 				"&:hover": { backgroundColor: "$blue4" },
 			},
 			blueGhost: {
-				backgroundColor: "white",
 				color: "$blue9",
-				boxShadow: "none",
 				"&:hover": { backgroundColor: "$blue4" },
 			},
 			red: {
-				backgroundColor: "$red9",
 				color: "white",
+				backgroundColor: "$red9",
 				"&:hover": { backgroundColor: "$red11" },
 			},
-			gray: {
-				backgroundColor: "$gray9",
+			slate: {
 				color: "white",
-				"&:hover": { backgroundColor: "$gray11" },
+				backgroundColor: "$slate9",
+				"&:hover": { backgroundColor: "$slate11" },
 			},
-			grayWhite: {
-				backgroundColor: "white",
-				color: "$gray9",
-				border: "1px solid $gray9",
+			slateWhite: {
+				color: "$slate12",
+				border: "1px solid $slate9",
 				boxSizing: "border-box",
-				"&:hover": { backgroundColor: "$gray4" },
+				"&:hover": { backgroundColor: "$slate4" },
 			},
 			amber: {
-				backgroundColor: "$amber9",
 				color: "white",
+				backgroundColor: "$amber9",
 				"&:hover": { backgroundColor: "$amber11" },
 			},
 			crimson: {
-				backgroundColor: "$crimson9",
 				color: "white",
+				backgroundColor: "$crimson9",
 				"&:hover": { backgroundColor: "$crimson11" },
 			},
 			violet: {
-				backgroundColor: "$violet9",
 				color: "white",
+				backgroundColor: "$violet9",
 				"&:hover": { backgroundColor: "$violet11" },
 			},
 			orange: {
-				backgroundColor: "$orange9",
 				color: "white",
+				backgroundColor: "$orange9",
 				"&:hover": { backgroundColor: "$orange11" },
 			},
 			green: {
-				backgroundColor: "$green9",
 				color: "white",
+				backgroundColor: "$green9",
 				"&:hover": { backgroundColor: "$green11" },
 			},
 			// ここでレスポンシブ定義する

@@ -11,7 +11,7 @@ const PostsPage: NextPage<{ data: PostType[] }> = (props) => {
 					return (
 						<div key={item.id} className="flex">
 							<Link href={`/posts/${item.id}`}>
-								<a className="p-5 hover:bg-gray-200">
+								<a className="p-5 hover:bg-slate-200">
 									<button>{item.id}</button>
 								</a>
 							</Link>

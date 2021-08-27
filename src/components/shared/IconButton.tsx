@@ -10,50 +10,30 @@ export const IconButton = styled("button", {
 	fontFamily: "inherit",
 	borderRadius: "100%",
 	cursor: "pointer",
-
-	// $$shadowColor: "$colors$slateA8",
+	color: "$slate11",
 
 	variants: {
 		size: {
 			base: { square: 35 },
-			md: { square: 40 },
-			lg: { square: 45 },
-		},
-
-		shadow: {
-			// true: { boxShadow: "0 0 10px $$shadowColor" },
-			true: { boxShadow: "$base" },
+			lg: { square: 40 },
+			xl: { square: 45 },
 		},
 
 		color: {
-			blue: {
-				color: "$gray9",
-				"&:hover": { color: "$blue9", backgroundColor: "$blue3" },
+			slate: {
+				color: "$slate12",
+				border: "1px solid $slate11",
+				boxSizing: "border-box",
+				"&:hover": { backgroundColor: "$slate6" },
 			},
-			red: {
-				color: "$gray9",
-				"&:hover": { color: "$red9", backgroundColor: "$red3" },
-			},
-			amber: {
-				color: "$gray9",
-				"&:hover": { color: "$amber9", backgroundColor: "$amber3" },
-			},
-			crimson: {
-				color: "$gray9",
-				"&:hover": { color: "$crimson9", backgroundColor: "$crimson3" },
-			},
-			violet: {
-				color: "$gray9",
-				"&:hover": { color: "$violet9", backgroundColor: "$violet3" },
-			},
-			orange: {
-				color: "$gray9",
-				"&:hover": { color: "$orange9", backgroundColor: "$orange3" },
-			},
-			green: {
-				color: "$gray9",
-				"&:hover": { color: "$green9", backgroundColor: "$green3" },
-			},
+
+			blue: { "&:hover": { color: "$blue9", backgroundColor: "$blue3" } },
+			red: { "&:hover": { color: "$red9", backgroundColor: "$red3" } },
+			amber: { "&:hover": { color: "$amber9", backgroundColor: "$amber3" } },
+			crimson: { "&:hover": { color: "$crimson9", backgroundColor: "$crimson3" } },
+			violet: { "&:hover": { color: "$violet9", backgroundColor: "$violet3" } },
+			orange: { "&:hover": { color: "$orange9", backgroundColor: "$orange3" } },
+			green: { "&:hover": { color: "$green9", backgroundColor: "$green3" } },
 		},
 	},
 
@@ -64,17 +44,14 @@ export const IconButton = styled("button", {
 
 type Props = {
 	children?: ReactNode;
-	color: "blue" | "red" | "amber" | "crimson" | "violet" | "orange" | "green";
+	color: "blue" | "red" | "slate" | "amber" | "crimson" | "violet" | "orange" | "green";
 	count?: number;
-	shadow?: true;
 };
 
 export const CountLabelIconButton: VFC<Props> = (props) => {
 	return (
 		<Flex items="center" gap={0.25}>
-			<IconButton color={props.color} shadow={props.shadow}>
-				{props.children}
-			</IconButton>
+			<IconButton color={props.color}>{props.children}</IconButton>
 			<Text faded>{props.count}</Text>
 		</Flex>
 	);
