@@ -201,17 +201,18 @@ const HomePage: NextPage = () => {
 
 type OptionsProps = {
 	id: string;
-	label: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
-	value: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
+	label: string;
+	value: string;
+	color: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
 };
 
 const RADIO_OPTIONOS: OptionsProps[] = [
-	{ id: "1", label: "blue", value: "blue" },
-	{ id: "2", label: "amber", value: "amber" },
-	{ id: "3", label: "crimson", value: "crimson" },
-	{ id: "4", label: "violet", value: "violet" },
-	{ id: "5", label: "orange", value: "orange" },
-	{ id: "6", label: "green", value: "green" },
+	{ id: "1", label: "Blue", value: "Blue", color: "blue" },
+	{ id: "2", label: "Amber", value: "Amber", color: "amber" },
+	{ id: "3", label: "Crimson", value: "Crimson", color: "crimson" },
+	{ id: "4", label: "Violet", value: "Violet", color: "violet" },
+	{ id: "5", label: "Orange", value: "Orange", color: "orange" },
+	{ id: "6", label: "Green", value: "Green", color: "green" },
 ];
 
 // eslint-disable-next-line import/no-default-export

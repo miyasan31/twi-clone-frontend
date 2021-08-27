@@ -52,8 +52,9 @@ const RadioGroupIndicator = styled(RadioGroupPrimitive.Indicator, {
 
 type OptionsProps = {
 	id: string;
-	label: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
-	value: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
+	label: string;
+	value: string;
+	color: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
 };
 
 type Props = {
@@ -68,10 +69,10 @@ export const RadioGroup: VFC<Props> = (props) => {
 				{props?.options.map((item) => {
 					return (
 						<Flex key={item.id} items="center">
-							<RadioGroupRadio id={item.id} value={item.value} color={item.value} onClick={props.onClick}>
-								<RadioGroupIndicator color={item.value} />
+							<RadioGroupRadio id={item.value} value={item.value} color={item.color} onClick={props.onClick}>
+								<RadioGroupIndicator color={item.color} />
 							</RadioGroupRadio>
-							<Label htmlFor={item.id}>{item.label}</Label>
+							<Label htmlFor={item.value}>{item.label}</Label>
 						</Flex>
 					);
 				})}

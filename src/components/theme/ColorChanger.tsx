@@ -12,15 +12,16 @@ export const ColorChanger: VFC = () => {
 
 type OptionsProps = {
 	id: string;
-	label: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
-	value: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
+	label: string;
+	value: string;
+	color: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
 };
 
 const RADIO_OPTIONOS: OptionsProps[] = [
-	{ id: "1", label: "blue", value: "blue" },
-	{ id: "2", label: "amber", value: "amber" },
-	{ id: "3", label: "crimson", value: "crimson" },
-	{ id: "4", label: "violet", value: "violet" },
-	{ id: "5", label: "orange", value: "orange" },
-	{ id: "6", label: "green", value: "green" },
+	{ id: "1", label: "blue", value: "blue", color: "blue" },
+	{ id: "2", label: "amber", value: "amber", color: "amber" },
+	{ id: "3", label: "crimson", value: "crimson", color: "crimson" },
+	{ id: "4", label: "violet", value: "violet", color: "violet" },
+	{ id: "5", label: "orange", value: "orange", color: "orange" },
+	{ id: "6", label: "green", value: "green", color: "green" },
 ];
