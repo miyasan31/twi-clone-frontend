@@ -1,4 +1,4 @@
-export { Button } from "./Button";
+export { Button, RadixButton } from "./Button";
 export { CircleImg } from "./CircleImg";
 export { Dialog } from "./Dialog";
 export { Fieldset } from "./Fieldset";

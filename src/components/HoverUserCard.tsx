@@ -59,7 +59,7 @@ export const HoverUserCard: VFC<Props> = (props) => {
 				<Flex direction="col">
 					<Flex justify="between">
 						<CircleImg size="lg" src={props.iconPath} />
-						<Button color="blue">Following</Button>
+						<Button color="primary">Following</Button>
 					</Flex>
 
 					<Flex direction="col" gap={1}>

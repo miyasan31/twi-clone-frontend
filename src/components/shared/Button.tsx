@@ -1,6 +1,7 @@
+import type { ReactNode, VFC } from "react";
 import { styled } from "src/utils";
 
-export const Button = styled("button", {
+export const RadixButton = styled("button", {
 	all: "unset",
 	display: "inline-flex",
 	alignItems: "center",
@@ -23,33 +24,55 @@ export const Button = styled("button", {
 				height: "3.25rem",
 				paddingX: "5rem",
 			},
+		},
 
-			// ここでレスポンシブ定義する
-			// ここでやるなら"@initial"は定義せずに普通に書くだけ
-			responsive: {
-				fontSize: "0.9rem",
-				height: "2rem",
-				paddingX: "1rem",
-				"@md": { fontSize: "1rem", height: "2.5rem", paddingX: "1.75rem" },
-				"@xl": { fontSize: "1.1rem", height: "3.25rem", paddingX: "5rem" },
+		isOutline: {
+			primary: {
+				color: "$primary9",
+				backgroundColor: "$slate2",
+				border: "1px solid $primary9",
+				boxSizing: "border-box",
+				"&:hover": { backgroundColor: "$primary4" },
+			},
+			red: {
+				color: "$red9",
+				backgroundColor: "$slate2",
+				border: "1px solid $red9",
+				boxSizing: "border-box",
+				"&:hover": { backgroundColor: "$red4" },
+			},
+			slate: {
+				color: "$slate12",
+				backgroundColor: "$slate2",
+				border: "1px solid $slate9",
+				boxSizing: "border-box",
+				"&:hover": { backgroundColor: "$slate4" },
+			},
+		},
+
+		isGhost: {
+			primary: {
+				color: "$primary9",
+				backgroundColor: "$slate2",
+				"&:hover": { backgroundColor: "$primary4" },
+			},
+			red: {
+				color: "$red9",
+				backgroundColor: "$slate2",
+				"&:hover": { backgroundColor: "$red4" },
+			},
+			slate: {
+				color: "$slate12",
+				backgroundColor: "$slate2",
+				"&:hover": { backgroundColor: "$slate4" },
 			},
 		},
 
 		color: {
-			blue: {
+			primary: {
 				color: "white",
-				backgroundColor: "$blue9",
-				"&:hover": { backgroundColor: "$blue11" },
-			},
-			blueWhite: {
-				color: "$blue9",
-				border: "1px solid $blue9",
-				boxSizing: "border-box",
-				"&:hover": { backgroundColor: "$blue4" },
-			},
-			blueGhost: {
-				color: "$blue9",
-				"&:hover": { backgroundColor: "$blue4" },
+				backgroundColor: "$primary9",
+				"&:hover": { backgroundColor: "$primary11" },
 			},
 			red: {
 				color: "white",
@@ -61,54 +84,6 @@ export const Button = styled("button", {
 				backgroundColor: "$slate9",
 				"&:hover": { backgroundColor: "$slate11" },
 			},
-			slateWhite: {
-				color: "$slate12",
-				border: "1px solid $slate9",
-				boxSizing: "border-box",
-				"&:hover": { backgroundColor: "$slate4" },
-			},
-			amber: {
-				color: "white",
-				backgroundColor: "$amber9",
-				"&:hover": { backgroundColor: "$amber11" },
-			},
-			crimson: {
-				color: "white",
-				backgroundColor: "$crimson9",
-				"&:hover": { backgroundColor: "$crimson11" },
-			},
-			violet: {
-				color: "white",
-				backgroundColor: "$violet9",
-				"&:hover": { backgroundColor: "$violet11" },
-			},
-			orange: {
-				color: "white",
-				backgroundColor: "$orange9",
-				"&:hover": { backgroundColor: "$orange11" },
-			},
-			green: {
-				color: "white",
-				backgroundColor: "$green9",
-				"&:hover": { backgroundColor: "$green11" },
-			},
-			// ここでレスポンシブ定義する
-			responsive: {
-				backgroundColor: "$amber9",
-				color: "white",
-				"&:hover": { backgroundColor: "$amber11" },
-
-				"@md": {
-					backgroundColor: "$orange9",
-					color: "white",
-					"&:hover": { backgroundColor: "$orange11" },
-				},
-				"@xl": {
-					backgroundColor: "$violet9",
-					color: "white",
-					"&:hover": { backgroundColor: "$violet11" },
-				},
-			},
 		},
 	},
 
@@ -116,3 +91,26 @@ export const Button = styled("button", {
 		size: "base",
 	},
 });
+
+type Props = {
+	children: ReactNode;
+	color: "primary" | "red" | "slate";
+	size?: "base" | "lg" | "xl";
+	isGhost?: true;
+	isOutline?: true;
+	under?: true;
+};
+
+export const Button: VFC<Props> = (props) => {
+	return (
+		<RadixButton
+			color={props.color}
+			size={props.size}
+			isGhost={props.isGhost && props.color}
+			isOutline={props.isOutline && props.color}
+			under={props.under}
+		>
+			{props.children}
+		</RadixButton>
+	);
+};
