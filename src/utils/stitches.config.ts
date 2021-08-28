@@ -1,4 +1,3 @@
-import { amber, blue, crimson, green, orange, red, slate, slateA, violet } from "@radix-ui/colors";
 import { createCss } from "@stitches/react";
 
 import { utils } from "./utils";
@@ -15,17 +14,7 @@ export const { styled, css, global, keyframes, getCssString, theme } = createCss
 		xl: "(min-width: 1280px)",
 	},
 	theme: {
-		colors: {
-			...blue,
-			...red,
-			...slate,
-			...slateA,
-			...amber,
-			...crimson,
-			...orange,
-			...violet,
-			...green,
-		},
+		colors: {},
 		space: {
 			// 1: "5px",
 		},
