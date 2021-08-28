@@ -36,22 +36,12 @@ const HomePage: NextPage = () => {
 					<Text>ダークモード変更</Text>
 					<ThemeChanger />
 
-					<Text>スイッチ</Text>
-					<Switch
-						labalLeft="off"
-						labalRight="on"
-						// eslint-disable-next-line react/jsx-handler-names
-						onClick={() => {
-							return console.info("aaa");
-						}}
-					/>
-
 					<Text>テーマ変更</Text>
 					<ColorChanger />
 
 					<Text>アイコン</Text>
 					<div className="flex gap-2">
-						<CountLabelIconButton color="blue" count={10}>
+						<CountLabelIconButton color="primary" count={10}>
 							<ReplyIcon size={15} />
 						</CountLabelIconButton>
 						<CountLabelIconButton color="green" count={100}>
@@ -60,42 +50,42 @@ const HomePage: NextPage = () => {
 						<CountLabelIconButton color="amber" count={1000}>
 							<FavoriteIcon size={15} />
 						</CountLabelIconButton>
-						<IconButton color="blue">
+
+						<IconButton color="primary">
 							<ShareIcon size={15} />
 						</IconButton>
-
-						<IconButton color="blue">
-							<DotsIcon size={15} />
-						</IconButton>
-						<IconButton color="amber">
-							<DotsIcon size={15} />
-						</IconButton>
-						<IconButton color="crimson">
-							<DotsIcon size={15} />
-						</IconButton>
-						<IconButton color="violet">
-							<DotsIcon size={15} />
-						</IconButton>
-						<IconButton color="orange">
-							<DotsIcon size={15} />
-						</IconButton>
-						<IconButton color="green">
+						<IconButton color="primary">
 							<DotsIcon size={15} />
 						</IconButton>
 					</div>
 
-					<Text>デフォルトテーマ</Text>
+					<Text>ボタン</Text>
 					<div className="flex gap-2">
-						<Button color="blue">Blue</Button>
-						<Button color="blueWhite">BlueWhite</Button>
-						<NextLink href="/">
-							<Button color="blueGhost" under>
-								BlueGhost
-							</Button>
-						</NextLink>
+						<Button color="primary">Blue</Button>
+						<Button color="primary" isOutline>
+							BlueOutline
+						</Button>
+						<Button color="primary" isGhost under>
+							BlueGhost
+						</Button>
+					</div>
+					<div className="flex gap-3">
 						<Button color="red">Red</Button>
+						<Button color="red" isOutline>
+							RedOutline
+						</Button>
+						<Button color="red" isGhost under>
+							RedGhost
+						</Button>
+					</div>
+					<div className="flex gap-1">
 						<Button color="slate">Slate</Button>
-						<Button color="slateWhite">Slate</Button>
+						<Button color="slate" isOutline>
+							SlateOutline
+						</Button>
+						<Button color="slate" isGhost under>
+							SlateGhost
+						</Button>
 						<NextLink href="/" btn>
 							Link
 						</NextLink>
@@ -103,59 +93,38 @@ const HomePage: NextPage = () => {
 
 					<Text>アイコン付き</Text>
 					<div className="flex gap-2">
-						<Button color="blue">
+						<Button color="primary">
 							<AllowLeftIcon size={15} />
 							Back
 						</Button>
-						<Button color="blueWhite">
+						<Button color="primary" isOutline>
 							Next
 							<AllowRightIcon size={15} />
 						</Button>
-						<Button color="red">
+						<Button color="primary" isGhost>
 							<CloseIcon size={15} />
 							Close
 						</Button>
 					</div>
 
-					<Text>カスタムテーマ</Text>
-					<div className="flex gap-4">
-						<Button color="amber">Amber</Button>
-						<Button color="crimson">Crimson</Button>
-						<Button color="violet">Violet</Button>
-						<Button color="orange">Orange</Button>
-						<Button color="green">Green</Button>
-					</div>
+					<div className="flex gap-2">
+						<div className="flex flex-col gap-2">
+							<Text>ラジオボタン</Text>
+							<RadioGroup options={RADIO_OPTIONOS} />
+						</div>
 
-					<Text>レスポンシブテーマ</Text>
-					<div className="flex gap-4">
-						<Button
-							color="responsive"
-							// インラインでレスポンシブ定義するな
-							// インラインでやるなら"@initial"を定義しないといけない
-							// color={{
-							// 	"@initial": "green",
-							// 	"@md": "red",
-							// 	"@lg": "violet",
-							// 	"@xl": "blue",
-							// }}
-						>
-							Responsive
-						</Button>
-						<Button
-							color="blue"
-							size="responsive"
-							// size={{
-							// 	"@initial": "base",
-							// 	"@md": "md",
-							// 	"@lg": "lg",
-							// }}
-						>
-							Responsive
-						</Button>
+						<div className="flex flex-col gap-2">
+							<Text>スイッチ</Text>
+							<Switch
+								labalLeft="off"
+								labalRight="on"
+								// eslint-disable-next-line react/jsx-handler-names
+								onClick={() => {
+									return console.info("aaa");
+								}}
+							/>
+						</div>
 					</div>
-
-					<Text>ラジオボタン</Text>
-					<RadioGroup options={RADIO_OPTIONOS} />
 
 					<Text>ユーザーカード</Text>
 					<HoverUserCard
@@ -203,16 +172,12 @@ type OptionsProps = {
 	id: string;
 	label: string;
 	value: string;
-	color: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
+	color?: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
 };
 
 const RADIO_OPTIONOS: OptionsProps[] = [
-	{ id: "1", label: "Blue", value: "Blue", color: "blue" },
-	{ id: "2", label: "Amber", value: "Amber", color: "amber" },
-	{ id: "3", label: "Crimson", value: "Crimson", color: "crimson" },
-	{ id: "4", label: "Violet", value: "Violet", color: "violet" },
-	{ id: "5", label: "Orange", value: "Orange", color: "orange" },
-	{ id: "6", label: "Green", value: "Green", color: "green" },
+	{ id: "1", label: "OFF", value: "off" },
+	{ id: "2", label: "ON", value: "on" },
 ];
 
 // eslint-disable-next-line import/no-default-export
