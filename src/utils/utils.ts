@@ -1,50 +1,38 @@
-import type { CSSPropertiesToTokenScale, IConfig, TMedias, TTheme } from "@stitches/react";
+/* eslint-disable arrow-body-style */
+import type { PropertyValue } from "@stitches/react";
+
+// const isPhoneNumber = (value: string): boolean => {
+// 	return /^\d[0-9]{0,2}rem$/.test(value);
+// };
 
 /**
  * @package
  */
-export const utils: IConfig<TMedias, TTheme, { [x: string]: any }, "", CSSPropertiesToTokenScale>["utils"] = {
+export const utils = {
 	// Abbreviated margin properties
-	marginY: (_config) => {
-		return (value) => {
-			return {
-				marginTop: value,
-				marginBottom: value,
-			};
-		};
-	},
-	marginX: (_config) => {
-		return (value) => {
-			return {
-				marginLeft: value,
-				marginRight: value,
-			};
-		};
-	},
-	paddingY: (_config) => {
-		return (value) => {
-			return {
-				paddingTop: value,
-				paddingBottom: value,
-			};
-		};
-	},
-	paddingX: (_config) => {
-		return (value) => {
-			return {
-				paddingLeft: value,
-				paddingRight: value,
-			};
-		};
-	},
+	marginY: (value: PropertyValue<"margin">) => ({
+		marginTop: value,
+		marginBottom: value,
+	}),
+	marginX: (value: PropertyValue<"margin">) => ({
+		marginLeft: value,
+		marginRight: value,
+	}),
+	paddingY: (value: PropertyValue<"padding">) => ({
+		paddingTop: value,
+		paddingBottom: value,
+	}),
+	paddingX: (value: PropertyValue<"padding">) => ({
+		paddingLeft: value,
+		paddingRight: value,
+	}),
 
 	// A property for applying width/height together
-	square: (_config) => {
-		return (value) => {
-			return {
-				width: value,
-				height: value,
-			};
-		};
-	},
+	square: (value: PropertyValue<"width" | "height">) => ({
+		width: value,
+		height: value,
+	}),
 };
+
+// declare const phoneNominality: unique symbol;
+// type PhoneNumber = string & { [phoneNominality]: never };
