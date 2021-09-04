@@ -1,6 +1,6 @@
 import { useTheme } from "next-themes";
 import type { VFC } from "react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { RadioGroup } from "src/components/shared";
 
 export const ColorChanger: VFC = () => {
@@ -8,8 +8,9 @@ export const ColorChanger: VFC = () => {
 	const [isMounted, setIsMounted] = useState(false);
 	const [currentColor, setCurrentColor] = useState("");
 
-	const handleClick = (e: any) => {
+	const handleClick = useCallback((e: any) => {
 		if (resolvedTheme) {
+			console.info(e.target.value);
 			if (resolvedTheme.indexOf("light") === 0) {
 				const customColor = "light_" + e.target.value;
 				setTheme(customColor);
@@ -18,7 +19,7 @@ export const ColorChanger: VFC = () => {
 				setTheme(customColor);
 			}
 		}
-	};
+	}, []);
 
 	useEffect(() => {
 		resolvedTheme && setCurrentColor(resolvedTheme.split("_")[1]);
@@ -27,7 +28,9 @@ export const ColorChanger: VFC = () => {
 
 	if (!isMounted) return null;
 
-	return <RadioGroup options={RADIO_OPTIONOS} defaultValue={currentColor} onClick={handleClick} />;
+	return (
+		<RadioGroup options={RADIO_OPTIONOS} defaultValue={currentColor} ariaLabel="colorChanger" onClick={handleClick} />
+	);
 };
 
 type OptionsProps = {

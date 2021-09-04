@@ -29,6 +29,10 @@ const HomePage: NextPage = () => {
 	// if (loading) return <div>Loading...</div>;
 	// if (error) return <div>{error.message}</div>;
 
+	const handleClick = () => {
+		console.info("click!!");
+	};
+
 	return (
 		<Layout>
 			<div className="flex justify-center items-center py-20">
@@ -61,29 +65,35 @@ const HomePage: NextPage = () => {
 
 					<Text>ボタン</Text>
 					<div className="flex gap-2">
-						<Button color="primary">Blue</Button>
-						<Button color="primary" isOutline>
+						<Button color="primary" onClick={handleClick}>
+							Blue
+						</Button>
+						<Button color="primary" isOutline onClick={handleClick}>
 							BlueOutline
 						</Button>
-						<Button color="primary" isGhost under>
+						<Button color="primary" isGhost under onClick={handleClick}>
 							BlueGhost
 						</Button>
 					</div>
 					<div className="flex gap-3">
-						<Button color="red">Red</Button>
-						<Button color="red" isOutline>
+						<Button color="red" onClick={handleClick}>
+							Red
+						</Button>
+						<Button color="red" isOutline onClick={handleClick}>
 							RedOutline
 						</Button>
-						<Button color="red" isGhost under>
+						<Button color="red" isGhost under onClick={handleClick}>
 							RedGhost
 						</Button>
 					</div>
 					<div className="flex gap-1">
-						<Button color="slate">Slate</Button>
-						<Button color="slate" isOutline>
+						<Button color="slate" onClick={handleClick}>
+							Slate
+						</Button>
+						<Button color="slate" isOutline onClick={handleClick}>
 							SlateOutline
 						</Button>
-						<Button color="slate" isGhost under>
+						<Button color="slate" isGhost under onClick={handleClick}>
 							SlateGhost
 						</Button>
 						<NextLink href="/" btn>
@@ -93,15 +103,15 @@ const HomePage: NextPage = () => {
 
 					<Text>アイコン付き</Text>
 					<div className="flex gap-2">
-						<Button color="primary">
+						<Button color="primary" onClick={handleClick}>
 							<AllowLeftIcon size={15} />
 							Back
 						</Button>
-						<Button color="primary" isOutline>
+						<Button color="primary" isOutline onClick={handleClick}>
 							Next
 							<AllowRightIcon size={15} />
 						</Button>
-						<Button color="primary" isGhost>
+						<Button color="primary" isGhost onClick={handleClick}>
 							<CloseIcon size={15} />
 							Close
 						</Button>
@@ -110,19 +120,17 @@ const HomePage: NextPage = () => {
 					<div className="flex gap-2">
 						<div className="flex flex-col gap-2">
 							<Text>ラジオボタン</Text>
-							<RadioGroup options={RADIO_OPTIONOS} />
+							<RadioGroup
+								options={RADIO_OPTIONOS}
+								defaultValue={RADIO_OPTIONOS[0].value}
+								ariaLabel="radioGroup"
+								onClick={handleClick}
+							/>
 						</div>
 
 						<div className="flex flex-col gap-2">
 							<Text>スイッチ</Text>
-							<Switch
-								labalLeft="off"
-								labalRight="on"
-								// eslint-disable-next-line react/jsx-handler-names
-								onClick={() => {
-									return console.info("aaa");
-								}}
-							/>
+							<Switch labalLeft="off" labalRight="on" onClick={handleClick} />
 						</div>
 					</div>
 

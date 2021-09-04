@@ -1,10 +1,10 @@
 import type { FC } from "react";
-import { Header } from "src/components/Header";
+// import { Header } from "src/components/Header";
 
 export const Layout: FC = (props) => {
 	return (
 		<div>
-			<Header />
+			{/* <Header /> */}
 			{props.children}
 		</div>
 	);

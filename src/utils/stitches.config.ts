@@ -5,7 +5,7 @@ import { utils } from "./utils";
 /**
  * @package
  */
-export const { styled, css, globalCss, keyframes, getCssText, createTheme } = createStitches({
+export const { styled, css, globalCss, keyframes, getCssText, createTheme, theme } = createStitches({
 	utils: utils,
 	media: {
 		sm: "(min-width: 600px)",

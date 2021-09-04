@@ -71,13 +71,14 @@ type OptionsProps = {
 
 type Props = {
 	options: OptionsProps[];
-	defaultValue?: string;
-	onClick?: (e: MouseEvent<HTMLElement>) => void;
+	defaultValue: string;
+	ariaLabel: string;
+	onClick: (e: MouseEvent<HTMLElement>) => void;
 };
 
 export const RadioGroup: VFC<Props> = (props) => {
 	return (
-		<RadioGroupPrimitive.Root defaultValue={props.defaultValue} aria-label="View density">
+		<RadioGroupPrimitive.Root defaultValue={props.defaultValue} aria-label={props.ariaLabel}>
 			<Flex items="center">
 				{props?.options.map((item) => {
 					return (

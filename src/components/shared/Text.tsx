@@ -1,7 +1,7 @@
 import type { ReactNode, VFC } from "react";
 import { styled } from "src/utils";
 
-export const RadixText = styled("div", {
+export const StitchesText = styled("div", {
 	margin: 0,
 	padding: 0,
 	color: "$slate12",
@@ -63,7 +63,7 @@ export const Text: VFC<Props> = (props) => {
 	const pb: string = props.pb + "rem";
 
 	return (
-		<RadixText
+		<StitchesText
 			bold={props.bold}
 			faded={props.faded}
 			under={props.under}
@@ -78,6 +78,6 @@ export const Text: VFC<Props> = (props) => {
 			}}
 		>
 			{props.children}
-		</RadixText>
+		</StitchesText>
 	);
 };

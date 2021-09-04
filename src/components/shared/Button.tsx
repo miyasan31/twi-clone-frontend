@@ -1,7 +1,7 @@
-import type { ReactNode, VFC } from "react";
+import type { MouseEventHandler, ReactNode, VFC } from "react";
 import { styled } from "src/utils";
 
-export const RadixButton = styled("button", {
+export const StitchesButton = styled("button", {
 	all: "unset",
 	display: "inline-flex",
 	alignItems: "center",
@@ -99,18 +99,20 @@ type Props = {
 	isGhost?: true;
 	isOutline?: true;
 	under?: true;
+	onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const Button: VFC<Props> = (props) => {
 	return (
-		<RadixButton
+		<StitchesButton
 			color={props.color}
 			size={props.size}
 			isGhost={props.isGhost && props.color}
 			isOutline={props.isOutline && props.color}
 			under={props.under}
+			onClick={props.onClick}
 		>
 			{props.children}
-		</RadixButton>
+		</StitchesButton>
 	);
 };

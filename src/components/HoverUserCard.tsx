@@ -47,6 +47,10 @@ type Props = {
 };
 
 export const HoverUserCard: VFC<Props> = (props) => {
+	const handleClick = () => {
+		console.info("click!!");
+	};
+
 	return (
 		<HoverCardPrimitive.Root>
 			<HoverCardPrimitive.Trigger as={ImageTrigger} href="#" rel="noreferrer noopener">
@@ -59,7 +63,9 @@ export const HoverUserCard: VFC<Props> = (props) => {
 				<Flex direction="col">
 					<Flex justify="between">
 						<CircleImg size="lg" src={props.iconPath} />
-						<Button color="primary">Following</Button>
+						<Button color="primary" onClick={handleClick}>
+							Following
+						</Button>
 					</Flex>
 
 					<Flex direction="col" gap={1}>

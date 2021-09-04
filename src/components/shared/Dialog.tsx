@@ -1,6 +1,6 @@
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 import type { ReactNode, VFC } from "react";
-import { Flex, IconButton, RadixButton, Text } from "src/components/shared";
+import { Flex, IconButton, StitchesButton, Text } from "src/components/shared";
 import { contentShow, overlayShow } from "src/components/shared/animation";
 import { styled } from "src/utils";
 
@@ -60,10 +60,10 @@ export const Dialog: VFC<Props> = (props) => {
 					</AlertDialogPrimitive.Description>
 
 					<Flex direction="col" gap={0.75}>
-						<AlertDialogPrimitive.Action as={RadixButton} color="red" size="lg">
+						<AlertDialogPrimitive.Action as={StitchesButton} color="red" size="lg">
 							{props.confirmationButtonLabel}
 						</AlertDialogPrimitive.Action>
-						<AlertDialogPrimitive.Cancel as={RadixButton} color="slate" size="lg" isOutline="slate">
+						<AlertDialogPrimitive.Cancel as={StitchesButton} color="slate" size="lg" isOutline="slate">
 							{props.closeButtonLabel}
 						</AlertDialogPrimitive.Cancel>
 					</Flex>
