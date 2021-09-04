@@ -1,4 +1,3 @@
-import { amber, blue, crimson, green, orange, red, slate, slateA, violet } from "@radix-ui/colors";
 import { createStitches } from "@stitches/react";
 
 import { utils } from "./utils";
@@ -6,7 +5,7 @@ import { utils } from "./utils";
 /**
  * @package
  */
-export const { styled, css, globalCss, keyframes, getCssText, createTheme } = createStitches({
+export const { styled, css, globalCss, keyframes, getCssText, createTheme, theme } = createStitches({
 	utils: utils,
 	media: {
 		sm: "(min-width: 600px)",
@@ -15,17 +14,7 @@ export const { styled, css, globalCss, keyframes, getCssText, createTheme } = cr
 		xl: "(min-width: 1280px)",
 	},
 	theme: {
-		colors: {
-			...blue,
-			...red,
-			...slate,
-			...slateA,
-			...amber,
-			...crimson,
-			...orange,
-			...violet,
-			...green,
-		},
+		colors: {},
 		space: {
 			0.25: "0.25rem",
 			0.5: "0.5rem",

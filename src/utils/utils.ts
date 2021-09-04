@@ -1,10 +1,6 @@
 /* eslint-disable arrow-body-style */
 import type { PropertyValue } from "@stitches/react";
 
-// const isPhoneNumber = (value: string): boolean => {
-// 	return /^\d[0-9]{0,2}rem$/.test(value);
-// };
-
 /**
  * @package
  */

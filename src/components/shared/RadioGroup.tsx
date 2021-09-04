@@ -13,6 +13,8 @@ const RadioGroupRadio = styled(RadioGroupPrimitive.Item, {
 
 	variants: {
 		color: {
+			primary: { "&:hover": { backgroundColor: "$primary5" } },
+
 			blue: { "&:hover": { backgroundColor: "$blue5" } },
 			amber: { "&:hover": { backgroundColor: "$amber5" } },
 			crimson: { "&:hover": { backgroundColor: "$crimson5" } },
@@ -20,6 +22,10 @@ const RadioGroupRadio = styled(RadioGroupPrimitive.Item, {
 			orange: { "&:hover": { backgroundColor: "$orange5" } },
 			green: { "&:hover": { backgroundColor: "$green5" } },
 		},
+	},
+
+	defaultVariants: {
+		color: "primary",
 	},
 });
 
@@ -40,6 +46,8 @@ const RadioGroupIndicator = styled(RadioGroupPrimitive.Indicator, {
 
 	variants: {
 		color: {
+			primary: { "&::after": { backgroundColor: "$primary9" } },
+
 			blue: { "&::after": { backgroundColor: "$blue9" } },
 			amber: { "&::after": { backgroundColor: "$amber9" } },
 			crimson: { "&::after": { backgroundColor: "$crimson9" } },
@@ -48,23 +56,29 @@ const RadioGroupIndicator = styled(RadioGroupPrimitive.Indicator, {
 			green: { "&::after": { backgroundColor: "$green9" } },
 		},
 	},
+
+	defaultVariants: {
+		color: "primary",
+	},
 });
 
 type OptionsProps = {
 	id: string;
 	label: string;
 	value: string;
-	color: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
+	color?: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
 };
 
 type Props = {
 	options: OptionsProps[];
-	onClick?: (event: MouseEvent<HTMLElement>) => void;
+	defaultValue: string;
+	ariaLabel: string;
+	onClick: (e: MouseEvent<HTMLElement>) => void;
 };
 
 export const RadioGroup: VFC<Props> = (props) => {
 	return (
-		<RadioGroupPrimitive.Root defaultValue="blue" aria-label="View density">
+		<RadioGroupPrimitive.Root defaultValue={props.defaultValue} aria-label={props.ariaLabel}>
 			<Flex items="center">
 				{props?.options.map((item) => {
 					return (

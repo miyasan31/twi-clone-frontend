@@ -3,24 +3,43 @@ import type { AppProps } from "next/app";
 import { ThemeProvider, useTheme } from "next-themes";
 import type { VFC } from "react";
 import { useEffect } from "react";
-import { dark } from "src/utils/theme";
+import {
+	darkAmber,
+	darkBlue,
+	darkCrimson,
+	darkGreen,
+	darkOrange,
+	darkViolet,
+	lightAmber,
+	lightBlue,
+	lightCrimson,
+	lightGreen,
+	lightOrange,
+	lightViolet,
+} from "src/utils/themes";
 
 type AppPage = (props: AppProps) => JSX.Element;
-
-const InitTheme: VFC<{ children: JSX.Element }> = (props) => {
-	const { resolvedTheme } = useTheme();
-	useEffect(() => {
-		const html = document.getElementsByTagName("html")[0];
-		html.setAttribute("class", resolvedTheme ?? "");
-	}, [resolvedTheme]);
-
-	return props.children;
-};
 
 export const WithTheme = (Component: AppPage) => {
 	const withTheme = (props: AppProps) => {
 		return (
-			<ThemeProvider attribute="class" value={{ light: "light", dark: dark }}>
+			<ThemeProvider
+				attribute="class"
+				themes={[
+					darkAmber,
+					darkBlue,
+					lightAmber,
+					lightBlue,
+					darkCrimson,
+					darkGreen,
+					darkOrange,
+					darkViolet,
+					lightCrimson,
+					lightGreen,
+					lightOrange,
+					lightViolet,
+				]}
+			>
 				<InitTheme>
 					<Component {...props} />
 				</InitTheme>
@@ -29,4 +48,15 @@ export const WithTheme = (Component: AppPage) => {
 	};
 
 	return withTheme;
+};
+
+const InitTheme: VFC<{ children: JSX.Element }> = (props) => {
+	const { resolvedTheme } = useTheme();
+
+	useEffect(() => {
+		const html = document.getElementsByTagName("html")[0];
+		html.setAttribute("class", resolvedTheme ?? "");
+	}, [resolvedTheme]);
+
+	return props.children;
 };

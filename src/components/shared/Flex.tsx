@@ -1,7 +1,7 @@
 import type { ReactNode, VFC } from "react";
 import { styled } from "src/utils";
 
-const RadixFlex = styled("div", {
+const StitchesFlex = styled("div", {
 	display: "flex",
 
 	variants: {
@@ -51,8 +51,8 @@ type Props = {
 export const Flex: VFC<Props> = (props) => {
 	const gap: string = props.gap + "rem";
 	return (
-		<RadixFlex direction={props.direction} justify={props.justify} items={props.items} css={{ gap }}>
+		<StitchesFlex direction={props.direction} justify={props.justify} items={props.items} css={{ gap }}>
 			{props.children}
-		</RadixFlex>
+		</StitchesFlex>
 	);
 };

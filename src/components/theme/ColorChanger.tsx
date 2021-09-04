@@ -1,13 +1,36 @@
+import { useTheme } from "next-themes";
 import type { VFC } from "react";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { RadioGroup } from "src/components/shared";
 
 export const ColorChanger: VFC = () => {
-	const handleClick = useCallback((e) => {
-		localStorage.setItem("color", e.target.value);
+	const { setTheme, resolvedTheme } = useTheme();
+	const [isMounted, setIsMounted] = useState(false);
+	const [currentColor, setCurrentColor] = useState("");
+
+	const handleClick = useCallback((e: any) => {
+		if (resolvedTheme) {
+			console.info(e.target.value);
+			if (resolvedTheme.indexOf("light") === 0) {
+				const customColor = "light_" + e.target.value;
+				setTheme(customColor);
+			} else {
+				const customColor = "dark_" + e.target.value;
+				setTheme(customColor);
+			}
+		}
 	}, []);
 
-	return <RadioGroup options={RADIO_OPTIONOS} onClick={handleClick} />;
+	useEffect(() => {
+		resolvedTheme && setCurrentColor(resolvedTheme.split("_")[1]);
+		return setIsMounted(true);
+	}, []);
+
+	if (!isMounted) return null;
+
+	return (
+		<RadioGroup options={RADIO_OPTIONOS} defaultValue={currentColor} ariaLabel="colorChanger" onClick={handleClick} />
+	);
 };
 
 type OptionsProps = {
