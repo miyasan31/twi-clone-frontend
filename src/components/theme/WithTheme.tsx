@@ -51,9 +51,10 @@ export const WithTheme = (Component: AppPage) => {
 };
 
 const InitTheme: VFC<{ children: JSX.Element }> = (props) => {
-	const { resolvedTheme } = useTheme();
+	const { resolvedTheme, setTheme } = useTheme();
 
 	useEffect(() => {
+		if (!resolvedTheme) setTheme("light_blue");
 		const html = document.getElementsByTagName("html")[0];
 		html.setAttribute("class", resolvedTheme ?? "");
 	}, [resolvedTheme]);

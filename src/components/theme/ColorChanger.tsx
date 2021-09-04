@@ -1,6 +1,6 @@
 import { useTheme } from "next-themes";
 import type { VFC } from "react";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { RadioGroup } from "src/components/shared";
 
 export const ColorChanger: VFC = () => {
@@ -8,18 +8,15 @@ export const ColorChanger: VFC = () => {
 	const [isMounted, setIsMounted] = useState(false);
 	const [currentColor, setCurrentColor] = useState("");
 
-	const handleClick = useCallback((e: any) => {
-		if (resolvedTheme) {
-			console.info(e.target.value);
-			if (resolvedTheme.indexOf("light") === 0) {
-				const customColor = "light_" + e.target.value;
-				setTheme(customColor);
-			} else {
-				const customColor = "dark_" + e.target.value;
-				setTheme(customColor);
-			}
+	const handleClick = (e: any) => {
+		if (resolvedTheme?.indexOf("light") === 0) {
+			const customColor = "light_" + e.target.value;
+			setTheme(customColor);
+		} else {
+			const customColor = "dark_" + e.target.value;
+			setTheme(customColor);
 		}
-	}, []);
+	};
 
 	useEffect(() => {
 		resolvedTheme && setCurrentColor(resolvedTheme.split("_")[1]);
