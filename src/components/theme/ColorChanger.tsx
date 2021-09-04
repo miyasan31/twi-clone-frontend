@@ -9,6 +9,7 @@ export const ColorChanger: VFC = () => {
 	const [currentColor, setCurrentColor] = useState("");
 
 	const handleClick = (e: any) => {
+		if (e.target.value === undefined) return;
 		if (resolvedTheme?.indexOf("light") === 0) {
 			const customColor = "light_" + e.target.value;
 			setTheme(customColor);
