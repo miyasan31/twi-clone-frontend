@@ -20,7 +20,7 @@
 		"@radix-ui/react-popover": "^0.0.20",
 		"@radix-ui/react-radio-group": "^0.0.19",
 		"@radix-ui/react-switch": "^0.0.15",
-		"@stitches/react": "^0.2.5",
+		"@stitches/react": "^1.0.0",
 		"apollo-link-error": "^1.1.13",
 		"apollo-link-http": "^1.5.17",
 		"autoprefixer": "^10.3.1",

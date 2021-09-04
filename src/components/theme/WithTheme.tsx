@@ -1,6 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-undef */
 import type { AppProps } from "next/app";
 import { ThemeProvider, useTheme } from "next-themes";
 import type { VFC } from "react";

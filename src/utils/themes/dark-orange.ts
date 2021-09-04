@@ -9,13 +9,12 @@ import {
 	slateDarkA,
 	violetDark,
 } from "@radix-ui/colors";
-
-import { theme } from "../stitches.config";
+import { createTheme } from "src/utils";
 
 /**
  * @package
  */
-export const darkOrange = theme("dark_orange", {
+export const darkOrange = createTheme("dark_orange", {
 	colors: {
 		...amberDark,
 		...blueDark,

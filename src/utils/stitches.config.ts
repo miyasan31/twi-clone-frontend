@@ -1,11 +1,11 @@
-import { createCss } from "@stitches/react";
+import { createStitches } from "@stitches/react";
 
 import { utils } from "./utils";
 
 /**
  * @package
  */
-export const { styled, css, global, keyframes, getCssString, theme } = createCss({
+export const { styled, css, globalCss, keyframes, getCssText, createTheme } = createStitches({
 	utils: utils,
 	media: {
 		sm: "(min-width: 600px)",
@@ -16,7 +16,21 @@ export const { styled, css, global, keyframes, getCssString, theme } = createCss
 	theme: {
 		colors: {},
 		space: {
-			// 1: "5px",
+			0.25: "0.25rem",
+			0.5: "0.5rem",
+			0.75: "0.75rem",
+			1: "1rem",
+			1.25: "5rem",
+			1.5: "1.5rem",
+			1.75: "1.75rem",
+			2: "2rem",
+			2.5: "2.5rem",
+			3: "3rem",
+			3.5: "3.5rem",
+			4: "4rem",
+			4.5: "4.5rem",
+			5: "5rem",
+			5.5: "5.5rem",
 		},
 		fontSizes: {
 			xs: "0.75rem;",
@@ -67,7 +81,7 @@ export const { styled, css, global, keyframes, getCssString, theme } = createCss
 	},
 });
 
-global({
+globalCss({
 	html: { fontSize: "16px" },
 	// "@md": { html: { fontSize: "16px" } },
 	body: { lineHeight: 1.6, color: "$slate12", backgroundColor: "$slate2" },

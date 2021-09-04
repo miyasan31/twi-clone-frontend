@@ -1,11 +1,10 @@
 import { amber, blue, crimson, green, orange, red, slate, slateA, violet } from "@radix-ui/colors";
-
-import { theme } from "../stitches.config";
+import { createTheme } from "src/utils";
 
 /**
  * @package
  */
-export const lightAmber = theme("light_amber", {
+export const lightAmber = createTheme("light_amber", {
 	colors: {
 		...amber,
 		...blue,
