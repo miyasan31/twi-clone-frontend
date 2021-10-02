@@ -21,13 +21,11 @@ import {
 	Text,
 } from "src/components/shared";
 import { ColorChanger, ThemeChanger } from "src/components/theme";
-// import { useAllTweetsQuery } from "src/graphql/gql";
+import { useGetTweetQuery } from "src/graphql/gql";
 
 const HomePage: NextPage = () => {
-	// const { loading, error, data } = useAllTweetsQuery();
-	// console.info(data);
-	// if (loading) return <div>Loading...</div>;
-	// if (error) return <div>{error.message}</div>;
+	const { data } = useGetTweetQuery();
+	console.info(data);
 
 	const handleClick = () => {
 		console.info("click!!");

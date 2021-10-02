@@ -12,180 +12,274 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
-  JSON: any;
+  /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
+  DateTime: any;
+};
+
+export type Comment = {
+  __typename?: 'Comment';
+  id: Scalars['Int'];
+  userId: Scalars['String'];
+  tweetId: Scalars['Int'];
+  commentBody: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+};
+
+export type Count = {
+  __typename?: 'Count';
+  count: Scalars['String'];
+};
+
+export type CreateCommentDto = {
+  userId: Scalars['String'];
+  tweetId: Scalars['Float'];
+  commentBody: Scalars['String'];
+};
+
+export type CreateFollowDto = {
+  userId: Scalars['String'];
+  followingUserId: Scalars['String'];
+};
+
+export type CreateLikeDto = {
+  userId: Scalars['String'];
+  tweetId: Scalars['Float'];
+};
+
+export type CreateRetweetDto = {
+  userId: Scalars['String'];
+  tweetId: Scalars['Float'];
+};
+
+export type CreateTweetDto = {
+  userId: Scalars['String'];
+  tweetBody: Scalars['String'];
+};
+
+export type CreateUserDto = {
+  id: Scalars['String'];
+  userName: Scalars['String'];
+  profileBody: Scalars['String'];
+  iconId: Scalars['String'];
 };
 
 
-export type ListMetadata = {
-  __typename?: 'ListMetadata';
-  count?: Maybe<Scalars['Int']>;
+export type Follow = {
+  __typename?: 'Follow';
+  id: Scalars['Int'];
+  userId: Scalars['String'];
+  followingUserId: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+};
+
+export type Like = {
+  __typename?: 'Like';
+  id: Scalars['Int'];
+  userId: Scalars['String'];
+  tweetId: Scalars['Int'];
+  createdAt: Scalars['DateTime'];
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createTweet?: Maybe<Tweet>;
-  createManyTweet?: Maybe<Array<Maybe<Tweet>>>;
-  updateTweet?: Maybe<Tweet>;
-  removeTweet?: Maybe<Tweet>;
+  CreateUser: User;
+  UpdateUser: User;
+  DeleteUser: Scalars['Boolean'];
+  CreateTweet: Tweet;
+  DeleteTweet: Scalars['Boolean'];
+  CreateRetweet: Retweet;
+  DeleteRetweet: Scalars['Boolean'];
+  CreateLike: Like;
+  DeleteLike: Scalars['Boolean'];
+  CreateComment: Comment;
+  DeleteComment: Scalars['Boolean'];
+  CreateFollow: Follow;
+  DeleteFollow: Scalars['Boolean'];
+};
+
+
+export type MutationCreateUserArgs = {
+  userDto: CreateUserDto;
+};
+
+
+export type MutationUpdateUserArgs = {
+  userDto: UpdateUserDto;
+  id: Scalars['String'];
+};
+
+
+export type MutationDeleteUserArgs = {
+  id: Scalars['String'];
 };
 
 
 export type MutationCreateTweetArgs = {
-  tweetId: Scalars['String'];
-  userId: Scalars['String'];
-  tweetBody: Scalars['String'];
-  retweetId?: Maybe<Scalars['String']>;
-  createdAt: Scalars['String'];
-  like: Scalars['Int'];
-  retweet: Scalars['Int'];
-  userInfo: Scalars['JSON'];
+  tweetDto: CreateTweetDto;
 };
 
 
-export type MutationCreateManyTweetArgs = {
-  data?: Maybe<Array<Maybe<TweetInput>>>;
+export type MutationDeleteTweetArgs = {
+  id: Scalars['Int'];
 };
 
 
-export type MutationUpdateTweetArgs = {
-  tweetId?: Maybe<Scalars['String']>;
-  userId?: Maybe<Scalars['String']>;
-  tweetBody?: Maybe<Scalars['String']>;
-  retweetId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['String']>;
-  like?: Maybe<Scalars['Int']>;
-  retweet?: Maybe<Scalars['Int']>;
-  userInfo?: Maybe<Scalars['JSON']>;
+export type MutationCreateRetweetArgs = {
+  retweetDto: CreateRetweetDto;
 };
 
 
-export type MutationRemoveTweetArgs = {
-  id: Scalars['ID'];
+export type MutationDeleteRetweetArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationCreateLikeArgs = {
+  likeDto: CreateLikeDto;
+};
+
+
+export type MutationDeleteLikeArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationCreateCommentArgs = {
+  tweetDto: CreateCommentDto;
+};
+
+
+export type MutationDeleteCommentArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationCreateFollowArgs = {
+  followDto: CreateFollowDto;
+};
+
+
+export type MutationDeleteFollowArgs = {
+  id: Scalars['Int'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  Tweet?: Maybe<Tweet>;
-  allTweets?: Maybe<Array<Maybe<Tweet>>>;
-  _allTweetsMeta?: Maybe<ListMetadata>;
+  GetUsers: Array<User>;
+  GetUser: User;
+  GetTweets: Array<Tweet>;
+  GetTweet: Tweet;
+  GetRetweets: Array<Retweet>;
+  GetLikes: Array<Like>;
+  GetComments: Array<Comment>;
+  GetComment: Comment;
+  GetFollows: Array<Follow>;
 };
 
 
-export type QueryTweetArgs = {
-  id: Scalars['ID'];
+export type QueryGetUserArgs = {
+  id: Scalars['String'];
 };
 
 
-export type QueryAllTweetsArgs = {
-  page?: Maybe<Scalars['Int']>;
-  perPage?: Maybe<Scalars['Int']>;
-  sortField?: Maybe<Scalars['String']>;
-  sortOrder?: Maybe<Scalars['String']>;
-  filter?: Maybe<TweetFilter>;
+export type QueryGetTweetArgs = {
+  id: Scalars['Int'];
 };
 
 
-export type Query_AllTweetsMetaArgs = {
-  page?: Maybe<Scalars['Int']>;
-  perPage?: Maybe<Scalars['Int']>;
-  filter?: Maybe<TweetFilter>;
+export type QueryGetCommentArgs = {
+  id: Scalars['Int'];
+};
+
+export type Retweet = {
+  __typename?: 'Retweet';
+  id: Scalars['Int'];
+  userId: Scalars['String'];
+  tweetId: Scalars['Int'];
+  createdAt: Scalars['DateTime'];
 };
 
 export type Tweet = {
   __typename?: 'Tweet';
-  tweetId: Scalars['String'];
+  id: Scalars['Int'];
   userId: Scalars['String'];
   tweetBody: Scalars['String'];
-  retweetId?: Maybe<Scalars['String']>;
-  createdAt: Scalars['String'];
-  like: Scalars['Int'];
-  retweet: Scalars['Int'];
-  userInfo: Scalars['JSON'];
+  createdAt: Scalars['DateTime'];
+  GetRetweetsByTweet: Array<Retweet>;
+  GetLikesByTweet: Array<Like>;
+  GetCommentsByTweet: Array<Comment>;
+  GetLikeCount: Count;
+  GetRetweetCount: Count;
+  GetCommentCount: Count;
 };
 
-export type TweetFilter = {
-  q?: Maybe<Scalars['String']>;
-  ids?: Maybe<Array<Maybe<Scalars['ID']>>>;
-  tweetId?: Maybe<Scalars['String']>;
-  userId?: Maybe<Scalars['String']>;
-  tweetBody?: Maybe<Scalars['String']>;
-  retweetId?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['String']>;
-  like?: Maybe<Scalars['Int']>;
-  retweet?: Maybe<Scalars['Int']>;
-  userInfo?: Maybe<Scalars['JSON']>;
-  tweetId_neq?: Maybe<Scalars['String']>;
-  userId_neq?: Maybe<Scalars['String']>;
-  tweetBody_neq?: Maybe<Scalars['String']>;
-  retweetId_neq?: Maybe<Scalars['String']>;
-  createdAt_neq?: Maybe<Scalars['String']>;
-  like_lt?: Maybe<Scalars['Int']>;
-  like_lte?: Maybe<Scalars['Int']>;
-  like_gt?: Maybe<Scalars['Int']>;
-  like_gte?: Maybe<Scalars['Int']>;
-  like_neq?: Maybe<Scalars['Int']>;
-  retweet_lt?: Maybe<Scalars['Int']>;
-  retweet_lte?: Maybe<Scalars['Int']>;
-  retweet_gt?: Maybe<Scalars['Int']>;
-  retweet_gte?: Maybe<Scalars['Int']>;
-  retweet_neq?: Maybe<Scalars['Int']>;
-  userInfo_neq?: Maybe<Scalars['JSON']>;
+export type UpdateUserDto = {
+  userName: Scalars['String'];
+  profileBody: Scalars['String'];
+  iconId: Scalars['String'];
 };
 
-export type TweetInput = {
-  tweetId: Scalars['String'];
-  userId: Scalars['String'];
-  tweetBody: Scalars['String'];
-  retweetId?: Maybe<Scalars['String']>;
-  createdAt: Scalars['String'];
-  like: Scalars['Int'];
-  retweet: Scalars['Int'];
-  userInfo: Scalars['JSON'];
+export type User = {
+  __typename?: 'User';
+  id: Scalars['String'];
+  userName: Scalars['String'];
+  profileBody: Scalars['String'];
+  iconId: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  GetTweetsByUser: Array<Tweet>;
+  GetRetweetsByUser: Array<Tweet>;
+  GetLikesByUser: Array<Like>;
+  GetCommentsByUser: Array<Comment>;
+  GetFollowingCount: Count;
+  GetFollowerCount: Count;
 };
 
-export type AllTweetsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetTweetQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllTweetsQuery = { __typename?: 'Query', allTweets?: Maybe<Array<Maybe<{ __typename?: 'Tweet', userId: string, tweetId: string, tweetBody: string, retweetId?: Maybe<string>, createdAt: string, userInfo: any }>>> };
+export type GetTweetQuery = { __typename?: 'Query', GetTweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, GetLikesByTweet: Array<{ __typename?: 'Like', tweetId: number }>, GetLikeCount: { __typename?: 'Count', count: string } } };
 
 
-export const AllTweetsDocument = gql`
-    query AllTweets {
-  allTweets {
+export const GetTweetDocument = gql`
+    query GetTweet {
+  GetTweet(id: 1) {
+    id
     userId
-    tweetId
     tweetBody
-    retweetId
     createdAt
-    userInfo
+    GetLikesByTweet {
+      tweetId
+    }
+    GetLikeCount {
+      count
+    }
   }
 }
     `;
 
 /**
- * __useAllTweetsQuery__
+ * __useGetTweetQuery__
  *
- * To run a query within a React component, call `useAllTweetsQuery` and pass it any options that fit your needs.
- * When your component renders, `useAllTweetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetTweetQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTweetQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useAllTweetsQuery({
+ * const { data, loading, error } = useGetTweetQuery({
  *   variables: {
  *   },
  * });
  */
-export function useAllTweetsQuery(baseOptions?: Apollo.QueryHookOptions<AllTweetsQuery, AllTweetsQueryVariables>) {
+export function useGetTweetQuery(baseOptions?: Apollo.QueryHookOptions<GetTweetQuery, GetTweetQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<AllTweetsQuery, AllTweetsQueryVariables>(AllTweetsDocument, options);
+        return Apollo.useQuery<GetTweetQuery, GetTweetQueryVariables>(GetTweetDocument, options);
       }
-export function useAllTweetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllTweetsQuery, AllTweetsQueryVariables>) {
+export function useGetTweetLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTweetQuery, GetTweetQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<AllTweetsQuery, AllTweetsQueryVariables>(AllTweetsDocument, options);
+          return Apollo.useLazyQuery<GetTweetQuery, GetTweetQueryVariables>(GetTweetDocument, options);
         }
-export type AllTweetsQueryHookResult = ReturnType<typeof useAllTweetsQuery>;
-export type AllTweetsLazyQueryHookResult = ReturnType<typeof useAllTweetsLazyQuery>;
-export type AllTweetsQueryResult = Apollo.QueryResult<AllTweetsQuery, AllTweetsQueryVariables>;
+export type GetTweetQueryHookResult = ReturnType<typeof useGetTweetQuery>;
+export type GetTweetLazyQueryHookResult = ReturnType<typeof useGetTweetLazyQuery>;
+export type GetTweetQueryResult = Apollo.QueryResult<GetTweetQuery, GetTweetQueryVariables>;
