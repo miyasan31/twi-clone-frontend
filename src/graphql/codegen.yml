@@ -1,5 +1,5 @@
 # graphqlサーバーのエンドポイント
-schema: "http://localhost:4000"
+schema: "http://localhost:4000/graphql"
 # schema: [
 #     {
 #       "https://api.ana-hunter.dev/v1/graphql": {
