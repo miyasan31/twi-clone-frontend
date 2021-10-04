@@ -23,6 +23,8 @@ export type Comment = {
   tweetId: Scalars['Int'];
   commentBody: Scalars['String'];
   createdAt: Scalars['DateTime'];
+  GetUserByComment: User;
+  GetTweetByComment: Tweet;
 };
 
 export type Count = {
@@ -70,6 +72,8 @@ export type Follow = {
   userId: Scalars['String'];
   followingUserId: Scalars['String'];
   createdAt: Scalars['DateTime'];
+  GetUserByFollowing: User;
+  GetUserByFollower: User;
 };
 
 export type Like = {
@@ -78,6 +82,8 @@ export type Like = {
   userId: Scalars['String'];
   tweetId: Scalars['Int'];
   createdAt: Scalars['DateTime'];
+  GetUserByLike: User;
+  GetTweetByLike: Tweet;
 };
 
 export type Mutation = {
@@ -145,7 +151,7 @@ export type MutationDeleteLikeArgs = {
 
 
 export type MutationCreateCommentArgs = {
-  tweetDto: CreateCommentDto;
+  commentDto: CreateCommentDto;
 };
 
 
@@ -174,6 +180,8 @@ export type Query = {
   GetComments: Array<Comment>;
   GetComment: Comment;
   GetFollows: Array<Follow>;
+  GetFollowings: Array<Follow>;
+  GetFollowers: Array<Follow>;
 };
 
 
@@ -191,12 +199,24 @@ export type QueryGetCommentArgs = {
   id: Scalars['Int'];
 };
 
+
+export type QueryGetFollowingsArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryGetFollowersArgs = {
+  id: Scalars['String'];
+};
+
 export type Retweet = {
   __typename?: 'Retweet';
   id: Scalars['Int'];
   userId: Scalars['String'];
   tweetId: Scalars['Int'];
   createdAt: Scalars['DateTime'];
+  GetUserByRetweet: User;
+  GetTweetByRetweet: Tweet;
 };
 
 export type Tweet = {
@@ -205,6 +225,7 @@ export type Tweet = {
   userId: Scalars['String'];
   tweetBody: Scalars['String'];
   createdAt: Scalars['DateTime'];
+  GetUserByTweet: User;
   GetRetweetsByTweet: Array<Retweet>;
   GetLikesByTweet: Array<Like>;
   GetCommentsByTweet: Array<Comment>;
@@ -227,9 +248,11 @@ export type User = {
   iconId: Scalars['String'];
   createdAt: Scalars['DateTime'];
   GetTweetsByUser: Array<Tweet>;
-  GetRetweetsByUser: Array<Tweet>;
+  GetRetweetsByUser: Array<Retweet>;
   GetLikesByUser: Array<Like>;
   GetCommentsByUser: Array<Comment>;
+  GetFollowersByUser: Array<Follow>;
+  GetFollowingsByUser: Array<Follow>;
   GetFollowingCount: Count;
   GetFollowerCount: Count;
 };
@@ -237,7 +260,12 @@ export type User = {
 export type GetTweetQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTweetQuery = { __typename?: 'Query', GetTweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, GetLikesByTweet: Array<{ __typename?: 'Like', tweetId: number }>, GetLikeCount: { __typename?: 'Count', count: string } } };
+export type GetTweetQuery = { __typename?: 'Query', GetTweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any } };
+
+export type GetUserQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUserQuery = { __typename?: 'Query', GetUser: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any } };
 
 
 export const GetTweetDocument = gql`
@@ -247,12 +275,6 @@ export const GetTweetDocument = gql`
     userId
     tweetBody
     createdAt
-    GetLikesByTweet {
-      tweetId
-    }
-    GetLikeCount {
-      count
-    }
   }
 }
     `;
@@ -283,3 +305,40 @@ export function useGetTweetLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<G
 export type GetTweetQueryHookResult = ReturnType<typeof useGetTweetQuery>;
 export type GetTweetLazyQueryHookResult = ReturnType<typeof useGetTweetLazyQuery>;
 export type GetTweetQueryResult = Apollo.QueryResult<GetTweetQuery, GetTweetQueryVariables>;
+export const GetUserDocument = gql`
+    query GetUser {
+  GetUser(id: "miyasan_0301") {
+    id
+    userName
+    profileBody
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useGetUserQuery__
+ *
+ * To run a query within a React component, call `useGetUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetUserQuery(baseOptions?: Apollo.QueryHookOptions<GetUserQuery, GetUserQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserQuery, GetUserQueryVariables>(GetUserDocument, options);
+      }
+export function useGetUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserQuery, GetUserQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserQuery, GetUserQueryVariables>(GetUserDocument, options);
+        }
+export type GetUserQueryHookResult = ReturnType<typeof useGetUserQuery>;
+export type GetUserLazyQueryHookResult = ReturnType<typeof useGetUserLazyQuery>;
+export type GetUserQueryResult = Apollo.QueryResult<GetUserQuery, GetUserQueryVariables>;
