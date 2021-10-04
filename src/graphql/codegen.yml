@@ -1,17 +1,10 @@
 # graphqlサーバーのエンドポイント
 schema: "http://localhost:4000/graphql"
-# schema: [
-#     {
-#       "https://api.ana-hunter.dev/v1/graphql": {
-#         headers: { "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET },
-#       }
-#     }
-#     "src/apollo/client-schema.graphql"
-#   ]
 
 # どのコードファイルを見るか
-documents: "src/graphql/queries/*.ts"
-# documents: "src/{pages,components}/**/*.{ts,tsx}"
+# documents: "src/graphql/queries/*.query.ts"
+# documents: "src/{pages,components}/**/*.query.ts"
+documents: "src/{pages,components}/**/*.gql"
 
 overwrite: true
 
