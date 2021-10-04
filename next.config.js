@@ -14,5 +14,7 @@ module.exports = {
 	eslint: { ignoreDuringBuilds: true },
 	// よくわからん
 	poweredByHeader: false,
+	// pageの拡張し変更
+	pageExtensions: ["page.tsx", "page.ts"],
 };
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
