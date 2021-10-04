@@ -1,0 +1,8 @@
+query GetTweet {
+	GetTweet(id: 1) {
+		id
+		userId
+		tweetBody
+		createdAt
+	}
+}

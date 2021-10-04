@@ -1,0 +1,8 @@
+query GetUser {
+	GetUser(id: "miyasan_0301") {
+		id
+		userName
+		profileBody
+		createdAt
+	}
+}
