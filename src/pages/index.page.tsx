@@ -21,11 +21,11 @@ import {
 	Text,
 } from "src/components/shared";
 import { ColorChanger, ThemeChanger } from "src/components/theme";
-import { useGetTweetQuery } from "src/graphql/gql";
+// import { useGetTweetQuery } from "src/graphql/gql";
 
-const HomePage: NextPage = () => {
-	const { data } = useGetTweetQuery();
-	console.info(data);
+const IndexPage: NextPage = () => {
+	// const { data } = useGetTweetQuery();
+	// console.info(data);
 
 	const handleClick = () => {
 		console.info("click!!");
@@ -187,4 +187,4 @@ const RADIO_OPTIONOS: OptionsProps[] = [
 ];
 
 // eslint-disable-next-line import/no-default-export
-export default HomePage;
+export default IndexPage;
