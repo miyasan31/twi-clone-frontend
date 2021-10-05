@@ -22,7 +22,7 @@ import {
 	Text,
 } from "src/components/shared";
 import { ColorChanger, ThemeChanger } from "src/components/theme";
-import { useCreateTweetMutation, useGetFollowingUserTweetsQuery } from "src/graphql/gql";
+import { useCreateTweetMutation, useDeleteTweetMutation, useGetFollowingUserTweetsQuery } from "src/graphql/gql";
 
 const IndexPage: NextPage = () => {
 	const { data } = useGetFollowingUserTweetsQuery({
@@ -31,9 +31,15 @@ const IndexPage: NextPage = () => {
 	console.info(data);
 
 	const [createTweet] = useCreateTweetMutation();
+	const [deleteTweet] = useDeleteTweetMutation();
 
 	const handleClick = useCallback(async () => {
 		const result = await createTweet({ variables: { userId: "miyasan_0301", tweetBody: "フロントから送信" } });
+		console.info(result);
+	}, []);
+
+	const handleDelete = useCallback(async () => {
+		const result = await deleteTweet({ variables: { tweetId: 2 } });
 		console.info(result);
 	}, []);
 
@@ -70,10 +76,10 @@ const IndexPage: NextPage = () => {
 					<Text>ボタン</Text>
 					<div className="flex gap-2">
 						<Button color="primary" onClick={handleClick}>
-							Blue
+							追加
 						</Button>
-						<Button color="primary" isOutline onClick={handleClick}>
-							BlueOutline
+						<Button color="primary" isOutline onClick={handleDelete}>
+							削除
 						</Button>
 						<Button color="primary" isGhost under onClick={handleClick}>
 							BlueGhost
