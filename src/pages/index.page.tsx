@@ -1,5 +1,6 @@
 import { MixerHorizontalIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
+import { useCallback } from "react";
 import { HoverUserCard } from "src/components/HoverUserCard";
 import { Layout } from "src/components/Layout";
 import {
@@ -21,15 +22,20 @@ import {
 	Text,
 } from "src/components/shared";
 import { ColorChanger, ThemeChanger } from "src/components/theme";
-// import { useGetTweetQuery } from "src/graphql/gql";
+import { useCreateTweetMutation, useGetFollowingUserTweetsQuery } from "src/graphql/gql";
 
 const IndexPage: NextPage = () => {
-	// const { data } = useGetTweetQuery();
-	// console.info(data);
+	const { data } = useGetFollowingUserTweetsQuery({
+		variables: { userId: "miyasan_0301" },
+	});
+	console.info(data);
 
-	const handleClick = () => {
-		console.info("click!!");
-	};
+	const [createTweet] = useCreateTweetMutation();
+
+	const handleClick = useCallback(async () => {
+		const result = await createTweet({ variables: { userId: "miyasan_0301", tweetBody: "フロントから送信" } });
+		console.info(result);
+	}, []);
 
 	return (
 		<Layout>
