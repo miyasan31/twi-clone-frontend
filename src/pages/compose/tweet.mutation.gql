@@ -1,0 +1,8 @@
+mutation CreateTweet($userId: String!, $tweetBody: String!) {
+	tweet: CreateTweet(tweetDto: { userId: $userId, tweetBody: $tweetBody }) {
+		id
+		userId
+		tweetBody
+		createdAt
+	}
+}

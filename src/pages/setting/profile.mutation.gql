@@ -1,0 +1,8 @@
+mutation UpdateProfile($userId: String!, $userName: String!, $profileBody: String!, $iconId: String!) {
+	user: UpdateUser(id: $userId, userDto: { userName: $userName, profileBody: $profileBody, iconId: $iconId }) {
+		id
+		userName
+		profileBody
+		iconId
+	}
+}
