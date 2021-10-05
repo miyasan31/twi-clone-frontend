@@ -257,20 +257,660 @@ export type User = {
   GetFollowerCount: Count;
 };
 
-export type GetTweetQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetUserCommentsQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
 
 
-export type GetTweetQuery = { __typename?: 'Query', GetTweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any } };
+export type GetUserCommentsQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any, comments: Array<{ __typename?: 'Comment', tweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } } }> } };
 
-export type GetUserQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetUserFollowersQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
 
 
-export type GetUserQuery = { __typename?: 'Query', GetUser: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any } };
+export type GetUserFollowersQuery = { __typename?: 'Query', followers: Array<{ __typename?: 'Follow', id: number, userId: string, followingUserId: string, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string } }> };
+
+export type GetUserFollowingsQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
 
 
-export const GetTweetDocument = gql`
-    query GetTweet {
-  GetTweet(id: 1) {
+export type GetUserFollowingsQuery = { __typename?: 'Query', followings: Array<{ __typename?: 'Follow', id: number, userId: string, followingUserId: string, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string, createdAt: any } }> };
+
+export type GetUserHeaderPhotoQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetUserHeaderPhotoQuery = { __typename?: 'Query', header: { __typename?: 'User', iconId: string } };
+
+export type GetUserIconPhotoQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetUserIconPhotoQuery = { __typename?: 'Query', icon: { __typename?: 'User', iconId: string } };
+
+export type GetUserTweetsQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetUserTweetsQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any, tweets: Array<{ __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, retweetCountL: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> } };
+
+export type GetUserLikesQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetUserLikesQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any, likes: Array<{ __typename?: 'Like', tweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } } }> } };
+
+export type GetUserRetweetsQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetUserRetweetsQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any, retweets: Array<{ __typename?: 'Retweet', tweet: { __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } } }> } };
+
+export type GetTweetDetailQueryVariables = Exact<{
+  tweetId: Scalars['Int'];
+}>;
+
+
+export type GetTweetDetailQuery = { __typename?: 'Query', tweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string }, comments: Array<{ __typename?: 'Comment', id: number, commentBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string } }> } };
+
+export type GetTweetLikesQueryVariables = Exact<{
+  tweetId: Scalars['Int'];
+}>;
+
+
+export type GetTweetLikesQuery = { __typename?: 'Query', tweet: { __typename?: 'Tweet', likes: Array<{ __typename?: 'Like', id: number, userId: string, user: { __typename?: 'User', id: string, userName: string, profileBody: string } }> } };
+
+export type GetTweetRetweetsQueryVariables = Exact<{
+  tweetId: Scalars['Int'];
+}>;
+
+
+export type GetTweetRetweetsQuery = { __typename?: 'Query', tweet: { __typename?: 'Tweet', retweets: Array<{ __typename?: 'Retweet', id: number, userId: string, user: { __typename?: 'User', id: string, userName: string, profileBody: string } }> } };
+
+export type CreateTweetMutationVariables = Exact<{
+  userId: Scalars['String'];
+  tweetBody: Scalars['String'];
+}>;
+
+
+export type CreateTweetMutation = { __typename?: 'Mutation', tweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any } };
+
+export type GetFollowingUserTweetsQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetFollowingUserTweetsQuery = { __typename?: 'Query', followings: Array<{ __typename?: 'Follow', user: { __typename?: 'User', tweets: Array<{ __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, iconId: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> } }> };
+
+export type UpdateProfileMutationVariables = Exact<{
+  userId: Scalars['String'];
+  userName: Scalars['String'];
+  profileBody: Scalars['String'];
+  iconId: Scalars['String'];
+}>;
+
+
+export type UpdateProfileMutation = { __typename?: 'Mutation', user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string } };
+
+export type GetProfileQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type GetProfileQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string, createdAt: any } };
+
+
+export const GetUserCommentsDocument = gql`
+    query GetUserComments($userId: String!) {
+  user: GetUser(id: $userId) {
+    id
+    userName
+    profileBody
+    createdAt
+    comments: GetCommentsByUser {
+      tweet: GetTweetByComment {
+        id
+        userId
+        tweetBody
+        createdAt
+        user: GetUserByTweet {
+          id
+          userName
+          profileBody
+          iconId
+        }
+        retweetCount: GetRetweetCount {
+          count
+        }
+        likeCount: GetLikeCount {
+          count
+        }
+        commentCount: GetCommentCount {
+          count
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetUserCommentsQuery__
+ *
+ * To run a query within a React component, call `useGetUserCommentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserCommentsQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetUserCommentsQuery(baseOptions: Apollo.QueryHookOptions<GetUserCommentsQuery, GetUserCommentsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserCommentsQuery, GetUserCommentsQueryVariables>(GetUserCommentsDocument, options);
+      }
+export function useGetUserCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserCommentsQuery, GetUserCommentsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserCommentsQuery, GetUserCommentsQueryVariables>(GetUserCommentsDocument, options);
+        }
+export type GetUserCommentsQueryHookResult = ReturnType<typeof useGetUserCommentsQuery>;
+export type GetUserCommentsLazyQueryHookResult = ReturnType<typeof useGetUserCommentsLazyQuery>;
+export type GetUserCommentsQueryResult = Apollo.QueryResult<GetUserCommentsQuery, GetUserCommentsQueryVariables>;
+export const GetUserFollowersDocument = gql`
+    query GetUserFollowers($userId: String!) {
+  followers: GetFollowers(id: $userId) {
+    id
+    userId
+    followingUserId
+    user: GetUserByFollowing {
+      id
+      userName
+      profileBody
+      iconId
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetUserFollowersQuery__
+ *
+ * To run a query within a React component, call `useGetUserFollowersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserFollowersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserFollowersQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetUserFollowersQuery(baseOptions: Apollo.QueryHookOptions<GetUserFollowersQuery, GetUserFollowersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserFollowersQuery, GetUserFollowersQueryVariables>(GetUserFollowersDocument, options);
+      }
+export function useGetUserFollowersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserFollowersQuery, GetUserFollowersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserFollowersQuery, GetUserFollowersQueryVariables>(GetUserFollowersDocument, options);
+        }
+export type GetUserFollowersQueryHookResult = ReturnType<typeof useGetUserFollowersQuery>;
+export type GetUserFollowersLazyQueryHookResult = ReturnType<typeof useGetUserFollowersLazyQuery>;
+export type GetUserFollowersQueryResult = Apollo.QueryResult<GetUserFollowersQuery, GetUserFollowersQueryVariables>;
+export const GetUserFollowingsDocument = gql`
+    query GetUserFollowings($userId: String!) {
+  followings: GetFollowings(id: $userId) {
+    id
+    userId
+    followingUserId
+    user: GetUserByFollower {
+      id
+      userName
+      profileBody
+      iconId
+      createdAt
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetUserFollowingsQuery__
+ *
+ * To run a query within a React component, call `useGetUserFollowingsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserFollowingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserFollowingsQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetUserFollowingsQuery(baseOptions: Apollo.QueryHookOptions<GetUserFollowingsQuery, GetUserFollowingsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserFollowingsQuery, GetUserFollowingsQueryVariables>(GetUserFollowingsDocument, options);
+      }
+export function useGetUserFollowingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserFollowingsQuery, GetUserFollowingsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserFollowingsQuery, GetUserFollowingsQueryVariables>(GetUserFollowingsDocument, options);
+        }
+export type GetUserFollowingsQueryHookResult = ReturnType<typeof useGetUserFollowingsQuery>;
+export type GetUserFollowingsLazyQueryHookResult = ReturnType<typeof useGetUserFollowingsLazyQuery>;
+export type GetUserFollowingsQueryResult = Apollo.QueryResult<GetUserFollowingsQuery, GetUserFollowingsQueryVariables>;
+export const GetUserHeaderPhotoDocument = gql`
+    query GetUserHeaderPhoto($userId: String!) {
+  header: GetUser(id: $userId) {
+    iconId
+  }
+}
+    `;
+
+/**
+ * __useGetUserHeaderPhotoQuery__
+ *
+ * To run a query within a React component, call `useGetUserHeaderPhotoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserHeaderPhotoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserHeaderPhotoQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetUserHeaderPhotoQuery(baseOptions: Apollo.QueryHookOptions<GetUserHeaderPhotoQuery, GetUserHeaderPhotoQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserHeaderPhotoQuery, GetUserHeaderPhotoQueryVariables>(GetUserHeaderPhotoDocument, options);
+      }
+export function useGetUserHeaderPhotoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserHeaderPhotoQuery, GetUserHeaderPhotoQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserHeaderPhotoQuery, GetUserHeaderPhotoQueryVariables>(GetUserHeaderPhotoDocument, options);
+        }
+export type GetUserHeaderPhotoQueryHookResult = ReturnType<typeof useGetUserHeaderPhotoQuery>;
+export type GetUserHeaderPhotoLazyQueryHookResult = ReturnType<typeof useGetUserHeaderPhotoLazyQuery>;
+export type GetUserHeaderPhotoQueryResult = Apollo.QueryResult<GetUserHeaderPhotoQuery, GetUserHeaderPhotoQueryVariables>;
+export const GetUserIconPhotoDocument = gql`
+    query GetUserIconPhoto($userId: String!) {
+  icon: GetUser(id: $userId) {
+    iconId
+  }
+}
+    `;
+
+/**
+ * __useGetUserIconPhotoQuery__
+ *
+ * To run a query within a React component, call `useGetUserIconPhotoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserIconPhotoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserIconPhotoQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetUserIconPhotoQuery(baseOptions: Apollo.QueryHookOptions<GetUserIconPhotoQuery, GetUserIconPhotoQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserIconPhotoQuery, GetUserIconPhotoQueryVariables>(GetUserIconPhotoDocument, options);
+      }
+export function useGetUserIconPhotoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserIconPhotoQuery, GetUserIconPhotoQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserIconPhotoQuery, GetUserIconPhotoQueryVariables>(GetUserIconPhotoDocument, options);
+        }
+export type GetUserIconPhotoQueryHookResult = ReturnType<typeof useGetUserIconPhotoQuery>;
+export type GetUserIconPhotoLazyQueryHookResult = ReturnType<typeof useGetUserIconPhotoLazyQuery>;
+export type GetUserIconPhotoQueryResult = Apollo.QueryResult<GetUserIconPhotoQuery, GetUserIconPhotoQueryVariables>;
+export const GetUserTweetsDocument = gql`
+    query GetUserTweets($userId: String!) {
+  user: GetUser(id: $userId) {
+    id
+    userName
+    profileBody
+    createdAt
+    tweets: GetTweetsByUser {
+      id
+      tweetBody
+      createdAt
+      retweetCountL: GetRetweetCount {
+        count
+      }
+      likeCount: GetLikeCount {
+        count
+      }
+      commentCount: GetCommentCount {
+        count
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetUserTweetsQuery__
+ *
+ * To run a query within a React component, call `useGetUserTweetsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserTweetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserTweetsQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetUserTweetsQuery(baseOptions: Apollo.QueryHookOptions<GetUserTweetsQuery, GetUserTweetsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserTweetsQuery, GetUserTweetsQueryVariables>(GetUserTweetsDocument, options);
+      }
+export function useGetUserTweetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserTweetsQuery, GetUserTweetsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserTweetsQuery, GetUserTweetsQueryVariables>(GetUserTweetsDocument, options);
+        }
+export type GetUserTweetsQueryHookResult = ReturnType<typeof useGetUserTweetsQuery>;
+export type GetUserTweetsLazyQueryHookResult = ReturnType<typeof useGetUserTweetsLazyQuery>;
+export type GetUserTweetsQueryResult = Apollo.QueryResult<GetUserTweetsQuery, GetUserTweetsQueryVariables>;
+export const GetUserLikesDocument = gql`
+    query GetUserLikes($userId: String!) {
+  user: GetUser(id: $userId) {
+    id
+    userName
+    profileBody
+    createdAt
+    likes: GetLikesByUser {
+      tweet: GetTweetByLike {
+        id
+        userId
+        tweetBody
+        createdAt
+        user: GetUserByTweet {
+          id
+          userName
+          profileBody
+          iconId
+        }
+        retweetCount: GetRetweetCount {
+          count
+        }
+        likeCount: GetLikeCount {
+          count
+        }
+        commentCount: GetCommentCount {
+          count
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetUserLikesQuery__
+ *
+ * To run a query within a React component, call `useGetUserLikesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserLikesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserLikesQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetUserLikesQuery(baseOptions: Apollo.QueryHookOptions<GetUserLikesQuery, GetUserLikesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserLikesQuery, GetUserLikesQueryVariables>(GetUserLikesDocument, options);
+      }
+export function useGetUserLikesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserLikesQuery, GetUserLikesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserLikesQuery, GetUserLikesQueryVariables>(GetUserLikesDocument, options);
+        }
+export type GetUserLikesQueryHookResult = ReturnType<typeof useGetUserLikesQuery>;
+export type GetUserLikesLazyQueryHookResult = ReturnType<typeof useGetUserLikesLazyQuery>;
+export type GetUserLikesQueryResult = Apollo.QueryResult<GetUserLikesQuery, GetUserLikesQueryVariables>;
+export const GetUserRetweetsDocument = gql`
+    query GetUserRetweets($userId: String!) {
+  user: GetUser(id: $userId) {
+    id
+    userName
+    profileBody
+    createdAt
+    retweets: GetRetweetsByUser {
+      tweet: GetTweetByRetweet {
+        id
+        tweetBody
+        createdAt
+        user: GetUserByTweet {
+          id
+          userName
+          profileBody
+          iconId
+        }
+        retweetCount: GetRetweetCount {
+          count
+        }
+        likeCount: GetLikeCount {
+          count
+        }
+        commentCount: GetCommentCount {
+          count
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetUserRetweetsQuery__
+ *
+ * To run a query within a React component, call `useGetUserRetweetsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserRetweetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserRetweetsQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetUserRetweetsQuery(baseOptions: Apollo.QueryHookOptions<GetUserRetweetsQuery, GetUserRetweetsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserRetweetsQuery, GetUserRetweetsQueryVariables>(GetUserRetweetsDocument, options);
+      }
+export function useGetUserRetweetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserRetweetsQuery, GetUserRetweetsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserRetweetsQuery, GetUserRetweetsQueryVariables>(GetUserRetweetsDocument, options);
+        }
+export type GetUserRetweetsQueryHookResult = ReturnType<typeof useGetUserRetweetsQuery>;
+export type GetUserRetweetsLazyQueryHookResult = ReturnType<typeof useGetUserRetweetsLazyQuery>;
+export type GetUserRetweetsQueryResult = Apollo.QueryResult<GetUserRetweetsQuery, GetUserRetweetsQueryVariables>;
+export const GetTweetDetailDocument = gql`
+    query GetTweetDetail($tweetId: Int!) {
+  tweet: GetTweet(id: $tweetId) {
+    id
+    userId
+    tweetBody
+    createdAt
+    user: GetUserByTweet {
+      id
+      userName
+      profileBody
+      iconId
+    }
+    retweetCount: GetRetweetCount {
+      count
+    }
+    likeCount: GetLikeCount {
+      count
+    }
+    commentCount: GetCommentCount {
+      count
+    }
+    comments: GetCommentsByTweet {
+      id
+      commentBody
+      createdAt
+      user: GetUserByComment {
+        id
+        userName
+        profileBody
+        iconId
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTweetDetailQuery__
+ *
+ * To run a query within a React component, call `useGetTweetDetailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTweetDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTweetDetailQuery({
+ *   variables: {
+ *      tweetId: // value for 'tweetId'
+ *   },
+ * });
+ */
+export function useGetTweetDetailQuery(baseOptions: Apollo.QueryHookOptions<GetTweetDetailQuery, GetTweetDetailQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTweetDetailQuery, GetTweetDetailQueryVariables>(GetTweetDetailDocument, options);
+      }
+export function useGetTweetDetailLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTweetDetailQuery, GetTweetDetailQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTweetDetailQuery, GetTweetDetailQueryVariables>(GetTweetDetailDocument, options);
+        }
+export type GetTweetDetailQueryHookResult = ReturnType<typeof useGetTweetDetailQuery>;
+export type GetTweetDetailLazyQueryHookResult = ReturnType<typeof useGetTweetDetailLazyQuery>;
+export type GetTweetDetailQueryResult = Apollo.QueryResult<GetTweetDetailQuery, GetTweetDetailQueryVariables>;
+export const GetTweetLikesDocument = gql`
+    query GetTweetLikes($tweetId: Int!) {
+  tweet: GetTweet(id: $tweetId) {
+    likes: GetLikesByTweet {
+      id
+      userId
+      user: GetUserByLike {
+        id
+        userName
+        profileBody
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTweetLikesQuery__
+ *
+ * To run a query within a React component, call `useGetTweetLikesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTweetLikesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTweetLikesQuery({
+ *   variables: {
+ *      tweetId: // value for 'tweetId'
+ *   },
+ * });
+ */
+export function useGetTweetLikesQuery(baseOptions: Apollo.QueryHookOptions<GetTweetLikesQuery, GetTweetLikesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTweetLikesQuery, GetTweetLikesQueryVariables>(GetTweetLikesDocument, options);
+      }
+export function useGetTweetLikesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTweetLikesQuery, GetTweetLikesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTweetLikesQuery, GetTweetLikesQueryVariables>(GetTweetLikesDocument, options);
+        }
+export type GetTweetLikesQueryHookResult = ReturnType<typeof useGetTweetLikesQuery>;
+export type GetTweetLikesLazyQueryHookResult = ReturnType<typeof useGetTweetLikesLazyQuery>;
+export type GetTweetLikesQueryResult = Apollo.QueryResult<GetTweetLikesQuery, GetTweetLikesQueryVariables>;
+export const GetTweetRetweetsDocument = gql`
+    query GetTweetRetweets($tweetId: Int!) {
+  tweet: GetTweet(id: $tweetId) {
+    retweets: GetRetweetsByTweet {
+      id
+      userId
+      user: GetUserByRetweet {
+        id
+        userName
+        profileBody
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTweetRetweetsQuery__
+ *
+ * To run a query within a React component, call `useGetTweetRetweetsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTweetRetweetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTweetRetweetsQuery({
+ *   variables: {
+ *      tweetId: // value for 'tweetId'
+ *   },
+ * });
+ */
+export function useGetTweetRetweetsQuery(baseOptions: Apollo.QueryHookOptions<GetTweetRetweetsQuery, GetTweetRetweetsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTweetRetweetsQuery, GetTweetRetweetsQueryVariables>(GetTweetRetweetsDocument, options);
+      }
+export function useGetTweetRetweetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTweetRetweetsQuery, GetTweetRetweetsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTweetRetweetsQuery, GetTweetRetweetsQueryVariables>(GetTweetRetweetsDocument, options);
+        }
+export type GetTweetRetweetsQueryHookResult = ReturnType<typeof useGetTweetRetweetsQuery>;
+export type GetTweetRetweetsLazyQueryHookResult = ReturnType<typeof useGetTweetRetweetsLazyQuery>;
+export type GetTweetRetweetsQueryResult = Apollo.QueryResult<GetTweetRetweetsQuery, GetTweetRetweetsQueryVariables>;
+export const CreateTweetDocument = gql`
+    mutation CreateTweet($userId: String!, $tweetBody: String!) {
+  tweet: CreateTweet(tweetDto: {userId: $userId, tweetBody: $tweetBody}) {
     id
     userId
     tweetBody
@@ -278,67 +918,166 @@ export const GetTweetDocument = gql`
   }
 }
     `;
+export type CreateTweetMutationFn = Apollo.MutationFunction<CreateTweetMutation, CreateTweetMutationVariables>;
 
 /**
- * __useGetTweetQuery__
+ * __useCreateTweetMutation__
  *
- * To run a query within a React component, call `useGetTweetQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetTweetQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a mutation, you first call `useCreateTweetMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateTweetMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createTweetMutation, { data, loading, error }] = useCreateTweetMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      tweetBody: // value for 'tweetBody'
+ *   },
+ * });
+ */
+export function useCreateTweetMutation(baseOptions?: Apollo.MutationHookOptions<CreateTweetMutation, CreateTweetMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateTweetMutation, CreateTweetMutationVariables>(CreateTweetDocument, options);
+      }
+export type CreateTweetMutationHookResult = ReturnType<typeof useCreateTweetMutation>;
+export type CreateTweetMutationResult = Apollo.MutationResult<CreateTweetMutation>;
+export type CreateTweetMutationOptions = Apollo.BaseMutationOptions<CreateTweetMutation, CreateTweetMutationVariables>;
+export const GetFollowingUserTweetsDocument = gql`
+    query GetFollowingUserTweets($userId: String!) {
+  followings: GetFollowings(id: $userId) {
+    user: GetUserByFollower {
+      tweets: GetTweetsByUser {
+        id
+        tweetBody
+        createdAt
+        user: GetUserByTweet {
+          id
+          userName
+          iconId
+        }
+        retweetCount: GetRetweetCount {
+          count
+        }
+        likeCount: GetLikeCount {
+          count
+        }
+        commentCount: GetCommentCount {
+          count
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetFollowingUserTweetsQuery__
+ *
+ * To run a query within a React component, call `useGetFollowingUserTweetsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetFollowingUserTweetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetTweetQuery({
+ * const { data, loading, error } = useGetFollowingUserTweetsQuery({
  *   variables: {
+ *      userId: // value for 'userId'
  *   },
  * });
  */
-export function useGetTweetQuery(baseOptions?: Apollo.QueryHookOptions<GetTweetQuery, GetTweetQueryVariables>) {
+export function useGetFollowingUserTweetsQuery(baseOptions: Apollo.QueryHookOptions<GetFollowingUserTweetsQuery, GetFollowingUserTweetsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetTweetQuery, GetTweetQueryVariables>(GetTweetDocument, options);
+        return Apollo.useQuery<GetFollowingUserTweetsQuery, GetFollowingUserTweetsQueryVariables>(GetFollowingUserTweetsDocument, options);
       }
-export function useGetTweetLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTweetQuery, GetTweetQueryVariables>) {
+export function useGetFollowingUserTweetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFollowingUserTweetsQuery, GetFollowingUserTweetsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetTweetQuery, GetTweetQueryVariables>(GetTweetDocument, options);
+          return Apollo.useLazyQuery<GetFollowingUserTweetsQuery, GetFollowingUserTweetsQueryVariables>(GetFollowingUserTweetsDocument, options);
         }
-export type GetTweetQueryHookResult = ReturnType<typeof useGetTweetQuery>;
-export type GetTweetLazyQueryHookResult = ReturnType<typeof useGetTweetLazyQuery>;
-export type GetTweetQueryResult = Apollo.QueryResult<GetTweetQuery, GetTweetQueryVariables>;
-export const GetUserDocument = gql`
-    query GetUser {
-  GetUser(id: "miyasan_0301") {
+export type GetFollowingUserTweetsQueryHookResult = ReturnType<typeof useGetFollowingUserTweetsQuery>;
+export type GetFollowingUserTweetsLazyQueryHookResult = ReturnType<typeof useGetFollowingUserTweetsLazyQuery>;
+export type GetFollowingUserTweetsQueryResult = Apollo.QueryResult<GetFollowingUserTweetsQuery, GetFollowingUserTweetsQueryVariables>;
+export const UpdateProfileDocument = gql`
+    mutation UpdateProfile($userId: String!, $userName: String!, $profileBody: String!, $iconId: String!) {
+  user: UpdateUser(
+    id: $userId
+    userDto: {userName: $userName, profileBody: $profileBody, iconId: $iconId}
+  ) {
     id
     userName
     profileBody
+    iconId
+  }
+}
+    `;
+export type UpdateProfileMutationFn = Apollo.MutationFunction<UpdateProfileMutation, UpdateProfileMutationVariables>;
+
+/**
+ * __useUpdateProfileMutation__
+ *
+ * To run a mutation, you first call `useUpdateProfileMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateProfileMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateProfileMutation, { data, loading, error }] = useUpdateProfileMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      userName: // value for 'userName'
+ *      profileBody: // value for 'profileBody'
+ *      iconId: // value for 'iconId'
+ *   },
+ * });
+ */
+export function useUpdateProfileMutation(baseOptions?: Apollo.MutationHookOptions<UpdateProfileMutation, UpdateProfileMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateProfileMutation, UpdateProfileMutationVariables>(UpdateProfileDocument, options);
+      }
+export type UpdateProfileMutationHookResult = ReturnType<typeof useUpdateProfileMutation>;
+export type UpdateProfileMutationResult = Apollo.MutationResult<UpdateProfileMutation>;
+export type UpdateProfileMutationOptions = Apollo.BaseMutationOptions<UpdateProfileMutation, UpdateProfileMutationVariables>;
+export const GetProfileDocument = gql`
+    query GetProfile($userId: String!) {
+  user: GetUser(id: $userId) {
+    id
+    userName
+    profileBody
+    iconId
     createdAt
   }
 }
     `;
 
 /**
- * __useGetUserQuery__
+ * __useGetProfileQuery__
  *
- * To run a query within a React component, call `useGetUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetProfileQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetUserQuery({
+ * const { data, loading, error } = useGetProfileQuery({
  *   variables: {
+ *      userId: // value for 'userId'
  *   },
  * });
  */
-export function useGetUserQuery(baseOptions?: Apollo.QueryHookOptions<GetUserQuery, GetUserQueryVariables>) {
+export function useGetProfileQuery(baseOptions: Apollo.QueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetUserQuery, GetUserQueryVariables>(GetUserDocument, options);
+        return Apollo.useQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
       }
-export function useGetUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserQuery, GetUserQueryVariables>) {
+export function useGetProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetUserQuery, GetUserQueryVariables>(GetUserDocument, options);
+          return Apollo.useLazyQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
         }
-export type GetUserQueryHookResult = ReturnType<typeof useGetUserQuery>;
-export type GetUserLazyQueryHookResult = ReturnType<typeof useGetUserLazyQuery>;
-export type GetUserQueryResult = Apollo.QueryResult<GetUserQuery, GetUserQueryVariables>;
+export type GetProfileQueryHookResult = ReturnType<typeof useGetProfileQuery>;
+export type GetProfileLazyQueryHookResult = ReturnType<typeof useGetProfileLazyQuery>;
+export type GetProfileQueryResult = Apollo.QueryResult<GetProfileQuery, GetProfileQueryVariables>;
