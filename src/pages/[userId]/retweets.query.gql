@@ -1,0 +1,30 @@
+query GetUserRetweets($userId: String!) {
+	user: GetUser(id: $userId) {
+		id
+		userName
+		profileBody
+		createdAt
+		retweets: GetRetweetsByUser {
+			tweet: GetTweetByRetweet {
+				id
+				tweetBody
+				createdAt
+				user: GetUserByTweet {
+					id
+					userName
+					profileBody
+					iconId
+				}
+				retweetCount: GetRetweetCount {
+					count
+				}
+				likeCount: GetLikeCount {
+					count
+				}
+				commentCount: GetCommentCount {
+					count
+				}
+			}
+		}
+	}
+}

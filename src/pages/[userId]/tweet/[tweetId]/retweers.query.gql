@@ -1,0 +1,13 @@
+query GetTweetRetweets($tweetId: Int!) {
+	tweet: GetTweet(id: $tweetId) {
+		retweets: GetRetweetsByTweet {
+			id
+			userId
+			user: GetUserByRetweet {
+				id
+				userName
+				profileBody
+			}
+		}
+	}
+}

@@ -1,0 +1,5 @@
+query GetUserHeaderPhoto($userId: String!) {
+	header: GetUser(id: $userId) {
+		iconId
+	}
+}

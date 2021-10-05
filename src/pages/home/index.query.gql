@@ -1,0 +1,25 @@
+query GetFollowingUserTweets($userId: String!) {
+	followings: GetFollowings(id: $userId) {
+		user: GetUserByFollower {
+			tweets: GetTweetsByUser {
+				id
+				tweetBody
+				createdAt
+				user: GetUserByTweet {
+					id
+					userName
+					iconId
+				}
+				retweetCount: GetRetweetCount {
+					count
+				}
+				likeCount: GetLikeCount {
+					count
+				}
+				commentCount: GetCommentCount {
+					count
+				}
+			}
+		}
+	}
+}

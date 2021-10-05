@@ -1,0 +1,13 @@
+query GetUserFollowers($userId: String!) {
+	followers: GetFollowers(id: $userId) {
+		id
+		userId
+		followingUserId
+		user: GetUserByFollowing {
+			id
+			userName
+			profileBody
+			iconId
+		}
+	}
+}

@@ -1,0 +1,34 @@
+query GetTweetDetail($tweetId: Int!) {
+	tweet: GetTweet(id: $tweetId) {
+		id
+		userId
+		tweetBody
+		createdAt
+		user: GetUserByTweet {
+			id
+			userName
+			profileBody
+			iconId
+		}
+		retweetCount: GetRetweetCount {
+			count
+		}
+		likeCount: GetLikeCount {
+			count
+		}
+		commentCount: GetCommentCount {
+			count
+		}
+		comments: GetCommentsByTweet {
+			id
+			commentBody
+			createdAt
+			user: GetUserByComment {
+				id
+				userName
+				profileBody
+				iconId
+			}
+		}
+	}
+}

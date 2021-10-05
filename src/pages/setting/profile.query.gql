@@ -1,0 +1,9 @@
+query GetProfile($userId: String!) {
+	user: GetUser(id: $userId) {
+		id
+		userName
+		profileBody
+		iconId
+		createdAt
+	}
+}

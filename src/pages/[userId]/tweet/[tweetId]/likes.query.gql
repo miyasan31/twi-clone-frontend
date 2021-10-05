@@ -1,0 +1,13 @@
+query GetTweetLikes($tweetId: Int!) {
+	tweet: GetTweet(id: $tweetId) {
+		likes: GetLikesByTweet {
+			id
+			userId
+			user: GetUserByLike {
+				id
+				userName
+				profileBody
+			}
+		}
+	}
+}

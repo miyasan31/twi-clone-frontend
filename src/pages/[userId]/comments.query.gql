@@ -1,0 +1,31 @@
+query GetUserComments($userId: String!) {
+	user: GetUser(id: $userId) {
+		id
+		userName
+		profileBody
+		createdAt
+		comments: GetCommentsByUser {
+			tweet: GetTweetByComment {
+				id
+				userId
+				tweetBody
+				createdAt
+				user: GetUserByTweet {
+					id
+					userName
+					profileBody
+					iconId
+				}
+				retweetCount: GetRetweetCount {
+					count
+				}
+				likeCount: GetLikeCount {
+					count
+				}
+				commentCount: GetCommentCount {
+					count
+				}
+			}
+		}
+	}
+}
