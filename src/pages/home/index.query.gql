@@ -23,3 +23,7 @@ query GetFollowingUserTweets($userId: String!) {
 		}
 	}
 }
+
+mutation DeleteTweet($tweetId: Int!) {
+	result: DeleteTweet(id: $tweetId)
+}
