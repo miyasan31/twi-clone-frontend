@@ -3,6 +3,39 @@ import type { MouseEvent, VFC } from "react";
 import { Flex, Label } from "src/components/shared";
 import { styled } from "src/utils";
 
+type OptionsProps = {
+	id: string;
+	label: string;
+	value: string;
+	color?: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
+};
+
+type Props = {
+	options: OptionsProps[];
+	defaultValue: string;
+	ariaLabel: string;
+	onClick: (e: MouseEvent<HTMLElement>) => void;
+};
+
+export const RadioGroup: VFC<Props> = (props) => {
+	return (
+		<RadioGroupPrimitive.Root defaultValue={props.defaultValue} aria-label={props.ariaLabel}>
+			<Flex items="center">
+				{props?.options.map((item) => {
+					return (
+						<Flex key={item.id} items="center">
+							<RadioGroupRadio id={item.value} value={item.value} color={item.color} onClick={props.onClick}>
+								<RadioGroupIndicator color={item.color} />
+							</RadioGroupRadio>
+							<Label htmlFor={item.value}>{item.label}</Label>
+						</Flex>
+					);
+				})}
+			</Flex>
+		</RadioGroupPrimitive.Root>
+	);
+};
+
 const RadioGroupRadio = styled(RadioGroupPrimitive.Item, {
 	all: "unset",
 	width: 25,
@@ -61,36 +94,3 @@ const RadioGroupIndicator = styled(RadioGroupPrimitive.Indicator, {
 		color: "primary",
 	},
 });
-
-type OptionsProps = {
-	id: string;
-	label: string;
-	value: string;
-	color?: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
-};
-
-type Props = {
-	options: OptionsProps[];
-	defaultValue: string;
-	ariaLabel: string;
-	onClick: (e: MouseEvent<HTMLElement>) => void;
-};
-
-export const RadioGroup: VFC<Props> = (props) => {
-	return (
-		<RadioGroupPrimitive.Root defaultValue={props.defaultValue} aria-label={props.ariaLabel}>
-			<Flex items="center">
-				{props?.options.map((item) => {
-					return (
-						<Flex key={item.id} items="center">
-							<RadioGroupRadio id={item.value} value={item.value} color={item.color} onClick={props.onClick}>
-								<RadioGroupIndicator color={item.color} />
-							</RadioGroupRadio>
-							<Label htmlFor={item.value}>{item.label}</Label>
-						</Flex>
-					);
-				})}
-			</Flex>
-		</RadioGroupPrimitive.Root>
-	);
-};

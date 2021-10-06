@@ -4,39 +4,6 @@ import { Button, CircleImg, Flex, NextLink, Text } from "src/components/shared";
 import { slideDownAndFade, slideLeftAndFade, slideRightAndFade, slideUpAndFade } from "src/components/shared/animation";
 import { styled } from "src/utils";
 
-export const HoverCardContent = styled(HoverCardPrimitive.Content, {
-	width: 300,
-	borderRadius: "1rem",
-	padding: "1.25rem",
-	backgroundColor: "$slate3",
-	boxShadow: "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
-	"@media (prefers-reduced-motion: no-preference)": {
-		animationDuration: "400ms",
-		animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-		willChange: "transform, opacity",
-		'&[data-state="open"]': {
-			'&[data-side="top"]': { animationName: slideDownAndFade },
-			'&[data-side="right"]': { animationName: slideLeftAndFade },
-			'&[data-side="bottom"]': { animationName: slideUpAndFade },
-			'&[data-side="left"]': { animationName: slideRightAndFade },
-		},
-	},
-});
-
-export const HoverCardArrow = styled(HoverCardPrimitive.Arrow, {
-	fill: "$slate2",
-});
-
-const ImageTrigger = styled("a", {
-	all: "unset",
-	cursor: "pointer",
-	borderRadius: "100%",
-	width: "fit-content",
-	backgroundColor: "red",
-	display: "inline-block",
-	"&:focus": { boxShadow: `0 0 0 2px white` },
-});
-
 type Props = {
 	userId: string;
 	userName: string;
@@ -102,3 +69,36 @@ export const HoverUserCard: VFC<Props> = (props) => {
 		</HoverCardPrimitive.Root>
 	);
 };
+
+export const HoverCardContent = styled(HoverCardPrimitive.Content, {
+	width: 300,
+	borderRadius: "1rem",
+	padding: "1.25rem",
+	backgroundColor: "$slate3",
+	boxShadow: "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
+	"@media (prefers-reduced-motion: no-preference)": {
+		animationDuration: "400ms",
+		animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+		willChange: "transform, opacity",
+		'&[data-state="open"]': {
+			'&[data-side="top"]': { animationName: slideDownAndFade },
+			'&[data-side="right"]': { animationName: slideLeftAndFade },
+			'&[data-side="bottom"]': { animationName: slideUpAndFade },
+			'&[data-side="left"]': { animationName: slideRightAndFade },
+		},
+	},
+});
+
+export const HoverCardArrow = styled(HoverCardPrimitive.Arrow, {
+	fill: "$slate2",
+});
+
+const ImageTrigger = styled("a", {
+	all: "unset",
+	cursor: "pointer",
+	borderRadius: "100%",
+	width: "fit-content",
+	backgroundColor: "red",
+	display: "inline-block",
+	"&:focus": { boxShadow: `0 0 0 2px white` },
+});

@@ -1,6 +1,23 @@
 import type { ReactNode, VFC } from "react";
 import { styled } from "src/utils";
 
+type Props = {
+	direction?: "rowR" | "col" | "colR";
+	justify?: "start" | "center" | "end" | "between" | "evenly";
+	items?: "center";
+	gap?: number;
+	children: ReactNode;
+};
+
+export const Flex: VFC<Props> = (props) => {
+	const gap: string = props.gap + "rem";
+	return (
+		<StitchesFlex direction={props.direction} justify={props.justify} items={props.items} css={{ gap }}>
+			{props.children}
+		</StitchesFlex>
+	);
+};
+
 const StitchesFlex = styled("div", {
 	display: "flex",
 
@@ -42,20 +59,3 @@ const StitchesFlex = styled("div", {
 		},
 	},
 });
-
-type Props = {
-	direction?: "rowR" | "col" | "colR";
-	justify?: "start" | "center" | "end" | "between" | "evenly";
-	items?: "center";
-	gap?: number;
-	children: ReactNode;
-};
-
-export const Flex: VFC<Props> = (props) => {
-	const gap: string = props.gap + "rem";
-	return (
-		<StitchesFlex direction={props.direction} justify={props.justify} items={props.items} css={{ gap }}>
-			{props.children}
-		</StitchesFlex>
-	);
-};

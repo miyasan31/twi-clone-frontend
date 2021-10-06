@@ -2,6 +2,24 @@ import type { ReactNode, VFC } from "react";
 import { Flex, Text } from "src/components/shared";
 import { styled } from "src/utils";
 
+type Props = {
+	children?: ReactNode;
+	color: "primary" | "red" | "slate" | "amber" | "green";
+	size?: "lg" | "xl";
+	count?: number;
+};
+
+export const CountLabelIconButton: VFC<Props> = (props) => {
+	return (
+		<Flex items="center" gap={0.25}>
+			<IconButton color={props.color} size={props.size}>
+				{props.children}
+			</IconButton>
+			<Text faded>{props.count}</Text>
+		</Flex>
+	);
+};
+
 export const IconButton = styled("button", {
 	all: "unset",
 	display: "inline-flex",
@@ -40,21 +58,3 @@ export const IconButton = styled("button", {
 		size: "base",
 	},
 });
-
-type Props = {
-	children?: ReactNode;
-	color: "primary" | "red" | "slate" | "amber" | "green";
-	size?: "lg" | "xl";
-	count?: number;
-};
-
-export const CountLabelIconButton: VFC<Props> = (props) => {
-	return (
-		<Flex items="center" gap={0.25}>
-			<IconButton color={props.color} size={props.size}>
-				{props.children}
-			</IconButton>
-			<Text faded>{props.count}</Text>
-		</Flex>
-	);
-};

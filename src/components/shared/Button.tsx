@@ -1,6 +1,31 @@
 import type { MouseEventHandler, ReactNode, VFC } from "react";
 import { styled } from "src/utils";
 
+type Props = {
+	children: ReactNode;
+	color: "primary" | "red" | "slate";
+	size?: "base" | "lg" | "xl";
+	isGhost?: true;
+	isOutline?: true;
+	under?: true;
+	onClick: MouseEventHandler<HTMLButtonElement>;
+};
+
+export const Button: VFC<Props> = (props) => {
+	return (
+		<StitchesButton
+			color={props.color}
+			size={props.size}
+			isGhost={props.isGhost && props.color}
+			isOutline={props.isOutline && props.color}
+			under={props.under}
+			onClick={props.onClick}
+		>
+			{props.children}
+		</StitchesButton>
+	);
+};
+
 export const StitchesButton = styled("button", {
 	all: "unset",
 	display: "inline-flex",
@@ -93,28 +118,3 @@ export const StitchesButton = styled("button", {
 		size: "base",
 	},
 });
-
-type Props = {
-	children: ReactNode;
-	color: "primary" | "red" | "slate";
-	size?: "base" | "lg" | "xl";
-	isGhost?: true;
-	isOutline?: true;
-	under?: true;
-	onClick: MouseEventHandler<HTMLButtonElement>;
-};
-
-export const Button: VFC<Props> = (props) => {
-	return (
-		<StitchesButton
-			color={props.color}
-			size={props.size}
-			isGhost={props.isGhost && props.color}
-			isOutline={props.isOutline && props.color}
-			under={props.under}
-			onClick={props.onClick}
-		>
-			{props.children}
-		</StitchesButton>
-	);
-};

@@ -17,7 +17,7 @@ export const Layout: VFC<{ children: ReactNode }> = (props) => {
 
 				<Main>{props.children}</Main>
 
-				<Right></Right>
+				<Right>これが消えたら@md</Right>
 			</Wrap>
 		</>
 	);
@@ -28,16 +28,33 @@ const Wrap = styled("div", {
 });
 
 const Left = styled("div", {
-	width: "360px",
+	flex: 1,
+	display: "flex",
+	justifyContent: "end",
+	minWidth: "70px",
+	paddingTop: "0.25rem",
+	paddingRight: "2rem",
 	borderRight: "1px solid $slate6",
+
+	"@sm": { minWidth: "70px", maxWidth: "150px" },
+	"@md": { minWidth: "70px", maxWidth: "150px" },
+	"@lg": { minWidth: "150px", maxWidth: "150px" },
+	"@xl": { minWidth: "300px" },
 });
 
 const Main = styled("div", {
-	height: "auto",
-	width: "600px",
+	width: "100%",
+	"@md": { minWidth: "600px" },
 });
 
 const Right = styled("div", {
-	borderLeft: "1px solid $slate6",
 	flex: 1,
+	borderLeft: "1px solid $slate6",
+	display: "none",
+	"@md": { display: "block" },
 });
+
+// "@sm": { },
+// "@md": { },
+// "@lg": { },
+// "@xl": { },

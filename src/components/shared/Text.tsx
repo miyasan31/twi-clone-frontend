@@ -1,6 +1,43 @@
 import type { ReactNode, VFC } from "react";
 import { styled } from "src/utils";
 
+type Props = {
+	children: ReactNode;
+	size?: "xs" | "sm" | "base" | "lg" | "xl" | "x2l" | "x3l" | "x4l";
+	color?: "blue" | "red";
+	bold?: true;
+	faded?: true;
+	under?: true;
+	pt?: number;
+	py?: number;
+	pb?: number;
+};
+
+export const Text: VFC<Props> = (props) => {
+	const pt: string = props.pt + "rem";
+	const py: string = props.py + "rem";
+	const pb: string = props.pb + "rem";
+
+	return (
+		<StitchesText
+			bold={props.bold}
+			faded={props.faded}
+			under={props.under}
+			color={props.color}
+			css={{
+				paddingTop: pt,
+				paddingY: py,
+				paddingBottom: pb,
+
+				fontSize: "$" + props.size,
+				lineHeight: "$" + props.size,
+			}}
+		>
+			{props.children}
+		</StitchesText>
+	);
+};
+
 export const StitchesText = styled("div", {
 	margin: 0,
 	padding: 0,
@@ -44,40 +81,3 @@ export const StitchesText = styled("div", {
 		// size: "base",
 	},
 });
-
-type Props = {
-	children: ReactNode;
-	size?: "xs" | "sm" | "base" | "lg" | "xl" | "x2l" | "x3l" | "x4l";
-	color?: "blue" | "red";
-	bold?: true;
-	faded?: true;
-	under?: true;
-	pt?: number;
-	py?: number;
-	pb?: number;
-};
-
-export const Text: VFC<Props> = (props) => {
-	const pt: string = props.pt + "rem";
-	const py: string = props.py + "rem";
-	const pb: string = props.pb + "rem";
-
-	return (
-		<StitchesText
-			bold={props.bold}
-			faded={props.faded}
-			under={props.under}
-			color={props.color}
-			css={{
-				paddingTop: pt,
-				paddingY: py,
-				paddingBottom: pb,
-
-				fontSize: "$" + props.size,
-				lineHeight: "$" + props.size,
-			}}
-		>
-			{props.children}
-		</StitchesText>
-	);
-};

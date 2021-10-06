@@ -3,6 +3,26 @@ import type { VFC } from "react";
 import { Flex, Label } from "src/components/shared";
 import { styled } from "src/utils";
 
+type Props = {
+	labalLeft?: string;
+	labalRight?: string;
+	defaultChecked?: boolean;
+	isDark?: true;
+	onClick?: () => void;
+};
+
+export const Switch: VFC<Props> = (props) => {
+	return (
+		<Flex items="center" gap={0.25}>
+			<Label id="s1">{props.labalLeft}</Label>
+			<SwitchRoot defaultChecked={props.defaultChecked} id="s1" onClick={props.onClick} isDark={props.isDark}>
+				<SwitchThumb />
+			</SwitchRoot>
+			<Label id="s1">{props.labalRight}</Label>
+		</Flex>
+	);
+};
+
 const SwitchRoot = styled(SwitchPrimitive.Root, {
 	all: "unset",
 	width: 50,
@@ -33,23 +53,3 @@ const SwitchThumb = styled(SwitchPrimitive.Thumb, {
 	willChange: "transform",
 	'&[data-state="checked"]': { transform: "translateX(28px)" },
 });
-
-type Props = {
-	labalLeft?: string;
-	labalRight?: string;
-	defaultChecked?: boolean;
-	isDark?: true;
-	onClick?: () => void;
-};
-
-export const Switch: VFC<Props> = (props) => {
-	return (
-		<Flex items="center" gap={0.25}>
-			<Label id="s1">{props.labalLeft}</Label>
-			<SwitchRoot defaultChecked={props.defaultChecked} id="s1" onClick={props.onClick} isDark={props.isDark}>
-				<SwitchThumb />
-			</SwitchRoot>
-			<Label id="s1">{props.labalRight}</Label>
-		</Flex>
-	);
-};
