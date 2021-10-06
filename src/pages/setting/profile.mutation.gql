@@ -1,8 +1,18 @@
-mutation UpdateProfile($userId: String!, $userName: String!, $profileBody: String!, $iconId: String!) {
-	user: UpdateUser(id: $userId, userDto: { userName: $userName, profileBody: $profileBody, iconId: $iconId }) {
+mutation UpdateProfile(
+	$userId: String!
+	$userName: String!
+	$profileBody: String!
+	$iconPhoto: String!
+	$headerPhoto: String!
+) {
+	user: UpdateUser(
+		id: $userId
+		userDto: { userName: $userName, profileBody: $profileBody, iconPhoto: $iconPhoto, headerPhoto: $headerPhoto }
+	) {
 		id
 		userName
 		profileBody
-		iconId
+		iconPhoto
+		headerPhoto
 	}
 }

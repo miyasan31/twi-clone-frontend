@@ -8,7 +8,7 @@ query GetTweetDetail($tweetId: Int!) {
 			id
 			userName
 			profileBody
-			iconId
+			iconPhoto
 		}
 		retweetCount: GetRetweetCount {
 			count
@@ -27,7 +27,7 @@ query GetTweetDetail($tweetId: Int!) {
 				id
 				userName
 				profileBody
-				iconId
+				iconPhoto
 			}
 		}
 	}

@@ -3,7 +3,8 @@ query GetProfile($userId: String!) {
 		id
 		userName
 		profileBody
-		iconId
+		iconPhoto
+		headerPhoto
 		createdAt
 	}
 }

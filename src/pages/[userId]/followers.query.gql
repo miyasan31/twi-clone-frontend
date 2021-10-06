@@ -7,7 +7,7 @@ query GetUserFollowers($userId: String!) {
 			id
 			userName
 			profileBody
-			iconId
+			iconPhoto
 		}
 	}
 }

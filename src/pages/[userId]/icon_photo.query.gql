@@ -1,5 +1,5 @@
 query GetUserIconPhoto($userId: String!) {
 	icon: GetUser(id: $userId) {
-		iconId
+		iconPhoto
 	}
 }

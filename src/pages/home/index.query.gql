@@ -8,7 +8,7 @@ query GetFollowingUserTweets($userId: String!) {
 				user: GetUserByTweet {
 					id
 					userName
-					iconId
+					iconPhoto
 				}
 				retweetCount: GetRetweetCount {
 					count
