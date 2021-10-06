@@ -3,9 +3,11 @@ import type { ReactNode, VFC } from "react";
 import { styled } from "src/utils";
 
 export const Anker = styled("a", {
-	"&:hover": { textDecoration: "underline" },
-
 	variants: {
+		under: {
+			true: { "&:hover": { textDecoration: "underline" } },
+		},
+
 		btn: {
 			true: {
 				all: "unset",
@@ -25,12 +27,15 @@ type Props = {
 	children: ReactNode;
 	href: string;
 	btn?: true;
+	under?: true;
 };
 
 export const NextLink: VFC<Props> = (props) => {
 	return (
 		<Link href={props.href} passHref>
-			<Anker btn={props.btn}>{props.children}</Anker>
+			<Anker btn={props.btn} under={props.under}>
+				{props.children}
+			</Anker>
 		</Link>
 	);
 };

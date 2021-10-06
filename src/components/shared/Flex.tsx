@@ -18,6 +18,9 @@ const StitchesFlex = styled("div", {
 		},
 
 		justify: {
+			start: {
+				justifyContent: "start",
+			},
 			center: {
 				justifyContent: "center",
 			},
@@ -42,7 +45,7 @@ const StitchesFlex = styled("div", {
 
 type Props = {
 	direction?: "rowR" | "col" | "colR";
-	justify?: "center" | "end" | "between" | "evenly";
+	justify?: "start" | "center" | "end" | "between" | "evenly";
 	items?: "center";
 	gap?: number;
 	children: ReactNode;

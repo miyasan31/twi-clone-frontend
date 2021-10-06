@@ -27,7 +27,9 @@ export const IconButton = styled("button", {
 				"&:hover": { backgroundColor: "$slate6" },
 			},
 
-			primary: { "&:hover": { color: "$primary9", backgroundColor: "$primary3" } },
+			primary: {
+				"&:hover": { color: "$primary9", backgroundColor: "$primary3" },
+			},
 			red: { "&:hover": { color: "$red9", backgroundColor: "$red3" } },
 			amber: { "&:hover": { color: "$amber9", backgroundColor: "$amber3" } },
 			green: { "&:hover": { color: "$green9", backgroundColor: "$green3" } },
