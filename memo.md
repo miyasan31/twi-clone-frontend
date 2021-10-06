@@ -12,7 +12,7 @@
 
 ### /[userId], /[userId]/retweets, /[userId]/likes, /[userId]/comments
 
-- where userId = で取得できるような Query にする
+✅ where userId = で取得できるような Query にする
 
 ### /home, /[userId], /[userId]/retweets, /[userId]/likes, /[userId]/comments
 
