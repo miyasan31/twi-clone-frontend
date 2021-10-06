@@ -71,7 +71,7 @@ export const HoverUserCard: VFC<Props> = (props) => {
 					<Flex direction="col" gap={1}>
 						<Text pt={0.5}>
 							<Text bold>{props.userName}</Text>
-							<NextLink href="/">
+							<NextLink href="/" under>
 								<Text faded>
 									{"@"}
 									{props.userId}
@@ -82,14 +82,14 @@ export const HoverUserCard: VFC<Props> = (props) => {
 						<Text>{props.profile}</Text>
 
 						<Flex gap={1}>
-							<NextLink href="/">
+							<NextLink href="/" under>
 								<Flex>
 									<Text bold>{props.following}</Text>
 									<Text faded>&nbsp;Following</Text>
 								</Flex>
 							</NextLink>
 
-							<NextLink href="/">
+							<NextLink href="/" under>
 								<Flex>
 									<Text bold>{props.followers}</Text>
 									<Text faded>&nbsp;Followers</Text>
