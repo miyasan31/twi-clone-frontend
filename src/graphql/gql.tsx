@@ -62,7 +62,8 @@ export type CreateUserDto = {
   id: Scalars['String'];
   userName: Scalars['String'];
   profileBody: Scalars['String'];
-  iconId: Scalars['String'];
+  iconPhoto: Scalars['String'];
+  headerPhoto: Scalars['String'];
 };
 
 
@@ -171,15 +172,12 @@ export type MutationDeleteFollowArgs = {
 
 export type Query = {
   __typename?: 'Query';
-  GetUsers: Array<User>;
   GetUser: User;
-  GetTweets: Array<Tweet>;
   GetTweet: Tweet;
-  GetRetweets: Array<Retweet>;
-  GetLikes: Array<Like>;
-  GetComments: Array<Comment>;
-  GetComment: Comment;
-  GetFollows: Array<Follow>;
+  GetTweetsByUser: Array<Tweet>;
+  GetRetweetsByUser: Array<Retweet>;
+  GetLikesByUser: Array<Like>;
+  GetCommentsByUser: Array<Comment>;
   GetFollowings: Array<Follow>;
   GetFollowers: Array<Follow>;
 };
@@ -195,8 +193,23 @@ export type QueryGetTweetArgs = {
 };
 
 
-export type QueryGetCommentArgs = {
-  id: Scalars['Int'];
+export type QueryGetTweetsByUserArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryGetRetweetsByUserArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryGetLikesByUserArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryGetCommentsByUserArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -237,7 +250,8 @@ export type Tweet = {
 export type UpdateUserDto = {
   userName: Scalars['String'];
   profileBody: Scalars['String'];
-  iconId: Scalars['String'];
+  iconPhoto: Scalars['String'];
+  headerPhoto: Scalars['String'];
 };
 
 export type User = {
@@ -245,7 +259,8 @@ export type User = {
   id: Scalars['String'];
   userName: Scalars['String'];
   profileBody: Scalars['String'];
-  iconId: Scalars['String'];
+  iconPhoto: Scalars['String'];
+  headerPhoto: Scalars['String'];
   createdAt: Scalars['DateTime'];
   GetTweetsByUser: Array<Tweet>;
   GetRetweetsByUser: Array<Retweet>;
@@ -262,63 +277,63 @@ export type GetUserCommentsQueryVariables = Exact<{
 }>;
 
 
-export type GetUserCommentsQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any, comments: Array<{ __typename?: 'Comment', tweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } } }> } };
+export type GetUserCommentsQuery = { __typename?: 'Query', comments: Array<{ __typename?: 'Comment', tweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } } }> };
 
 export type GetUserFollowersQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetUserFollowersQuery = { __typename?: 'Query', followers: Array<{ __typename?: 'Follow', id: number, userId: string, followingUserId: string, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string } }> };
+export type GetUserFollowersQuery = { __typename?: 'Query', followers: Array<{ __typename?: 'Follow', id: number, userId: string, followingUserId: string, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string } }> };
 
 export type GetUserFollowingsQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetUserFollowingsQuery = { __typename?: 'Query', followings: Array<{ __typename?: 'Follow', id: number, userId: string, followingUserId: string, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string, createdAt: any } }> };
+export type GetUserFollowingsQuery = { __typename?: 'Query', followings: Array<{ __typename?: 'Follow', id: number, userId: string, followingUserId: string, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string, createdAt: any } }> };
 
 export type GetUserHeaderPhotoQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetUserHeaderPhotoQuery = { __typename?: 'Query', header: { __typename?: 'User', iconId: string } };
+export type GetUserHeaderPhotoQuery = { __typename?: 'Query', header: { __typename?: 'User', headerPhoto: string } };
 
 export type GetUserIconPhotoQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetUserIconPhotoQuery = { __typename?: 'Query', icon: { __typename?: 'User', iconId: string } };
+export type GetUserIconPhotoQuery = { __typename?: 'Query', icon: { __typename?: 'User', iconPhoto: string } };
 
 export type GetUserTweetsQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetUserTweetsQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any, tweets: Array<{ __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, retweetCountL: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> } };
+export type GetUserTweetsQuery = { __typename?: 'Query', tweets: Array<{ __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> };
 
 export type GetUserLikesQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetUserLikesQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any, likes: Array<{ __typename?: 'Like', tweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } } }> } };
+export type GetUserLikesQuery = { __typename?: 'Query', likes: Array<{ __typename?: 'Like', tweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } } }> };
 
 export type GetUserRetweetsQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetUserRetweetsQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any, retweets: Array<{ __typename?: 'Retweet', tweet: { __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } } }> } };
+export type GetUserRetweetsQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any, retweets: Array<{ __typename?: 'Retweet', tweet: { __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } } }> } };
 
 export type GetTweetDetailQueryVariables = Exact<{
   tweetId: Scalars['Int'];
 }>;
 
 
-export type GetTweetDetailQuery = { __typename?: 'Query', tweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string }, comments: Array<{ __typename?: 'Comment', id: number, commentBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string } }> } };
+export type GetTweetDetailQuery = { __typename?: 'Query', tweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string }, comments: Array<{ __typename?: 'Comment', id: number, commentBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string } }> } };
 
 export type GetTweetLikesQueryVariables = Exact<{
   tweetId: Scalars['Int'];
@@ -347,7 +362,7 @@ export type GetFollowingUserTweetsQueryVariables = Exact<{
 }>;
 
 
-export type GetFollowingUserTweetsQuery = { __typename?: 'Query', followings: Array<{ __typename?: 'Follow', user: { __typename?: 'User', tweets: Array<{ __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, iconId: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> } }> };
+export type GetFollowingUserTweetsQuery = { __typename?: 'Query', followings: Array<{ __typename?: 'Follow', user: { __typename?: 'User', tweets: Array<{ __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> } }> };
 
 export type DeleteTweetMutationVariables = Exact<{
   tweetId: Scalars['Int'];
@@ -360,48 +375,43 @@ export type UpdateProfileMutationVariables = Exact<{
   userId: Scalars['String'];
   userName: Scalars['String'];
   profileBody: Scalars['String'];
-  iconId: Scalars['String'];
+  iconPhoto: Scalars['String'];
+  headerPhoto: Scalars['String'];
 }>;
 
 
-export type UpdateProfileMutation = { __typename?: 'Mutation', user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string } };
+export type UpdateProfileMutation = { __typename?: 'Mutation', user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string, headerPhoto: string } };
 
 export type GetProfileQueryVariables = Exact<{
   userId: Scalars['String'];
 }>;
 
 
-export type GetProfileQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconId: string, createdAt: any } };
+export type GetProfileQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string, headerPhoto: string, createdAt: any } };
 
 
 export const GetUserCommentsDocument = gql`
     query GetUserComments($userId: String!) {
-  user: GetUser(id: $userId) {
-    id
-    userName
-    profileBody
-    createdAt
-    comments: GetCommentsByUser {
-      tweet: GetTweetByComment {
+  comments: GetCommentsByUser(id: $userId) {
+    tweet: GetTweetByComment {
+      id
+      userId
+      tweetBody
+      createdAt
+      user: GetUserByTweet {
         id
-        userId
-        tweetBody
-        createdAt
-        user: GetUserByTweet {
-          id
-          userName
-          profileBody
-          iconId
-        }
-        retweetCount: GetRetweetCount {
-          count
-        }
-        likeCount: GetLikeCount {
-          count
-        }
-        commentCount: GetCommentCount {
-          count
-        }
+        userName
+        profileBody
+        iconPhoto
+      }
+      retweetCount: GetRetweetCount {
+        count
+      }
+      likeCount: GetLikeCount {
+        count
+      }
+      commentCount: GetCommentCount {
+        count
       }
     }
   }
@@ -445,7 +455,7 @@ export const GetUserFollowersDocument = gql`
       id
       userName
       profileBody
-      iconId
+      iconPhoto
     }
   }
 }
@@ -488,7 +498,7 @@ export const GetUserFollowingsDocument = gql`
       id
       userName
       profileBody
-      iconId
+      iconPhoto
       createdAt
     }
   }
@@ -525,7 +535,7 @@ export type GetUserFollowingsQueryResult = Apollo.QueryResult<GetUserFollowingsQ
 export const GetUserHeaderPhotoDocument = gql`
     query GetUserHeaderPhoto($userId: String!) {
   header: GetUser(id: $userId) {
-    iconId
+    headerPhoto
   }
 }
     `;
@@ -560,7 +570,7 @@ export type GetUserHeaderPhotoQueryResult = Apollo.QueryResult<GetUserHeaderPhot
 export const GetUserIconPhotoDocument = gql`
     query GetUserIconPhoto($userId: String!) {
   icon: GetUser(id: $userId) {
-    iconId
+    iconPhoto
   }
 }
     `;
@@ -594,24 +604,18 @@ export type GetUserIconPhotoLazyQueryHookResult = ReturnType<typeof useGetUserIc
 export type GetUserIconPhotoQueryResult = Apollo.QueryResult<GetUserIconPhotoQuery, GetUserIconPhotoQueryVariables>;
 export const GetUserTweetsDocument = gql`
     query GetUserTweets($userId: String!) {
-  user: GetUser(id: $userId) {
+  tweets: GetTweetsByUser(id: $userId) {
     id
-    userName
-    profileBody
+    tweetBody
     createdAt
-    tweets: GetTweetsByUser {
-      id
-      tweetBody
-      createdAt
-      retweetCountL: GetRetweetCount {
-        count
-      }
-      likeCount: GetLikeCount {
-        count
-      }
-      commentCount: GetCommentCount {
-        count
-      }
+    retweetCount: GetRetweetCount {
+      count
+    }
+    likeCount: GetLikeCount {
+      count
+    }
+    commentCount: GetCommentCount {
+      count
     }
   }
 }
@@ -646,32 +650,26 @@ export type GetUserTweetsLazyQueryHookResult = ReturnType<typeof useGetUserTweet
 export type GetUserTweetsQueryResult = Apollo.QueryResult<GetUserTweetsQuery, GetUserTweetsQueryVariables>;
 export const GetUserLikesDocument = gql`
     query GetUserLikes($userId: String!) {
-  user: GetUser(id: $userId) {
-    id
-    userName
-    profileBody
-    createdAt
-    likes: GetLikesByUser {
-      tweet: GetTweetByLike {
+  likes: GetLikesByUser(id: $userId) {
+    tweet: GetTweetByLike {
+      id
+      userId
+      tweetBody
+      createdAt
+      user: GetUserByTweet {
         id
-        userId
-        tweetBody
-        createdAt
-        user: GetUserByTweet {
-          id
-          userName
-          profileBody
-          iconId
-        }
-        retweetCount: GetRetweetCount {
-          count
-        }
-        likeCount: GetLikeCount {
-          count
-        }
-        commentCount: GetCommentCount {
-          count
-        }
+        userName
+        profileBody
+        iconPhoto
+      }
+      retweetCount: GetRetweetCount {
+        count
+      }
+      likeCount: GetLikeCount {
+        count
+      }
+      commentCount: GetCommentCount {
+        count
       }
     }
   }
@@ -721,7 +719,7 @@ export const GetUserRetweetsDocument = gql`
           id
           userName
           profileBody
-          iconId
+          iconPhoto
         }
         retweetCount: GetRetweetCount {
           count
@@ -776,7 +774,7 @@ export const GetTweetDetailDocument = gql`
       id
       userName
       profileBody
-      iconId
+      iconPhoto
     }
     retweetCount: GetRetweetCount {
       count
@@ -795,7 +793,7 @@ export const GetTweetDetailDocument = gql`
         id
         userName
         profileBody
-        iconId
+        iconPhoto
       }
     }
   }
@@ -963,7 +961,7 @@ export const GetFollowingUserTweetsDocument = gql`
         user: GetUserByTweet {
           id
           userName
-          iconId
+          iconPhoto
         }
         retweetCount: GetRetweetCount {
           count
@@ -1039,15 +1037,16 @@ export type DeleteTweetMutationHookResult = ReturnType<typeof useDeleteTweetMuta
 export type DeleteTweetMutationResult = Apollo.MutationResult<DeleteTweetMutation>;
 export type DeleteTweetMutationOptions = Apollo.BaseMutationOptions<DeleteTweetMutation, DeleteTweetMutationVariables>;
 export const UpdateProfileDocument = gql`
-    mutation UpdateProfile($userId: String!, $userName: String!, $profileBody: String!, $iconId: String!) {
+    mutation UpdateProfile($userId: String!, $userName: String!, $profileBody: String!, $iconPhoto: String!, $headerPhoto: String!) {
   user: UpdateUser(
     id: $userId
-    userDto: {userName: $userName, profileBody: $profileBody, iconId: $iconId}
+    userDto: {userName: $userName, profileBody: $profileBody, iconPhoto: $iconPhoto, headerPhoto: $headerPhoto}
   ) {
     id
     userName
     profileBody
-    iconId
+    iconPhoto
+    headerPhoto
   }
 }
     `;
@@ -1069,7 +1068,8 @@ export type UpdateProfileMutationFn = Apollo.MutationFunction<UpdateProfileMutat
  *      userId: // value for 'userId'
  *      userName: // value for 'userName'
  *      profileBody: // value for 'profileBody'
- *      iconId: // value for 'iconId'
+ *      iconPhoto: // value for 'iconPhoto'
+ *      headerPhoto: // value for 'headerPhoto'
  *   },
  * });
  */
@@ -1086,7 +1086,8 @@ export const GetProfileDocument = gql`
     id
     userName
     profileBody
-    iconId
+    iconPhoto
+    headerPhoto
     createdAt
   }
 }
