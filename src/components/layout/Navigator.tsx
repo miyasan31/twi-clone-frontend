@@ -1,4 +1,4 @@
-import { Button, NextLink } from "src/components/shared";
+import { NextLink } from "src/components/shared";
 import { TwitterIcon } from "src/components/shared/Icon";
 import { NAVIGATOR } from "src/constants/navigator";
 import { styled } from "src/utils";
@@ -21,9 +21,14 @@ export const Navigator = () => {
 				);
 			})}
 
-			<Button color="primary" size="xl" onClick={handleClick}>
-				ツイートする
-			</Button>
+			<div className="pt-4">
+				<TweetButton onClick={handleClick}>
+					<TweetLabel>
+						<TwitterIcon size={35} />
+					</TweetLabel>
+					<Label>ツイートする</Label>
+				</TweetButton>
+			</div>
 		</Wrapper>
 	);
 };
@@ -35,13 +40,16 @@ const Wrapper = styled("div", {
 	left: "6rem",
 	flexDirection: "column",
 	gap: "0.5rem",
-	alignItems: "start",
+	alignItems: "center",
+
+	"@xl": { alignItems: "start" },
 });
 
 const NavigatorButton = styled("button", {
 	all: "unset",
 	display: "flex",
 	alignItems: "center",
+	gap: "1.25rem",
 	borderRadius: 99999,
 	cursor: "pointer",
 	fontSize: "1.25rem",
@@ -51,6 +59,35 @@ const NavigatorButton = styled("button", {
 	"&:hover": { backgroundColor: "$slate5" },
 });
 
-const Label = styled("span", {
-	paddingX: "1rem",
+const TweetButton = styled("button", {
+	color: "white",
+	backgroundColor: "$primary9",
+	cursor: "pointer",
+	borderRadius: 99999,
+	fontWeight: "bold",
+	padding: "0.5rem",
+
+	"&:hover": { backgroundColor: "$primary11" },
+
+	"@xl": {
+		paddingY: "0.8rem",
+		paddingX: "4rem",
+		fontSize: "1rem",
+		display: "block",
+	},
 });
+
+const TweetLabel = styled("span", {
+	display: "block",
+	"@xl": { display: "none" },
+});
+
+const Label = styled("span", {
+	display: "none",
+	"@xl": { display: "block" },
+});
+
+// "@sm": { },
+// "@md": { },
+// "@lg": { },
+// "@xl": { },
