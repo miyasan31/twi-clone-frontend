@@ -1,25 +1,44 @@
-query GetFollowingUserTweets($userId: String!) {
-	followings: GetFollowings(id: $userId) {
-		user: GetUserByFollower {
-			tweets: GetTweetsByUser {
-				id
-				tweetBody
-				createdAt
-				user: GetUserByTweet {
-					id
-					userName
-					iconPhoto
-				}
-				retweetCount: GetRetweetCount {
-					count
-				}
-				likeCount: GetLikeCount {
-					count
-				}
-				commentCount: GetCommentCount {
-					count
-				}
-			}
+# query GetFollowingUserTweets($userId: String!) {
+# 	followings: GetFollowings(id: $userId) {
+# 		user: GetUserByFollower {
+# 			tweets: GetTweetsByUser {
+# 				id
+# 				tweetBody
+# 				createdAt
+# 				user: GetUserByTweet {
+# 					id
+# 					userName
+# 					iconPhoto
+# 				}
+# 				retweetCount: GetRetweetCount {
+# 					count
+# 				}
+# 				likeCount: GetLikeCount {
+# 					count
+# 				}
+# 				commentCount: GetCommentCount {
+# 					count
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+
+query GetAllUserTweets {
+	tweets: GetTweets {
+		user: GetUserByTweet {
+			id
+			userName
+			iconPhoto
+		}
+		retweetCount: GetRetweetCount {
+			count
+		}
+		likeCount: GetLikeCount {
+			count
+		}
+		commentCount: GetCommentCount {
+			count
 		}
 	}
 }
