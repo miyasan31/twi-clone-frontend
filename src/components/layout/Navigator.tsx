@@ -9,7 +9,7 @@ export const Navigator = () => {
 	};
 
 	return (
-		<div className="flex flex-col gap-1 items-start">
+		<Wrapper>
 			{NAVIGATOR.map((item) => {
 				return (
 					<NextLink key={item.label} href={item.href}>
@@ -21,14 +21,22 @@ export const Navigator = () => {
 				);
 			})}
 
-			<div className="pt-4">
-				<Button color="primary" size="xl" onClick={handleClick}>
-					ツイートする
-				</Button>
-			</div>
-		</div>
+			<Button color="primary" size="xl" onClick={handleClick}>
+				ツイートする
+			</Button>
+		</Wrapper>
 	);
 };
+
+const Wrapper = styled("div", {
+	display: "flex",
+	position: "fixed",
+	top: "0.25rem",
+	left: "6rem",
+	flexDirection: "column",
+	gap: "0.5rem",
+	alignItems: "start",
+});
 
 const NavigatorButton = styled("button", {
 	all: "unset",
@@ -37,7 +45,7 @@ const NavigatorButton = styled("button", {
 	borderRadius: 99999,
 	cursor: "pointer",
 	fontSize: "1.25rem",
-	padding: "0.75rem",
+	padding: "0.65rem",
 	color: "$slate12",
 	backgroundColor: "none",
 	"&:hover": { backgroundColor: "$slate5" },
