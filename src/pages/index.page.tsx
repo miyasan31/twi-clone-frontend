@@ -22,12 +22,10 @@ import {
 	Text,
 } from "src/components/shared";
 import { ColorChanger, ThemeChanger } from "src/components/theme";
-import { useCreateTweetMutation, useDeleteTweetMutation, useGetFollowingUserTweetsQuery } from "src/graphql/gql";
+import { useCreateTweetMutation, useDeleteTweetMutation, useGetAllUserTweetsQuery } from "src/graphql/gql";
 
 const IndexPage: NextPage = () => {
-	const { data } = useGetFollowingUserTweetsQuery({
-		variables: { userId: "miyasan_0301" },
-	});
+	const { data } = useGetAllUserTweetsQuery();
 	console.info(data);
 
 	const [createTweet] = useCreateTweetMutation();

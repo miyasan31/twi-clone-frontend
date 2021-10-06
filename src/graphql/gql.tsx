@@ -173,6 +173,7 @@ export type MutationDeleteFollowArgs = {
 export type Query = {
   __typename?: 'Query';
   GetUser: User;
+  GetTweets: Array<Tweet>;
   GetTweet: Tweet;
   GetTweetsByUser: Array<Tweet>;
   GetRetweetsByUser: Array<Retweet>;
@@ -326,7 +327,7 @@ export type GetUserRetweetsQueryVariables = Exact<{
 }>;
 
 
-export type GetUserRetweetsQuery = { __typename?: 'Query', user: { __typename?: 'User', id: string, userName: string, profileBody: string, createdAt: any, retweets: Array<{ __typename?: 'Retweet', tweet: { __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } } }> } };
+export type GetUserRetweetsQuery = { __typename?: 'Query', retweets: Array<{ __typename?: 'Retweet', tweet: { __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } } }> };
 
 export type GetTweetDetailQueryVariables = Exact<{
   tweetId: Scalars['Int'];
@@ -357,12 +358,10 @@ export type CreateTweetMutationVariables = Exact<{
 
 export type CreateTweetMutation = { __typename?: 'Mutation', tweet: { __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any } };
 
-export type GetFollowingUserTweetsQueryVariables = Exact<{
-  userId: Scalars['String'];
-}>;
+export type GetAllUserTweetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetFollowingUserTweetsQuery = { __typename?: 'Query', followings: Array<{ __typename?: 'Follow', user: { __typename?: 'User', tweets: Array<{ __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> } }> };
+export type GetAllUserTweetsQuery = { __typename?: 'Query', tweets: Array<{ __typename?: 'Tweet', user: { __typename?: 'User', id: string, userName: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> };
 
 export type DeleteTweetMutationVariables = Exact<{
   tweetId: Scalars['Int'];
@@ -705,31 +704,25 @@ export type GetUserLikesLazyQueryHookResult = ReturnType<typeof useGetUserLikesL
 export type GetUserLikesQueryResult = Apollo.QueryResult<GetUserLikesQuery, GetUserLikesQueryVariables>;
 export const GetUserRetweetsDocument = gql`
     query GetUserRetweets($userId: String!) {
-  user: GetUser(id: $userId) {
-    id
-    userName
-    profileBody
-    createdAt
-    retweets: GetRetweetsByUser {
-      tweet: GetTweetByRetweet {
+  retweets: GetRetweetsByUser(id: $userId) {
+    tweet: GetTweetByRetweet {
+      id
+      tweetBody
+      createdAt
+      user: GetUserByTweet {
         id
-        tweetBody
-        createdAt
-        user: GetUserByTweet {
-          id
-          userName
-          profileBody
-          iconPhoto
-        }
-        retweetCount: GetRetweetCount {
-          count
-        }
-        likeCount: GetLikeCount {
-          count
-        }
-        commentCount: GetCommentCount {
-          count
-        }
+        userName
+        profileBody
+        iconPhoto
+      }
+      retweetCount: GetRetweetCount {
+        count
+      }
+      likeCount: GetLikeCount {
+        count
+      }
+      commentCount: GetCommentCount {
+        count
       }
     }
   }
@@ -950,61 +943,53 @@ export function useCreateTweetMutation(baseOptions?: Apollo.MutationHookOptions<
 export type CreateTweetMutationHookResult = ReturnType<typeof useCreateTweetMutation>;
 export type CreateTweetMutationResult = Apollo.MutationResult<CreateTweetMutation>;
 export type CreateTweetMutationOptions = Apollo.BaseMutationOptions<CreateTweetMutation, CreateTweetMutationVariables>;
-export const GetFollowingUserTweetsDocument = gql`
-    query GetFollowingUserTweets($userId: String!) {
-  followings: GetFollowings(id: $userId) {
-    user: GetUserByFollower {
-      tweets: GetTweetsByUser {
-        id
-        tweetBody
-        createdAt
-        user: GetUserByTweet {
-          id
-          userName
-          iconPhoto
-        }
-        retweetCount: GetRetweetCount {
-          count
-        }
-        likeCount: GetLikeCount {
-          count
-        }
-        commentCount: GetCommentCount {
-          count
-        }
-      }
+export const GetAllUserTweetsDocument = gql`
+    query GetAllUserTweets {
+  tweets: GetTweets {
+    user: GetUserByTweet {
+      id
+      userName
+      iconPhoto
+    }
+    retweetCount: GetRetweetCount {
+      count
+    }
+    likeCount: GetLikeCount {
+      count
+    }
+    commentCount: GetCommentCount {
+      count
     }
   }
 }
     `;
 
 /**
- * __useGetFollowingUserTweetsQuery__
+ * __useGetAllUserTweetsQuery__
  *
- * To run a query within a React component, call `useGetFollowingUserTweetsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetFollowingUserTweetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetAllUserTweetsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllUserTweetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetFollowingUserTweetsQuery({
+ * const { data, loading, error } = useGetAllUserTweetsQuery({
  *   variables: {
- *      userId: // value for 'userId'
  *   },
  * });
  */
-export function useGetFollowingUserTweetsQuery(baseOptions: Apollo.QueryHookOptions<GetFollowingUserTweetsQuery, GetFollowingUserTweetsQueryVariables>) {
+export function useGetAllUserTweetsQuery(baseOptions?: Apollo.QueryHookOptions<GetAllUserTweetsQuery, GetAllUserTweetsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetFollowingUserTweetsQuery, GetFollowingUserTweetsQueryVariables>(GetFollowingUserTweetsDocument, options);
+        return Apollo.useQuery<GetAllUserTweetsQuery, GetAllUserTweetsQueryVariables>(GetAllUserTweetsDocument, options);
       }
-export function useGetFollowingUserTweetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFollowingUserTweetsQuery, GetFollowingUserTweetsQueryVariables>) {
+export function useGetAllUserTweetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllUserTweetsQuery, GetAllUserTweetsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetFollowingUserTweetsQuery, GetFollowingUserTweetsQueryVariables>(GetFollowingUserTweetsDocument, options);
+          return Apollo.useLazyQuery<GetAllUserTweetsQuery, GetAllUserTweetsQueryVariables>(GetAllUserTweetsDocument, options);
         }
-export type GetFollowingUserTweetsQueryHookResult = ReturnType<typeof useGetFollowingUserTweetsQuery>;
-export type GetFollowingUserTweetsLazyQueryHookResult = ReturnType<typeof useGetFollowingUserTweetsLazyQuery>;
-export type GetFollowingUserTweetsQueryResult = Apollo.QueryResult<GetFollowingUserTweetsQuery, GetFollowingUserTweetsQueryVariables>;
+export type GetAllUserTweetsQueryHookResult = ReturnType<typeof useGetAllUserTweetsQuery>;
+export type GetAllUserTweetsLazyQueryHookResult = ReturnType<typeof useGetAllUserTweetsLazyQuery>;
+export type GetAllUserTweetsQueryResult = Apollo.QueryResult<GetAllUserTweetsQuery, GetAllUserTweetsQueryVariables>;
 export const DeleteTweetDocument = gql`
     mutation DeleteTweet($tweetId: Int!) {
   result: DeleteTweet(id: $tweetId)
