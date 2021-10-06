@@ -22,8 +22,8 @@ export const StitchesButton = styled("button", {
 			xl: {
 				fontSize: "1.1rem",
 				fontWeight: "bold",
-				height: "3.25rem",
-				width: "180px",
+				width: "160px",
+				paddingY: "0.8rem",
 				paddingX: "2rem",
 			},
 		},
