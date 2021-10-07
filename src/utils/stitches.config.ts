@@ -9,9 +9,9 @@ export const { styled, css, globalCss, keyframes, getCssText, createTheme, theme
 	utils: utils,
 	media: {
 		sm: "(min-width: 600px)",
-		md: "(min-width: 986px)",
-		lg: "(min-width: 1024px)",
-		xl: "(min-width: 1280px)",
+		md: "(min-width: 990px)",
+		lg: "(min-width: 1080px)",
+		xl: "(min-width: 1260px)",
 	},
 	theme: {
 		colors: {},
@@ -84,5 +84,10 @@ export const { styled, css, globalCss, keyframes, getCssText, createTheme, theme
 globalCss({
 	html: { fontSize: "16px" },
 	// "@md": { html: { fontSize: "16px" } },
-	body: { lineHeight: 1.6, color: "$slate12", backgroundColor: "$slate2" },
+	body: {
+		lineHeight: 1.6,
+		color: "$slate12",
+		backgroundColor: "$slate2",
+		overscrollBehaviorY: "none",
+	},
 })();
