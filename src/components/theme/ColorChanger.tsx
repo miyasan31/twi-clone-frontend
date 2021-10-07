@@ -27,7 +27,15 @@ export const ColorChanger: VFC = () => {
 	if (!isMounted) return null;
 
 	return (
-		<RadioGroup options={RADIO_OPTIONOS} defaultValue={currentColor} ariaLabel="colorChanger" onClick={handleClick} />
+		<>
+			<RadioGroup
+				options={RADIO_OPTIONOS1}
+				defaultValue={currentColor}
+				ariaLabel="colorChanger"
+				onClick={handleClick}
+			/>
+			<RadioGroup options={RADIO_OPTIONO2} defaultValue={currentColor} ariaLabel="colorChanger" onClick={handleClick} />
+		</>
 	);
 };
 
@@ -38,10 +46,13 @@ type OptionsProps = {
 	color: "blue" | "amber" | "crimson" | "violet" | "orange" | "green";
 };
 
-const RADIO_OPTIONOS: OptionsProps[] = [
+const RADIO_OPTIONOS1: OptionsProps[] = [
 	{ id: "1", label: "blue", value: "blue", color: "blue" },
 	{ id: "2", label: "amber", value: "amber", color: "amber" },
 	{ id: "3", label: "crimson", value: "crimson", color: "crimson" },
+];
+
+const RADIO_OPTIONO2: OptionsProps[] = [
 	{ id: "4", label: "violet", value: "violet", color: "violet" },
 	{ id: "5", label: "orange", value: "orange", color: "orange" },
 	{ id: "6", label: "green", value: "green", color: "green" },
