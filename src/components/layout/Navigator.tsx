@@ -37,8 +37,11 @@ const Wrapper = styled("div", {
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
-	paddingX: "1rem",
 
+	minWidth: "70px",
+	"@sm": {
+		paddingX: "1rem",
+	},
 	"@xl": {
 		minWidth: "260px",
 		alignItems: "start",

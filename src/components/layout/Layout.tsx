@@ -12,9 +12,7 @@ export const Layout: VFC<{ children: ReactNode }> = (props) => {
 
 			<BodyWrap>
 				<NavigatorWrap>
-					<Navigator>
-						<NavigatorComponent />
-					</Navigator>
+					<NavigatorComponent />
 				</NavigatorWrap>
 
 				<MainWrap>
@@ -32,26 +30,67 @@ const BodyWrap = styled("div", {
 });
 
 const NavigatorWrap = styled("div", {
-	flex: 1,
+	flex: "none",
 	display: "flex",
 	justifyContent: "end",
 	overflowY: "auto",
 	borderRight: "1px solid $slate6",
-});
+	minWidth: "70px",
 
-const Navigator = styled("div", {
-	backgroundColor: "#eaf1ff",
+	"@sm": {
+		flex: 1,
+		minWidth: "70px",
+	},
+	"@xl": {
+		minWidth: "260px",
+	},
 });
 
 const MainWrap = styled("div", {
-	flex: 3,
 	overflowY: "auto",
-	minWidth: "1000px",
+	width: "100%",
+	flex: 1,
+	"@xs": {
+		flex: 1,
+	},
+	"@sm": {
+		flex: 5,
+		minWidth: "590px",
+	},
+	"@md": {
+		flex: 8,
+		minWidth: "900px",
+	},
+	"@lg": {
+		flex: 6,
+		minWidth: "990px",
+	},
+	"@xl": {
+		flex: 3,
+		minWidth: "1000px",
+	},
 });
 
 const Main = styled("div", {
 	display: "flex",
 	justifyContent: "start",
-	width: "1000px",
-	backgroundColor: "#ffeaea",
+	borderRight: "1px solid $slate6",
+
+	width: "100",
+
+	"@xs": {
+		width: "100%",
+	},
+	"@sm": {
+		width: "590px",
+	},
+	"@md": {
+		width: "900px",
+	},
+	"@lg": {
+		width: "990px",
+	},
+	"@xl": {
+		width: "1000px",
+	},
 });
