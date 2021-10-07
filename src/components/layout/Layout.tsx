@@ -1,60 +1,57 @@
 import type { ReactNode, VFC } from "react";
-import { Navigator } from "src/components/layout/Navigator";
-import { ThemeChanger } from "src/components/theme";
+import { Navigator as NavigatorComponent } from "src/components/layout/Navigator";
+// import { ThemeChanger } from "src/components/theme";
 import { styled } from "src/utils";
 
 export const Layout: VFC<{ children: ReactNode }> = (props) => {
 	return (
 		<>
-			<div className="fixed right-0 bottom-3">
+			{/* <div className="fixed right-0 bottom-3">
 				<ThemeChanger />
-			</div>
+			</div> */}
 
-			<Wrap>
-				<Left>
-					<Navigator />
-				</Left>
+			<BodyWrap>
+				<NavigatorWrap>
+					<Navigator>
+						<NavigatorComponent />
+					</Navigator>
+				</NavigatorWrap>
 
-				<Main>{props.children}</Main>
-
-				<Right>これが消えたら@md</Right>
-			</Wrap>
+				<MainWrap>
+					<Main>{props.children}</Main>
+				</MainWrap>
+			</BodyWrap>
 		</>
 	);
 };
 
-const Wrap = styled("div", {
+const BodyWrap = styled("div", {
 	display: "flex",
+	maxHeight: "100vh",
+	minWidth: "100vw",
 });
 
-const Left = styled("div", {
+const NavigatorWrap = styled("div", {
 	flex: 1,
 	display: "flex",
 	justifyContent: "end",
-	minWidth: "70px",
-	paddingTop: "0.25rem",
-	paddingRight: "2rem",
+	overflowY: "auto",
 	borderRight: "1px solid $slate6",
+});
 
-	"@sm": { minWidth: "70px", maxWidth: "150px" },
-	"@md": { minWidth: "70px", maxWidth: "150px" },
-	"@lg": { minWidth: "150px", maxWidth: "150px" },
-	"@xl": { minWidth: "300px" },
+const Navigator = styled("div", {
+	backgroundColor: "#eaf1ff",
+});
+
+const MainWrap = styled("div", {
+	flex: 3,
+	overflowY: "auto",
+	minWidth: "1000px",
 });
 
 const Main = styled("div", {
-	width: "100%",
-	"@md": { minWidth: "600px" },
+	display: "flex",
+	justifyContent: "start",
+	width: "1000px",
+	backgroundColor: "#ffeaea",
 });
-
-const Right = styled("div", {
-	flex: 1,
-	borderLeft: "1px solid $slate6",
-	display: "none",
-	"@md": { display: "block" },
-});
-
-// "@sm": { },
-// "@md": { },
-// "@lg": { },
-// "@xl": { },
