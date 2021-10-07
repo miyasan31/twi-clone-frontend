@@ -42,7 +42,8 @@ const IndexPage: NextPage = () => {
 	// }, []);
 
 	const handleClick = useCallback(() => {
-		alert("click!!");
+		// alert("click!!");
+		console.log("click!!");
 	}, []);
 
 	return (

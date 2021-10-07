@@ -37,13 +37,14 @@ const Wrapper = styled("div", {
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
+	gap: "0.3rem",
 
 	minWidth: "70px",
 	"@sm": {
 		paddingX: "1rem",
 	},
 	"@xl": {
-		minWidth: "260px",
+		minWidth: "280px",
 		alignItems: "start",
 	},
 });

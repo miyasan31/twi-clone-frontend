@@ -42,7 +42,7 @@ const NavigatorWrap = styled("div", {
 		minWidth: "70px",
 	},
 	"@xl": {
-		minWidth: "260px",
+		minWidth: "280px",
 	},
 });
 
