@@ -74,7 +74,6 @@ const MainWrap = styled("div", {
 const Main = styled("div", {
 	display: "flex",
 	justifyContent: "start",
-	borderRight: "1px solid $slate6",
 
 	width: "100",
 

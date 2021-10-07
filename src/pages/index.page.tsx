@@ -21,24 +21,28 @@ import {
 	Text,
 } from "src/components/shared";
 import { ColorChanger, ThemeChanger } from "src/components/theme";
-import { useCreateTweetMutation, useDeleteTweetMutation, useGetAllUserTweetsQuery } from "src/graphql/gql";
+// import { useCreateTweetMutation, useDeleteTweetMutation, useGetAllUserTweetsQuery } from "src/graphql/gql";
 import { styled } from "src/utils";
 
 const IndexPage: NextPage = () => {
-	const { data } = useGetAllUserTweetsQuery();
-	console.info(data);
+	// const { data } = useGetAllUserTweetsQuery();
+	// console.info(data);
 
-	const [createTweet] = useCreateTweetMutation();
-	const [deleteTweet] = useDeleteTweetMutation();
+	// const [createTweet] = useCreateTweetMutation();
+	// const [deleteTweet] = useDeleteTweetMutation();
 
-	const handleClick = useCallback(async () => {
-		const result = await createTweet({ variables: { userId: "miyasan_0301", tweetBody: "フロントから送信" } });
-		console.info(result);
-	}, []);
+	// const handleClick = useCallback(async () => {
+	// 	const result = await createTweet({ variables: { userId: "miyasan_0301", tweetBody: "フロントから送信" } });
+	// 	console.info(result);
+	// }, []);
 
-	const handleDelete = useCallback(async () => {
-		const result = await deleteTweet({ variables: { tweetId: 2 } });
-		console.info(result);
+	// const handleDelete = useCallback(async () => {
+	// 	const result = await deleteTweet({ variables: { tweetId: 2 } });
+	// 	console.info(result);
+	// }, []);
+
+	const handleClick = useCallback(() => {
+		alert("click!!");
 	}, []);
 
 	return (
@@ -76,7 +80,7 @@ const IndexPage: NextPage = () => {
 						<Button color="primary" onClick={handleClick}>
 							追加
 						</Button>
-						<Button color="primary" isOutline onClick={handleDelete}>
+						<Button color="primary" isOutline onClick={handleClick}>
 							削除
 						</Button>
 						<Button color="primary" isGhost onClick={handleClick}>
