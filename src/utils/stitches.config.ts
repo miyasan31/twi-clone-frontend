@@ -8,9 +8,10 @@ import { utils } from "./utils";
 export const { styled, css, globalCss, keyframes, getCssText, createTheme, theme } = createStitches({
 	utils: utils,
 	media: {
-		sm: "(min-width: 600px)",
-		md: "(min-width: 990px)",
-		lg: "(min-width: 1080px)",
+		xs: "(min-width: 600px)",
+		sm: "(min-width: 677px)",
+		md: "(min-width: 987px)",
+		lg: "(min-width: 1077px)",
 		xl: "(min-width: 1260px)",
 	},
 	theme: {
