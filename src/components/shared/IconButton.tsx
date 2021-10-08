@@ -1,24 +1,43 @@
 import type { ReactNode, VFC } from "react";
-import { Flex, Text } from "src/components/shared";
 import { styled } from "src/utils";
 
 type Props = {
 	children?: ReactNode;
 	color: "primary" | "red" | "slate" | "amber" | "green";
 	size?: "lg" | "xl";
-	count?: number;
+	count: string;
+};
+
+const ZeroCheck = (count: string): string | null => {
+	return count === "0" ? null : count;
 };
 
 export const CountLabelIconButton: VFC<Props> = (props) => {
 	return (
-		<Flex items="center" gap={0.25}>
+		<IconButtonWrap>
 			<IconButton color={props.color} size={props.size}>
 				{props.children}
 			</IconButton>
-			<Text faded>{props.count}</Text>
-		</Flex>
+			<CountLabel>{ZeroCheck(props.count)}</CountLabel>
+		</IconButtonWrap>
 	);
 };
+
+const IconButtonWrap = styled("div", {
+	position: "relative",
+
+	display: "flex",
+	alignItems: "center",
+	gap: "0.25rem",
+});
+
+const CountLabel = styled("span", {
+	position: "absolute",
+	right: -5,
+
+	color: "$slate11",
+	fontSize: "0.75rem",
+});
 
 export const IconButton = styled("button", {
 	all: "unset",
