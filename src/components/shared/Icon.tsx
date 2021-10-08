@@ -1,7 +1,7 @@
 import type { VFC } from "react";
 
 type Props = {
-	size: 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50;
+	size: number;
 };
 
 export const AllowLeftIcon: VFC<Props> = (props) => {
