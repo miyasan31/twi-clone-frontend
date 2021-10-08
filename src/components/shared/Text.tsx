@@ -48,6 +48,7 @@ export const StitchesText = styled("div", {
 	padding: 0,
 	color: "$slate12",
 	overflowWrap: "break-word",
+	textDecoration: "none",
 
 	variants: {
 		size: {
@@ -78,7 +79,7 @@ export const StitchesText = styled("div", {
 			true: { fontWeight: 700 },
 		},
 		under: {
-			true: { textDecoration: "underline" },
+			true: { "&:hover": { textDecoration: "underline" } },
 		},
 	},
 

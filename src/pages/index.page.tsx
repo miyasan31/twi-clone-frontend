@@ -132,22 +132,26 @@ const IndexPage: NextPage = () => {
 					</div>
 
 					<Text>ユーザーカード</Text>
-					<HoverUserCard
-						userId="miyasan_0301"
-						userName="みやさん | 学生"
-						profileBody="みやさんです。hogehogehogehogehogehogehogehogehogehogehogehogehogehoge"
-						followingCount="40"
-						followerCount="130"
-						iconPhoto="/myIcon.jpg"
-					>
-						<Image
-							src="/myicon.jpg"
-							alt="Picture of the author"
-							className="rounded-full"
-							width={ICON_PHOTO_SIZE}
-							height={ICON_PHOTO_SIZE}
-						/>
-					</HoverUserCard>
+					<div>
+						<HoverUserCard
+							userId="miyasan_0301"
+							userName="みやさん | 学生"
+							profileBody="みやさんです。hogehogehogehogehogehogehogehogehogehogehogehogehogehoge"
+							followingCount="40"
+							followerCount="130"
+							iconPhoto="/myIcon.jpg"
+						>
+							<NextLink href="/">
+								<Image
+									src="/myicon.jpg"
+									alt="Picture of the author"
+									className="rounded-full"
+									width={ICON_PHOTO_SIZE}
+									height={ICON_PHOTO_SIZE}
+								/>
+							</NextLink>
+						</HoverUserCard>
+					</div>
 
 					<Text>ダイアログ</Text>
 					<Dialog

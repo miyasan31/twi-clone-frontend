@@ -4,7 +4,7 @@ import { styled } from "src/utils";
 type Props = {
 	children: ReactNode;
 	color: "primary" | "red" | "slate";
-	size?: "base" | "lg" | "xl";
+	size?: "base" | "lg";
 	isGhost?: true;
 	isOutline?: true;
 	under?: true;
@@ -32,9 +32,10 @@ export const StitchesButton = styled("button", {
 	alignItems: "center",
 	justifyContent: "center",
 	gap: "0.25rem",
+	width: "fit-content",
 	borderRadius: 99999,
-	fontWeight: 500,
 	cursor: "pointer",
+	fontWeight: 600,
 
 	variants: {
 		under: {
@@ -44,13 +45,6 @@ export const StitchesButton = styled("button", {
 		size: {
 			base: { fontSize: "0.9rem", height: "2rem", paddingX: "1rem" },
 			lg: { fontSize: "1rem", height: "2.5rem", paddingX: "1.75rem" },
-			xl: {
-				fontSize: "1.1rem",
-				fontWeight: "bold",
-				width: "160px",
-				paddingY: "0.8rem",
-				paddingX: "2rem",
-			},
 		},
 
 		isOutline: {

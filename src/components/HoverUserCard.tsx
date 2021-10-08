@@ -23,24 +23,22 @@ export const HoverUserCard: VFC<Props> = (props) => {
 
 	return (
 		<HoverCardPrimitive.Root>
-			<HoverCardPrimitive.Trigger asChild>
-				<ImageTrigger href="#" rel="noreferrer noopener">
-					{props.children}
-				</ImageTrigger>
-			</HoverCardPrimitive.Trigger>
+			<HoverCardPrimitive.Trigger>{props.children}</HoverCardPrimitive.Trigger>
 
 			<HoverCardContent sideOffset={5}>
 				<HoverCardArrow offset={25} />
 
 				<Flex direction="col">
 					<Flex justify="between">
-						<Image
-							src={props.iconPhoto}
-							alt="Picture of the author"
-							className="rounded-full"
-							width={CARD_ICON_PHOTO_SIZE}
-							height={CARD_ICON_PHOTO_SIZE}
-						/>
+						<NextLink href="/">
+							<Image
+								src={props.iconPhoto}
+								alt="Picture of the author"
+								className="rounded-full"
+								width={CARD_ICON_PHOTO_SIZE}
+								height={CARD_ICON_PHOTO_SIZE}
+							/>
+						</NextLink>
 						<Button color="primary" onClick={handleClick}>
 							フォロー
 						</Button>
@@ -48,13 +46,15 @@ export const HoverUserCard: VFC<Props> = (props) => {
 
 					<Flex direction="col" gap={1}>
 						<Text pt={0.5}>
-							<NextLink href="/" under>
-								<Text bold>{props.userName}</Text>
+							<NextLink href="/">
+								<Text bold under>
+									{props.userName}
+								</Text>
+								<Text lineHeight={1} faded>
+									{"@"}
+									{props.userId}
+								</Text>
 							</NextLink>
-							<Text lineHeight={1} faded>
-								{"@"}
-								{props.userId}
-							</Text>
 						</Text>
 
 						<Text>{props.profileBody}</Text>
@@ -81,11 +81,8 @@ export const HoverUserCard: VFC<Props> = (props) => {
 	);
 };
 
-const ImageTrigger = styled("a", {
-	all: "unset",
-	cursor: "pointer",
-	borderRadius: "100%",
-	width: "fit-content",
+export const HoverCardArrow = styled(HoverCardPrimitive.Arrow, {
+	fill: "$slate3",
 });
 
 export const HoverCardContent = styled(HoverCardPrimitive.Content, {
@@ -105,8 +102,4 @@ export const HoverCardContent = styled(HoverCardPrimitive.Content, {
 			'&[data-side="left"]': { animationName: slideRightAndFade },
 		},
 	},
-});
-
-export const HoverCardArrow = styled(HoverCardPrimitive.Arrow, {
-	fill: "$slate2",
 });

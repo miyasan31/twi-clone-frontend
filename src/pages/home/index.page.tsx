@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { MainBody } from "src/components/layout/MainBody";
-import { TweetCard } from "src/components/shared/TweetCard";
+import { TweetCard } from "src/components/TweetCard";
 import { useGetAllUserTweetsQuery } from "src/graphql/gql";
 
 const HomePage: NextPage = () => {
