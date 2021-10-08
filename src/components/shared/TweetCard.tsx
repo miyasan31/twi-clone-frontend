@@ -3,7 +3,6 @@ import type { VFC } from "react";
 import { HoverUserCard } from "src/components/HoverUserCard";
 import { IconGroup } from "src/components/IconGroup";
 import { ICON_PHOTO_SIZE } from "src/constants/icon_photo";
-// import { NextLink } from "src/components/shared";
 import { styled } from "src/utils";
 
 type Props = {
@@ -46,10 +45,17 @@ export const TweetCard: VFC<Props> = (props) => {
 			<TweetContent>
 				<TweetBox>
 					<TweetHead>
-						{/* <NextLink href="/" btn> */}
-						<UserName>{props.user.userName}</UserName>
-						<UserId>{`@${props.user.id}`}</UserId>
-						{/* </NextLink> */}
+						<HoverUserCard
+							userId={props.user.id}
+							userName={props.user.userName}
+							profileBody={props.user.profileBody}
+							iconPhoto="/myicon.jpg"
+							followingCount="40"
+							followerCount="130"
+						>
+							<UserName>{props.user.userName}</UserName>
+							<UserId>{`@${props.user.id}`}</UserId>
+						</HoverUserCard>
 						{" ･ "}
 						<CreatedAt>{`10分`}</CreatedAt>
 					</TweetHead>
