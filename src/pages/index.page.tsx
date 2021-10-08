@@ -1,7 +1,9 @@
 import { MixerHorizontalIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
+import Image from "next/image";
 import { useCallback } from "react";
 import { HoverUserCard } from "src/components/HoverUserCard";
+import { MainBody } from "src/components/layout/MainBody";
 import {
 	AllowLeftIcon,
 	AllowRightIcon,
@@ -21,33 +23,15 @@ import {
 	Text,
 } from "src/components/shared";
 import { ColorChanger, ThemeChanger } from "src/components/theme";
-// import { useCreateTweetMutation, useDeleteTweetMutation, useGetAllUserTweetsQuery } from "src/graphql/gql";
-import { styled } from "src/utils";
+import { ICON_PHOTO_SIZE } from "src/constants/icon_photo";
 
 const IndexPage: NextPage = () => {
-	// const { data } = useGetAllUserTweetsQuery();
-	// console.info(data);
-
-	// const [createTweet] = useCreateTweetMutation();
-	// const [deleteTweet] = useDeleteTweetMutation();
-
-	// const handleClick = useCallback(async () => {
-	// 	const result = await createTweet({ variables: { userId: "miyasan_0301", tweetBody: "フロントから送信" } });
-	// 	console.info(result);
-	// }, []);
-
-	// const handleDelete = useCallback(async () => {
-	// 	const result = await deleteTweet({ variables: { tweetId: 2 } });
-	// 	console.info(result);
-	// }, []);
-
 	const handleClick = useCallback(() => {
-		// alert("click!!");
-		console.log("click!!");
+		console.info("click!!");
 	}, []);
 
 	return (
-		<Wrapper>
+		<MainBody>
 			<div className="flex justify-center items-center py-20">
 				<div className="grid gap-3">
 					<Text>ダークモード変更</Text>
@@ -57,22 +41,22 @@ const IndexPage: NextPage = () => {
 					<ColorChanger />
 
 					<Text>アイコン</Text>
-					<div className="flex gap-2">
-						<CountLabelIconButton color="primary" count={10}>
-							<ReplyIcon size={15} />
+					<div className="flex gap-2 justify-between">
+						<CountLabelIconButton color="primary" count={"1"}>
+							<ReplyIcon size={18} />
 						</CountLabelIconButton>
-						<CountLabelIconButton color="green" count={100}>
-							<RetweetIcon size={15} />
+						<CountLabelIconButton color="green" count={"2"}>
+							<RetweetIcon size={18} />
 						</CountLabelIconButton>
-						<CountLabelIconButton color="amber" count={1000}>
-							<FavoriteIcon size={15} />
+						<CountLabelIconButton color="amber" count={"9"}>
+							<FavoriteIcon size={18} />
 						</CountLabelIconButton>
 
 						<IconButton color="primary">
-							<ShareIcon size={15} />
+							<ShareIcon size={18} />
 						</IconButton>
 						<IconButton color="primary">
-							<DotsIcon size={15} />
+							<DotsIcon size={18} />
 						</IconButton>
 					</div>
 
@@ -151,11 +135,19 @@ const IndexPage: NextPage = () => {
 					<HoverUserCard
 						userId="miyasan_0301"
 						userName="みやさん | 学生"
-						profile="みやさんです。hogehogehogehogehogehogehogehogehogehogehogehogehogehoge"
-						following={40}
-						followers={120}
-						iconPath="https://pbs.twimg.com/profile_images/1410567316421578759/3rtKrTAL_400x400.jpg"
-					/>
+						profileBody="みやさんです。hogehogehogehogehogehogehogehogehogehogehogehogehogehoge"
+						followingCount="40"
+						followerCount="130"
+						iconPhoto="/myIcon.jpg"
+					>
+						<Image
+							src="/myicon.jpg"
+							alt="Picture of the author"
+							className="rounded-full"
+							width={ICON_PHOTO_SIZE}
+							height={ICON_PHOTO_SIZE}
+						/>
+					</HoverUserCard>
 
 					<Text>ダイアログ</Text>
 					<Dialog
@@ -185,7 +177,7 @@ const IndexPage: NextPage = () => {
 					<Text color="red">赤字赤字赤字</Text>
 				</div>
 			</div>
-		</Wrapper>
+		</MainBody>
 	);
 };
 
@@ -203,17 +195,3 @@ const RADIO_OPTIONOS: OptionsProps[] = [
 
 // eslint-disable-next-line import/no-default-export
 export default IndexPage;
-
-const Wrapper = styled("div", {
-	borderRight: "1px solid $slate6",
-	width: "100%",
-	"@xs": {
-		width: "100%",
-	},
-	"@sm": {
-		width: "590px",
-	},
-	"@md": {
-		width: "600px",
-	},
-});

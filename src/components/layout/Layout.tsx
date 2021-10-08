@@ -1,14 +1,14 @@
 import type { ReactNode, VFC } from "react";
 import { Navigator as NavigatorComponent } from "src/components/layout/Navigator";
-// import { ThemeChanger } from "src/components/theme";
+import { ThemeChanger } from "src/components/theme";
 import { styled } from "src/utils";
 
 export const Layout: VFC<{ children: ReactNode }> = (props) => {
 	return (
 		<>
-			{/* <div className="fixed right-0 bottom-3">
+			<div className="fixed right-0 bottom-3">
 				<ThemeChanger />
-			</div> */}
+			</div>
 
 			<BodyWrap>
 				<NavigatorWrap>
@@ -36,6 +36,7 @@ const NavigatorWrap = styled("div", {
 	overflowY: "auto",
 	borderRight: "1px solid $slate6",
 	minWidth: "70px",
+	height: "100vh",
 
 	"@sm": {
 		flex: 1,
@@ -74,8 +75,8 @@ const MainWrap = styled("div", {
 const Main = styled("div", {
 	display: "flex",
 	justifyContent: "start",
-
-	width: "100",
+	width: "100%",
+	height: "100vh",
 
 	"@xs": {
 		width: "100%",
