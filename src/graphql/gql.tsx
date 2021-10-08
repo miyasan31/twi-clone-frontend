@@ -361,7 +361,7 @@ export type CreateTweetMutation = { __typename?: 'Mutation', tweet: { __typename
 export type GetAllUserTweetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllUserTweetsQuery = { __typename?: 'Query', tweets: Array<{ __typename?: 'Tweet', user: { __typename?: 'User', id: string, userName: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> };
+export type GetAllUserTweetsQuery = { __typename?: 'Query', tweets: Array<{ __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> };
 
 export type DeleteTweetMutationVariables = Exact<{
   tweetId: Scalars['Int'];
@@ -946,9 +946,14 @@ export type CreateTweetMutationOptions = Apollo.BaseMutationOptions<CreateTweetM
 export const GetAllUserTweetsDocument = gql`
     query GetAllUserTweets {
   tweets: GetTweets {
+    id
+    userId
+    tweetBody
+    createdAt
     user: GetUserByTweet {
       id
       userName
+      profileBody
       iconPhoto
     }
     retweetCount: GetRetweetCount {
