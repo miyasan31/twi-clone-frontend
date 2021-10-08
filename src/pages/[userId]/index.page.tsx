@@ -1,5 +1,5 @@
 const UserProfilePage = () => {
-	return <div></div>;
+	return <div>user profile page</div>;
 };
 
 // eslint-disable-next-line import/no-default-export

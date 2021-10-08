@@ -1,12 +1,5 @@
 import type { VFC } from "react";
-import {
-	CountLabelIconButton,
-	FavoriteIcon,
-	IconButton,
-	ReplyIcon,
-	RetweetIcon,
-	ShareIcon,
-} from "src/components/shared";
+import { CountLabelIconButton, FavoriteIcon, ReplyIcon, RetweetIcon, ShareIcon } from "src/components/shared";
 import { styled } from "src/utils";
 
 const ICON_SIZE = 18;
@@ -29,9 +22,9 @@ export const IconGroup: VFC<Props> = (props) => {
 			<CountLabelIconButton color="amber" count={props.likeCount}>
 				<FavoriteIcon size={ICON_SIZE} />
 			</CountLabelIconButton>
-			<IconButton color="primary">
+			<CountLabelIconButton color="primary" count="">
 				<ShareIcon size={ICON_SIZE} />
-			</IconButton>
+			</CountLabelIconButton>
 		</IconGroupWrap>
 	);
 };

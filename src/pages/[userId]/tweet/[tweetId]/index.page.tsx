@@ -1,5 +1,5 @@
 const TweetDetailPage = () => {
-	return <div></div>;
+	return <div>tweet page</div>;
 };
 
 // eslint-disable-next-line import/no-default-export

@@ -1,5 +1,5 @@
 const UserFollowerPage = () => {
-	return <div></div>;
+	return <div>use follower page</div>;
 };
 
 // eslint-disable-next-line import/no-default-export
