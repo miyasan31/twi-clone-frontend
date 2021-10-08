@@ -1,12 +1,13 @@
+import { useCallback } from "react";
 import { NextLink } from "src/components/shared";
 import { TwitterIcon } from "src/components/shared/Icon";
 import { NAVIGATOR } from "src/constants/navigator";
 import { styled } from "src/utils";
 
 export const Navigator = () => {
-	const handleClick = () => {
+	const handleClick = useCallback(() => {
 		console.info("aaa");
-	};
+	}, []);
 
 	return (
 		<Wrapper>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { VFC } from "react";
+import { useMemo } from "react";
 import { HoverUserCard } from "src/components/HoverUserCard";
 import { IconGroup } from "src/components/IconGroup";
 import { NextLink } from "src/components/shared";
@@ -23,6 +24,10 @@ type Props = {
 };
 
 export const TweetCard: VFC<Props> = (props) => {
+	const href = useMemo(() => {
+		return `/${props.userId}`;
+	}, [props.userId]);
+
 	return (
 		<TweetWrap>
 			<IconPhotoWrap>
@@ -34,7 +39,7 @@ export const TweetCard: VFC<Props> = (props) => {
 					followingCount="40"
 					followerCount="130"
 				>
-					<NextLink href="/">
+					<NextLink href={href}>
 						<Image
 							src="/myicon.jpg"
 							alt="Picture of the author"
@@ -57,10 +62,8 @@ export const TweetCard: VFC<Props> = (props) => {
 							followingCount="40"
 							followerCount="130"
 						>
-							<NextLink href="/">
-								<UserName>{props.user.userName}</UserName>
-								<UserId>{`@${props.user.id}`}</UserId>
-							</NextLink>
+							<UserName>{props.user.userName}</UserName>
+							<UserId>{`@${props.user.id}`}</UserId>
 						</HoverUserCard>
 
 						<Dot>{"･"}</Dot>

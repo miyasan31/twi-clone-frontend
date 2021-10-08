@@ -1,4 +1,5 @@
 import type { ReactNode, VFC } from "react";
+import { useMemo } from "react";
 import { styled } from "src/utils";
 
 type Props = {
@@ -16,11 +17,11 @@ type Props = {
 };
 
 export const Text: VFC<Props> = (props) => {
-	const pt: string = props.pt + "rem";
-	const py: string = props.py + "rem";
-	const pb: string = props.pb + "rem";
-	const fontSize: string = props.fontSize + "rem";
-	const lineHeight: string = props.lineHeight + "rem";
+	const pt: string = useMemo(() => props.pt + "rem", []);
+	const py: string = useMemo(() => props.py + "rem", []);
+	const pb: string = useMemo(() => props.pb + "rem", []);
+	const fontSize: string = useMemo(() => props.fontSize + "rem", []);
+	const lineHeight: string = useMemo(() => props.lineHeight + "rem", []);
 
 	return (
 		<StitchesText

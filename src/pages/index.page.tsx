@@ -1,7 +1,6 @@
 import { MixerHorizontalIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
 import Image from "next/image";
-import { useCallback } from "react";
 import { HoverUserCard } from "src/components/HoverUserCard";
 import { MainBody } from "src/components/layout/MainBody";
 import {
@@ -25,11 +24,11 @@ import {
 import { ColorChanger, ThemeChanger } from "src/components/theme";
 import { ICON_PHOTO_SIZE } from "src/constants/icon_photo";
 
-const IndexPage: NextPage = () => {
-	const handleClick = useCallback(() => {
-		console.info("click!!");
-	}, []);
+const handleClick = () => {
+	console.info("click!!");
+};
 
+const IndexPage: NextPage = () => {
 	return (
 		<MainBody>
 			<div className="flex justify-center items-center py-20">

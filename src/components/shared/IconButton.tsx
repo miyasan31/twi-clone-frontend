@@ -1,4 +1,5 @@
-import type { ReactNode, VFC } from "react";
+import type { MouseEvent, ReactNode, VFC } from "react";
+import { useCallback } from "react";
 import { styled } from "src/utils";
 
 type Props = {
@@ -13,9 +14,13 @@ const ZeroCheck = (count: string): string | null => {
 };
 
 export const CountLabelIconButton: VFC<Props> = (props) => {
+	const handleClickDisabled = useCallback((e: MouseEvent) => {
+		e.preventDefault();
+	}, []);
+
 	return (
 		<IconButtonWrap>
-			<IconButton color={props.color} size={props.size}>
+			<IconButton color={props.color} size={props.size} onClick={(e) => handleClickDisabled(e)}>
 				{props.children}
 			</IconButton>
 			<CountLabel>{ZeroCheck(props.count)}</CountLabel>
@@ -25,7 +30,6 @@ export const CountLabelIconButton: VFC<Props> = (props) => {
 
 const IconButtonWrap = styled("div", {
 	position: "relative",
-
 	display: "flex",
 	alignItems: "center",
 	gap: "0.25rem",
