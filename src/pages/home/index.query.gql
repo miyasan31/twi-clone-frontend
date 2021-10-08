@@ -26,9 +26,14 @@
 
 query GetAllUserTweets {
 	tweets: GetTweets {
+		id
+		userId
+		tweetBody
+		createdAt
 		user: GetUserByTweet {
 			id
 			userName
+			profileBody
 			iconPhoto
 		}
 		retweetCount: GetRetweetCount {
