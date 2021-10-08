@@ -1,16 +1,19 @@
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
-import type { VFC } from "react";
-import { Button, CircleImg, Flex, NextLink, Text } from "src/components/shared";
+import Image from "next/image";
+import type { ReactNode, VFC } from "react";
+import { Button, Flex, NextLink, Text } from "src/components/shared";
 import { slideDownAndFade, slideLeftAndFade, slideRightAndFade, slideUpAndFade } from "src/components/shared/animation";
+import { CARD_ICON_PHOTO_SIZE } from "src/constants/icon_photo";
 import { styled } from "src/utils";
 
 type Props = {
+	children: ReactNode;
 	userId: string;
 	userName: string;
-	profile: string;
-	following: number;
-	followers: number;
-	iconPath: string;
+	profileBody: string;
+	iconPhoto: string;
+	followingCount: string;
+	followerCount: string;
 };
 
 export const HoverUserCard: VFC<Props> = (props) => {
@@ -21,7 +24,7 @@ export const HoverUserCard: VFC<Props> = (props) => {
 	return (
 		<HoverCardPrimitive.Root>
 			<HoverCardPrimitive.Trigger as={ImageTrigger} href="#" rel="noreferrer noopener">
-				<CircleImg src={props.iconPath} />
+				{props.children}
 			</HoverCardPrimitive.Trigger>
 
 			<HoverCardContent sideOffset={5}>
@@ -29,36 +32,42 @@ export const HoverUserCard: VFC<Props> = (props) => {
 
 				<Flex direction="col">
 					<Flex justify="between">
-						<CircleImg size="lg" src={props.iconPath} />
+						<Image
+							src={props.iconPhoto}
+							alt="Picture of the author"
+							className="rounded-full"
+							width={CARD_ICON_PHOTO_SIZE}
+							height={CARD_ICON_PHOTO_SIZE}
+						/>
 						<Button color="primary" onClick={handleClick}>
-							Following
+							フォロー
 						</Button>
 					</Flex>
 
 					<Flex direction="col" gap={1}>
 						<Text pt={0.5}>
-							<Text bold>{props.userName}</Text>
 							<NextLink href="/" under>
-								<Text faded>
-									{"@"}
-									{props.userId}
-								</Text>
+								<Text bold>{props.userName}</Text>
 							</NextLink>
+							<Text lineHeight={1} faded>
+								{"@"}
+								{props.userId}
+							</Text>
 						</Text>
 
-						<Text>{props.profile}</Text>
+						<Text>{props.profileBody}</Text>
 
 						<Flex gap={1}>
 							<NextLink href="/" under>
 								<Flex>
-									<Text bold>{props.following}</Text>
+									<Text bold>{props.followingCount}</Text>
 									<Text faded>&nbsp;Following</Text>
 								</Flex>
 							</NextLink>
 
 							<NextLink href="/" under>
 								<Flex>
-									<Text bold>{props.followers}</Text>
+									<Text bold>{props.followerCount}</Text>
 									<Text faded>&nbsp;Followers</Text>
 								</Flex>
 							</NextLink>
@@ -69,6 +78,13 @@ export const HoverUserCard: VFC<Props> = (props) => {
 		</HoverCardPrimitive.Root>
 	);
 };
+
+const ImageTrigger = styled("a", {
+	all: "unset",
+	cursor: "pointer",
+	borderRadius: "100%",
+	width: "fit-content",
+});
 
 export const HoverCardContent = styled(HoverCardPrimitive.Content, {
 	width: 300,
@@ -91,14 +107,4 @@ export const HoverCardContent = styled(HoverCardPrimitive.Content, {
 
 export const HoverCardArrow = styled(HoverCardPrimitive.Arrow, {
 	fill: "$slate2",
-});
-
-const ImageTrigger = styled("a", {
-	all: "unset",
-	cursor: "pointer",
-	borderRadius: "100%",
-	width: "fit-content",
-	backgroundColor: "red",
-	display: "inline-block",
-	"&:focus": { boxShadow: `0 0 0 2px white` },
 });

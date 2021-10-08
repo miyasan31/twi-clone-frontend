@@ -11,12 +11,16 @@ type Props = {
 	pt?: number;
 	py?: number;
 	pb?: number;
+	fontSize?: number;
+	lineHeight?: number;
 };
 
 export const Text: VFC<Props> = (props) => {
 	const pt: string = props.pt + "rem";
 	const py: string = props.py + "rem";
 	const pb: string = props.pb + "rem";
+	const fontSize: string = props.fontSize + "rem";
+	const lineHeight: string = props.lineHeight + "rem";
 
 	return (
 		<StitchesText
@@ -24,13 +28,14 @@ export const Text: VFC<Props> = (props) => {
 			faded={props.faded}
 			under={props.under}
 			color={props.color}
+			size={props.size}
 			css={{
 				paddingTop: pt,
 				paddingY: py,
 				paddingBottom: pb,
 
-				fontSize: "$" + props.size,
-				lineHeight: "$" + props.size,
+				fontSize: fontSize,
+				lineHeight: lineHeight,
 			}}
 		>
 			{props.children}
@@ -45,21 +50,21 @@ export const StitchesText = styled("div", {
 	overflowWrap: "break-word",
 
 	variants: {
-		// size: {
-		// 	xs: { fontSize: "$xs" },
-		// 	sm: { fontSize: "$sm" },
-		// 	base: { fontSize: "$base" },
-		// 	lg: { fontSize: "$lg" },
-		// 	xl: { fontSize: "$xl" },
-		// 	x2l: { fontSize: "$x2l" },
-		// 	x3l: { fontSize: "$x3l" },
-		// 	x4l: { fontSize: "$x4l" },
-		// 	x5l: { fontSize: "$x5l" },
-		// 	x6l: { fontSize: "$x6l" },
-		// 	x7l: { fontSize: "$x7l" },
-		// 	x8l: { fontSize: "$x8l" },
-		// 	x9l: { fontSize: "$x9l" },
-		// },
+		size: {
+			xs: { fontSize: "$xs" },
+			sm: { fontSize: "$sm" },
+			base: { fontSize: "$base" },
+			lg: { fontSize: "$lg" },
+			xl: { fontSize: "$xl" },
+			x2l: { fontSize: "$x2l" },
+			x3l: { fontSize: "$x3l" },
+			x4l: { fontSize: "$x4l" },
+			x5l: { fontSize: "$x5l" },
+			x6l: { fontSize: "$x6l" },
+			x7l: { fontSize: "$x7l" },
+			x8l: { fontSize: "$x8l" },
+			x9l: { fontSize: "$x9l" },
+		},
 
 		color: {
 			blue: { color: "$blue9" },
