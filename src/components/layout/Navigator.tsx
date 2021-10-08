@@ -21,14 +21,12 @@ export const Navigator = () => {
 				);
 			})}
 
-			<div className="pt-2">
-				<TweetButton onClick={handleClick}>
-					<TweetLabel>
-						<TwitterIcon size={35} />
-					</TweetLabel>
-					<Label>ツイートする</Label>
-				</TweetButton>
-			</div>
+			<TweetButton onClick={handleClick}>
+				<TweetLabel>
+					<TwitterIcon size={35} />
+				</TweetLabel>
+				<Label>ツイートする</Label>
+			</TweetButton>
 		</Wrapper>
 	);
 };
@@ -63,6 +61,7 @@ const NavigatorButton = styled("button", {
 });
 
 const TweetButton = styled("button", {
+	marginTop: "1rem",
 	padding: "0.5rem",
 	color: "white",
 	backgroundColor: "$primary9",
@@ -74,7 +73,7 @@ const TweetButton = styled("button", {
 	"@xl": {
 		display: "block",
 		paddingY: "0.75rem",
-		paddingX: "3rem",
+		paddingX: "3.75rem",
 		fontSize: "1.2rem",
 		fontWeight: "bold",
 	},
@@ -89,9 +88,7 @@ const TweetLabel = styled("span", {
 });
 
 const Label = styled("span", {
-	paddingRight: "0.75rem",
 	display: "none",
-
 	"@xl": {
 		display: "block",
 	},
