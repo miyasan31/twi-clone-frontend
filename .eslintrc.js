@@ -58,7 +58,8 @@ module.exports = {
 			"expression",
 		],
 		// アロー関数内に{}を矯正する（省略させない）
-		"arrow-body-style": ["error", "always"],
+		// "arrow-body-style": ["error", "always"], 省略したい！！！
+
 		"no-restricted-imports": ["error", { paths: [{ name: "react", importNames: ["default"] }] }],
 
 		// reactのドキュメント

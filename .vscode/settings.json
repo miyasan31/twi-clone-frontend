@@ -13,5 +13,7 @@
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"prettier.printWidth": 120,
 	"explorer.sortOrderLexicographicOptions": "unicode",
-	"explorer.sortOrder": "type"
+	"explorer.sortOrder": "type",
+
+	"eslint.validate": ["json", "javascript", "javascriptreact", "typescript", "typescriptreact"]
 }
