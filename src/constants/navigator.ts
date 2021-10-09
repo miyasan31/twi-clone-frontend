@@ -1,5 +1,4 @@
 export const NAVIGATOR = [
-	{ href: "/home", label: "" },
 	{ href: "/home", label: "ホーム" },
 	{ href: "/home", label: "話題を検索" },
 	{ href: "/home", label: "通知" },
