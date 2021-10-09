@@ -4,11 +4,11 @@ import { useMemo } from "react";
 import { HoverUserCard } from "src/components/HoverUserCard";
 import { IconGroup } from "src/components/IconGroup";
 import { NextLink } from "src/components/shared";
-import { Tooltip } from "src/components/ToolTip";
-import { ICON_PHOTO_SIZE } from "src/constants/icon_photo";
+import { Tooltip } from "src/components/Tooltip";
+import { ICON_PHOTO_SIZE } from "src/constants/icon";
 import { styled } from "src/utils";
 
-type Props = {
+export type TweetCardProps = {
 	id: number;
 	userId: string;
 	tweetBody: string;
@@ -23,7 +23,7 @@ type Props = {
 	likeCount: { count: string };
 };
 
-export const TweetCard: VFC<Props> = (props) => {
+export const TweetCard: VFC<TweetCardProps> = (props) => {
 	const href = useMemo(() => {
 		return `/${props.userId}`;
 	}, [props.userId]);
@@ -49,61 +49,82 @@ export const TweetCard: VFC<Props> = (props) => {
 						/>
 					</NextLink>
 				</HoverUserCard>
+
+				<ConnectingBarWrap>
+					<ConnectingBar></ConnectingBar>
+				</ConnectingBarWrap>
 			</IconPhotoWrap>
 
-			<TweetContent>
-				<TweetBox>
-					<TweetHead>
-						<HoverUserCard
-							userId={props.user.id}
-							userName={props.user.userName}
-							profileBody={props.user.profileBody}
-							iconPhoto="/myicon.jpg"
-							followingCount="40"
-							followerCount="130"
-						>
+			<TweetInfoWrap>
+				<UserInfoWrap>
+					<HoverUserCard
+						userId={props.user.id}
+						userName={props.user.userName}
+						profileBody={props.user.profileBody}
+						iconPhoto="/myicon.jpg"
+						followingCount="40"
+						followerCount="130"
+					>
+						<NextLink href={href}>
 							<UserName>{props.user.userName}</UserName>
-							<UserId>{`@${props.user.id}`}</UserId>
-						</HoverUserCard>
+							<UserId>{`@${props.user.id}`}</UserId>{" "}
+						</NextLink>
+					</HoverUserCard>
+					<Dot>{"･"}</Dot>
+					<Tooltip>
+						<CreatedAt>10分</CreatedAt>
+					</Tooltip>
+				</UserInfoWrap>
 
-						<Dot>{"･"}</Dot>
-
-						<Tooltip>
-							<CreatedAt>10分</CreatedAt>
-						</Tooltip>
-					</TweetHead>
-
-					<TweetBody>{props.tweetBody}</TweetBody>
-				</TweetBox>
+				<TweetBody>{props.tweetBody}</TweetBody>
 
 				<IconGroup
 					retweetCount={props.retweetCount.count}
 					likeCount={props.likeCount.count}
 					commentCount={props.commentCount.count}
 				/>
-			</TweetContent>
+			</TweetInfoWrap>
 		</TweetWrap>
 	);
 };
 
 const TweetWrap = styled("div", {
 	display: "flex",
-	paddingX: "1.25rem",
+	gap: "0.5rem",
+	paddingX: "1rem",
 	paddingTop: "0.75rem",
 	width: "100%",
-	border: "1px solid $slate6",
+	borderBottom: "1px solid $slate6",
 	"&:hover": { backgroundColor: "$slate3" },
 });
 
-const TweetContent = styled("div", {
+const IconPhotoWrap = styled("div", {
+	minWidth: "fit-content",
+});
+
+const ConnectingBarWrap = styled("div", {
+	position: "relative",
+	display: "flex",
+	justifyContent: "center",
+});
+
+const ConnectingBar = styled("div", {
+	position: "absolute",
+	top: 0,
+	height: 45,
+	borderLeft: "2px solid $slate9",
+});
+
+const TweetInfoWrap = styled("div", {
 	display: "flex",
 	flexDirection: "column",
 	paddingLeft: "0.25rem",
 	width: "100%",
 });
 
-const TweetBox = styled("div", {
-	paddingLeft: "0.5rem",
+const UserInfoWrap = styled("div", {
+	display: "flex",
+	color: "$slate10",
 });
 
 const UserName = styled("span", {
@@ -117,15 +138,12 @@ const UserId = styled("span", {
 	textDecoration: "none",
 });
 
+const Dot = styled("span", {
+	paddingX: "0.25rem",
+});
+
 const CreatedAt = styled("span", {
 	"&:hover": { textDecoration: "underline" },
 });
 
-const TweetHead = styled("div", {
-	color: "$slate10",
-});
-const Dot = styled("span", {
-	paddingX: "0.25rem",
-});
-const IconPhotoWrap = styled("div", {});
 const TweetBody = styled("div", {});
