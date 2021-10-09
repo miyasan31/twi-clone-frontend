@@ -58,6 +58,7 @@ const Wrapper = styled("div", {
 const NavigatorButton = styled("button", {
 	display: "inline-flex",
 	alignItems: "center",
+	gap: "1.25rem",
 
 	width: "fit-content",
 	padding: "0.75rem",
@@ -70,14 +71,12 @@ const NavigatorButton = styled("button", {
 
 const NavigatorButtonWrap = styled("div", {
 	"&:hover": {
-		[`& ${NavigatorButton}`]: {
-			backgroundColor: "$slate5",
-		},
+		[`& ${NavigatorButton}`]: { backgroundColor: "$slate5" },
 	},
 });
 
 const Label = styled("span", {
-	paddingX: "1.25rem",
+	paddingRight: "0.75rem",
 
 	display: "none",
 	"@xl": { display: "block" },
