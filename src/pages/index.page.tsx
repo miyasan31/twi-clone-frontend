@@ -22,7 +22,7 @@ import {
 	Text,
 } from "src/components/shared";
 import { ColorChanger, ThemeChanger } from "src/components/theme";
-import { ICON_PHOTO_SIZE } from "src/constants/icon_photo";
+import { BUTTON_ICON_SIZE, ICON_PHOTO_SIZE } from "src/constants/icon";
 
 const handleClick = () => {
 	console.info("click!!");
@@ -100,15 +100,15 @@ const IndexPage: NextPage = () => {
 					<Text>アイコン付き</Text>
 					<div className="flex gap-2">
 						<Button color="primary" onClick={handleClick}>
-							<AllowLeftIcon size={15} />
+							<AllowLeftIcon size={BUTTON_ICON_SIZE} />
 							Back
 						</Button>
 						<Button color="primary" isOutline onClick={handleClick}>
 							Next
-							<AllowRightIcon size={15} />
+							<AllowRightIcon size={BUTTON_ICON_SIZE} />
 						</Button>
 						<Button color="primary" isGhost onClick={handleClick}>
-							<CloseIcon size={15} />
+							<CloseIcon size={BUTTON_ICON_SIZE} />
 							Close
 						</Button>
 					</div>
