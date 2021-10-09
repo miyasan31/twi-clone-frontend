@@ -5,15 +5,16 @@ import { styled } from "src/utils";
 const ICON_SIZE = 18;
 
 type Props = {
-	retweetCount: string;
-	likeCount: string;
-	commentCount: string;
+	retweetCount?: string;
+	likeCount?: string;
+	commentCount?: string;
+	detail?: true;
 };
 
 export const IconGroup: VFC<Props> = (props) => {
 	return (
-		<IconGroupWrap>
-			<CountLabelIconButton color="primary" count={props.commentCount}>
+		<IconGroupWrap detail={props.detail}>
+			<CountLabelIconButton color="blue" count={props.commentCount}>
 				<ReplyIcon size={ICON_SIZE} />
 			</CountLabelIconButton>
 			<CountLabelIconButton color="green" count={props.retweetCount}>
@@ -22,7 +23,7 @@ export const IconGroup: VFC<Props> = (props) => {
 			<CountLabelIconButton color="amber" count={props.likeCount}>
 				<FavoriteIcon size={ICON_SIZE} />
 			</CountLabelIconButton>
-			<CountLabelIconButton color="primary" count="">
+			<CountLabelIconButton color="blue" count="">
 				<ShareIcon size={ICON_SIZE} />
 			</CountLabelIconButton>
 		</IconGroupWrap>
@@ -32,8 +33,16 @@ export const IconGroup: VFC<Props> = (props) => {
 const IconGroupWrap = styled("div", {
 	display: "flex",
 	justifyContent: "space-between",
+
 	paddingY: "0.25rem",
-	"@sm": {
-		width: "430px",
+	"@sm": { width: "430px" },
+
+	variants: {
+		detail: {
+			true: {
+				justifyContent: "space-around",
+				width: "100%",
+			},
+		},
 	},
 });

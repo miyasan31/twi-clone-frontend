@@ -61,8 +61,4 @@ export const Anker = styled("a", {
 			},
 		},
 	},
-
-	defaultVariants: {
-		display: "inline",
-	},
 });

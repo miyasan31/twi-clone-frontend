@@ -34,7 +34,6 @@ const NavigatorWrap = styled("div", {
 	display: "flex",
 	justifyContent: "end",
 	overflowY: "auto",
-	borderRight: "1px solid $slate6",
 	minWidth: "70px",
 	height: "100vh",
 
@@ -49,6 +48,7 @@ const NavigatorWrap = styled("div", {
 
 const MainWrap = styled("div", {
 	overflowY: "auto",
+
 	width: "100%",
 	flex: 1,
 	"@xs": {
@@ -76,10 +76,12 @@ const Main = styled("div", {
 	display: "flex",
 	justifyContent: "start",
 	width: "100%",
-	height: "100vh",
+	minHeight: "100vh",
+	borderLeft: "1px solid $slate6",
 
 	"@xs": {
 		width: "100%",
+		borderRight: "1px solid $slate6",
 	},
 	"@sm": {
 		width: "590px",

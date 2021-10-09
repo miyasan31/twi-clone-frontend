@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const Flex: VFC<Props> = (props) => {
-	const gap: string = useMemo(() => props.gap + "rem", []);
+	const gap: string = useMemo(() => props.gap + "rem", [props]);
 
 	return (
 		<StitchesFlex direction={props.direction} justify={props.justify} items={props.items} css={{ gap }}>

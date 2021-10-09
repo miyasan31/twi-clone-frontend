@@ -4,7 +4,7 @@ import type { MouseEvent, ReactNode, VFC } from "react";
 import { useCallback, useMemo } from "react";
 import { Button, Flex, NextLink, Text } from "src/components/shared";
 import { slideDownAndFade, slideLeftAndFade, slideRightAndFade, slideUpAndFade } from "src/components/shared/animation";
-import { CARD_ICON_PHOTO_SIZE } from "src/constants/icon_photo";
+import { CARD_ICON_PHOTO_SIZE } from "src/constants/icon";
 import { styled } from "src/utils";
 
 type Props = {
@@ -37,9 +37,7 @@ export const HoverUserCard: VFC<Props> = (props) => {
 
 	return (
 		<HoverCardPrimitive.Root>
-			<HoverCardPrimitive.Trigger>
-				<NextLink href={profileHref}>{props.children}</NextLink>
-			</HoverCardPrimitive.Trigger>
+			<HoverCardPrimitive.Trigger>{props.children}</HoverCardPrimitive.Trigger>
 
 			<HoverCardContent sideOffset={5} onClick={(e) => handleClickDisabled(e)}>
 				<HoverCardArrow offset={25} />
@@ -101,7 +99,7 @@ export const HoverUserCard: VFC<Props> = (props) => {
 };
 
 const FollowCount = styled("span", {
-	color: "$slate11",
+	color: "$slate10",
 	fontSize: "0.85rem",
 });
 

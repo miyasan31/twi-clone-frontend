@@ -6,7 +6,7 @@ import { styled } from "src/utils";
 export const Navigator = () => {
 	return (
 		<Wrapper>
-			<NextLink href="/home">
+			<NextLink href="/">
 				<NavigatorButtonWrap>
 					<NavigatorButton>
 						<TwitterIcon size={30} />
