@@ -37,6 +37,9 @@ const NavigatorWrap = styled("div", {
 	"@xl": {
 		minWidth: "280px",
 	},
+	"@xxl": {
+		flex: 1,
+	},
 });
 
 const MainWrap = styled("div", {
@@ -62,6 +65,9 @@ const MainWrap = styled("div", {
 	"@xl": {
 		flex: 3,
 		minWidth: "1000px",
+	},
+	"@xxl": {
+		flex: 2.2,
 	},
 });
 
