@@ -8,6 +8,8 @@ import {
 	slateDark,
 	slateDarkA,
 	violetDark,
+	yellow,
+	yellowDark,
 } from "@radix-ui/colors";
 import { createTheme } from "src/utils";
 
@@ -25,6 +27,8 @@ export const darkViolet = createTheme("dark_violet", {
 		...slateDark,
 		...slateDarkA,
 		...violetDark,
+		...yellow,
+		...yellowDark,
 		primary1: "$violet1",
 		primary2: "$violet2",
 		primary3: "$violet3",

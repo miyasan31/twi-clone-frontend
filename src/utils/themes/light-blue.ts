@@ -1,4 +1,4 @@
-import { amber, blue, crimson, green, orange, red, slate, slateA, violet } from "@radix-ui/colors";
+import { amber, blue, crimson, green, orange, red, slate, slateA, violet, yellow } from "@radix-ui/colors";
 import { createTheme } from "src/utils";
 
 /**
@@ -15,6 +15,7 @@ export const lightBlue = createTheme("light_blue", {
 		...slate,
 		...slateA,
 		...violet,
+		...yellow,
 		primary1: "$blue1",
 		primary2: "$blue2",
 		primary3: "$blue3",
