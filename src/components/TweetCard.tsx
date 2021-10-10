@@ -50,9 +50,9 @@ export const TweetCard: VFC<TweetCardProps> = (props) => {
 					</NextLink>
 				</HoverUserCard>
 
-				<ConnectingBarWrap>
+				{/* <ConnectingBarWrap>
 					<ConnectingBar></ConnectingBar>
-				</ConnectingBarWrap>
+				</ConnectingBarWrap> */}
 			</IconPhotoWrap>
 
 			<TweetInfoWrap>
@@ -102,18 +102,18 @@ const IconPhotoWrap = styled("div", {
 	minWidth: "fit-content",
 });
 
-const ConnectingBarWrap = styled("div", {
-	position: "relative",
-	display: "flex",
-	justifyContent: "center",
-});
+// const ConnectingBarWrap = styled("div", {
+// 	position: "relative",
+// 	display: "flex",
+// 	justifyContent: "center",
+// });
 
-const ConnectingBar = styled("div", {
-	position: "absolute",
-	top: 0,
-	height: 45,
-	borderLeft: "2px solid $slate9",
-});
+// const ConnectingBar = styled("div", {
+// 	position: "absolute",
+// 	top: 0,
+// 	height: 45,
+// 	borderLeft: "2px solid $slate9",
+// });
 
 const TweetInfoWrap = styled("div", {
 	display: "flex",
