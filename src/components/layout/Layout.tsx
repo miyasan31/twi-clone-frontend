@@ -1,25 +1,18 @@
 import type { ReactNode, VFC } from "react";
 import { Navigator as NavigatorComponent } from "src/components/layout/Navigator";
-import { ThemeChanger } from "src/components/theme";
 import { styled } from "src/utils";
 
 export const Layout: VFC<{ children: ReactNode }> = (props) => {
 	return (
-		<>
-			<div className="fixed right-0 bottom-3">
-				<ThemeChanger />
-			</div>
+		<BodyWrap>
+			<NavigatorWrap>
+				<NavigatorComponent />
+			</NavigatorWrap>
 
-			<BodyWrap>
-				<NavigatorWrap>
-					<NavigatorComponent />
-				</NavigatorWrap>
-
-				<MainWrap>
-					<Main>{props.children}</Main>
-				</MainWrap>
-			</BodyWrap>
-		</>
+			<MainWrap>
+				<Main>{props.children}</Main>
+			</MainWrap>
+		</BodyWrap>
 	);
 };
 
