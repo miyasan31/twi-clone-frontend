@@ -91,6 +91,10 @@ const TweetButton = styled("button", {
 	borderRadius: 99999,
 	cursor: "pointer",
 
+	"&:hover": {
+		backgroundColor: "$primary10",
+	},
+
 	"@xl": {
 		display: "block",
 

@@ -57,7 +57,7 @@ export const StitchesButton = styled("button", {
 
 		size: {
 			base: { fontSize: "0.9rem", height: "2.25rem", paddingX: "1rem" },
-			lg: { fontSize: "1rem", height: "2.5rem", paddingX: "1.75rem" },
+			lg: { fontSize: "1rem", height: "2.5rem", paddingX: "1.75rem", width: "inherit" },
 		},
 
 		isOutline: {
@@ -106,17 +106,17 @@ export const StitchesButton = styled("button", {
 			primary: {
 				color: "white",
 				backgroundColor: "$primary9",
-				"&:hover": { backgroundColor: "$primary11" },
+				"&:hover": { backgroundColor: "$primary10" },
 			},
 			red: {
 				color: "white",
 				backgroundColor: "$red9",
-				"&:hover": { backgroundColor: "$red11" },
+				"&:hover": { backgroundColor: "$red10" },
 			},
 			slate: {
 				color: "white",
 				backgroundColor: "$slate9",
-				"&:hover": { backgroundColor: "$slate11" },
+				"&:hover": { backgroundColor: "$slate10" },
 			},
 		},
 	},
