@@ -3,6 +3,7 @@ import { MainBody } from "src/components/layout/MainBody";
 import { TopContentTitle } from "src/components/layout/TopContentTitle";
 import { NextLink } from "src/components/shared";
 import { TweetCard } from "src/components/TweetCard";
+import { TweetFrom } from "src/components/TweetFrom";
 import { useGetAllUserTweetsQuery } from "src/graphql/gql";
 import { styled } from "src/utils";
 
@@ -21,8 +22,10 @@ const HomePage: NextPage = () => {
 			<TopContentTitle title="ホーム" />
 
 			<TweetDetailCardWrap>
+				<TweetFrom userId={"miyahara"} />
+
 				{data
-					? data?.tweets.map((tweet) => {
+					? data.tweets.map((tweet) => {
 							const href = `/${tweet.userId}/tweet/${tweet.id}`;
 							return (
 								<NextLink key={tweet.id} href={href}>
@@ -40,5 +43,5 @@ const HomePage: NextPage = () => {
 export default HomePage;
 
 const TweetDetailCardWrap = styled("div", {
-	paddingTop: "3.25rem",
+	marginTop: "3.25rem",
 });
