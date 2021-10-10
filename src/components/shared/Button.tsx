@@ -2,9 +2,11 @@ import type { MouseEventHandler, ReactNode, VFC } from "react";
 import { styled } from "src/utils";
 
 type Props = {
+	type?: "submit" | "button";
 	children: ReactNode;
 	color: "primary" | "red" | "slate";
 	size?: "base" | "lg";
+	disabled?: boolean;
 	isGhost?: true;
 	isOutline?: true;
 	under?: true;
@@ -14,8 +16,11 @@ type Props = {
 export const Button: VFC<Props> = (props) => {
 	return (
 		<StitchesButton
+			type={props.type}
 			color={props.color}
 			size={props.size}
+			disabled={props.disabled}
+			isDisabled={props.disabled}
 			isGhost={props.isGhost && props.color}
 			isOutline={props.isOutline && props.color}
 			under={props.under}
@@ -38,12 +43,20 @@ export const StitchesButton = styled("button", {
 	fontWeight: 600,
 
 	variants: {
+		isDisabled: {
+			true: {
+				cursor: "not-allowed",
+				opacity: 0.5,
+				"&:hover": { backgroundColor: "$primary9" },
+			},
+		},
+
 		under: {
 			true: { "&:hover": { textDecoration: "underline" } },
 		},
 
 		size: {
-			base: { fontSize: "0.9rem", height: "2rem", paddingX: "1rem" },
+			base: { fontSize: "0.9rem", height: "2.25rem", paddingX: "1rem" },
 			lg: { fontSize: "1rem", height: "2.5rem", paddingX: "1.75rem" },
 		},
 
