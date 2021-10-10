@@ -1,12 +1,12 @@
-import type { MouseEvent, ReactNode, VFC } from "react";
-import { useCallback } from "react";
+import type { MouseEventHandler, ReactNode, VFC } from "react";
 import { styled } from "src/utils";
 
 type Props = {
 	children?: ReactNode;
-	color: "primary" | "blue" | "red" | "slate" | "amber" | "green";
+	color: "primary" | "blue" | "red" | "slate" | "amber" | "yellow" | "green";
 	size?: "lg" | "xl";
 	count?: string;
+	onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
 const ZeroCheck = (count: string | undefined): string | null => {
@@ -15,37 +15,24 @@ const ZeroCheck = (count: string | undefined): string | null => {
 };
 
 export const CountLabelIconButton: VFC<Props> = (props) => {
-	const handleClickDisabled = useCallback((e: MouseEvent) => {
-		e.preventDefault();
-	}, []);
-
 	return (
-		<IconButtonWrap>
-			<IconButton color={props.color} size={props.size} onClick={(e) => handleClickDisabled(e)}>
-				{props.children}
-			</IconButton>
+		<IconButton color={props.color} size={props.size} onClick={props.onClick}>
+			{props.children}
 			<CountLabel>{ZeroCheck(props.count)}</CountLabel>
-		</IconButtonWrap>
+		</IconButton>
 	);
 };
 
-const IconButtonWrap = styled("div", {
-	position: "relative",
-	display: "flex",
-	alignItems: "center",
-	gap: "0.25rem",
-});
-
 const CountLabel = styled("span", {
 	position: "absolute",
-	right: -5,
-
+	left: 40,
 	color: "$slate11",
 	fontSize: "0.75rem",
 });
 
 export const IconButton = styled("button", {
 	all: "unset",
+	position: "relative",
 	display: "inline-flex",
 	alignItems: "center",
 	justifyContent: "center",
@@ -66,16 +53,50 @@ export const IconButton = styled("button", {
 				color: "$slate12",
 				border: "1px solid $slate11",
 				boxSizing: "border-box",
-				"&:hover": { backgroundColor: "$slate6" },
+				"&:hover": { backgroundColor: "$slate6", color: "$primary10" },
 			},
 
 			primary: {
-				"&:hover": { color: "$primary9", backgroundColor: "$primary3" },
+				"&:hover": {
+					color: "$primary9",
+					backgroundColor: "$primary3",
+				},
 			},
-			blue: { "&:hover": { color: "$blue9", backgroundColor: "$blue3" } },
-			red: { "&:hover": { color: "$red9", backgroundColor: "$red3" } },
-			amber: { "&:hover": { color: "$amber9", backgroundColor: "$amber3" } },
-			green: { "&:hover": { color: "$green9", backgroundColor: "$green3" } },
+			blue: {
+				"&:hover": {
+					color: "$blue9",
+					backgroundColor: "$blue3",
+					[`& ${CountLabel}`]: { color: "$blue9" },
+				},
+			},
+			red: {
+				"&:hover": {
+					color: "$red9",
+					backgroundColor: "$red3",
+					[`& ${CountLabel}`]: { color: "$red9" },
+				},
+			},
+			green: {
+				"&:hover": {
+					color: "$green9",
+					backgroundColor: "$green3",
+					[`& ${CountLabel}`]: { color: "$green9" },
+				},
+			},
+			amber: {
+				"&:hover": {
+					color: "$amber9",
+					backgroundColor: "$amber3",
+					[`& ${CountLabel}`]: { color: "$amber9" },
+				},
+			},
+			yellow: {
+				"&:hover": {
+					color: "$yellow9",
+					backgroundColor: "$yellow3",
+					[`& ${CountLabel}`]: { color: "$yellow9" },
+				},
+			},
 		},
 	},
 

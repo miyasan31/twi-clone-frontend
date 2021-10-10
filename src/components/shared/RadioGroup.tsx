@@ -1,5 +1,5 @@
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import type { MouseEvent, VFC } from "react";
+import type { VFC } from "react";
 import { Flex, Label } from "src/components/shared";
 import { styled } from "src/utils";
 
@@ -14,7 +14,7 @@ type Props = {
 	options: OptionsProps[];
 	defaultValue: string;
 	ariaLabel: string;
-	onClick: (e: MouseEvent<HTMLElement>) => void;
+	onClick: (e: any) => void;
 };
 
 export const RadioGroup: VFC<Props> = (props) => {

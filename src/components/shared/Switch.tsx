@@ -1,5 +1,5 @@
 import * as SwitchPrimitive from "@radix-ui/react-switch";
-import type { VFC } from "react";
+import type { MouseEventHandler, VFC } from "react";
 import { Flex, Label } from "src/components/shared";
 import { styled } from "src/utils";
 
@@ -8,7 +8,7 @@ type Props = {
 	labalRight?: string;
 	defaultChecked?: boolean;
 	isDark?: true;
-	onClick?: () => void;
+	onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const Switch: VFC<Props> = (props) => {

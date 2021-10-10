@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes";
-import type { VFC } from "react";
+import type { ChangeEvent, VFC } from "react";
 import { useEffect, useState } from "react";
 import { RadioGroup } from "src/components/shared";
 
@@ -8,7 +8,7 @@ export const ColorChanger: VFC = () => {
 	const [isMounted, setIsMounted] = useState(false);
 	const [currentColor, setCurrentColor] = useState("");
 
-	const handleClick = (e: any) => {
+	const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target.value === undefined) return;
 		if (resolvedTheme?.indexOf("light") === 0) {
 			const customColor = "light_" + e.target.value;
