@@ -1,4 +1,7 @@
-import type { VFC } from "react";
+import { Lottie } from "@crello/react-lottie";
+import type { MouseEvent, VFC } from "react";
+import { useCallback, useState } from "react";
+import animationData from "src/assets/19898-star.json";
 import { CountLabelIconButton, FavoriteIcon, ReplyIcon, RetweetIcon, ShareIcon } from "src/components/shared";
 import { styled } from "src/utils";
 
@@ -11,19 +14,39 @@ type Props = {
 	detail?: true;
 };
 
+const animationConfig = {
+	animationData: animationData,
+	loop: false,
+	autoplay: true,
+};
+
 export const IconGroup: VFC<Props> = (props) => {
+	const [isLiked, setIsLiked] = useState(false);
+
+	const handleClickDisabled = useCallback((e: MouseEvent) => {
+		e.preventDefault();
+	}, []);
+
+	const handleClickLike = useCallback((e: MouseEvent) => {
+		e.preventDefault();
+		setIsLiked((prev) => !prev);
+	}, []);
+
 	return (
 		<IconGroupWrap detail={props.detail}>
-			<CountLabelIconButton color="blue" count={props.commentCount}>
+			<CountLabelIconButton color="blue" count={"100"} onClick={(e) => handleClickDisabled(e)}>
 				<ReplyIcon size={ICON_SIZE} />
 			</CountLabelIconButton>
-			<CountLabelIconButton color="green" count={props.retweetCount}>
+
+			<CountLabelIconButton color="green" count={"10"} onClick={(e) => handleClickDisabled(e)}>
 				<RetweetIcon size={ICON_SIZE} />
 			</CountLabelIconButton>
-			<CountLabelIconButton color="amber" count={props.likeCount}>
-				<FavoriteIcon size={ICON_SIZE} />
+
+			<CountLabelIconButton color="yellow" count={props.likeCount} onClick={(e) => handleClickLike(e)}>
+				{isLiked ? <Lottie config={animationConfig} speed={1.3} /> : <FavoriteIcon size={ICON_SIZE} />}
 			</CountLabelIconButton>
-			<CountLabelIconButton color="blue" count="">
+
+			<CountLabelIconButton color="blue" count="" onClick={(e) => handleClickDisabled(e)}>
 				<ShareIcon size={ICON_SIZE} />
 			</CountLabelIconButton>
 		</IconGroupWrap>
