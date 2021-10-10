@@ -1,9 +1,10 @@
 import Image from "next/image";
 import type { VFC } from "react";
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
+import { CommentForm } from "src/components/CommentForm";
 import { HoverUserCard } from "src/components/HoverUserCard";
 import { IconGroup } from "src/components/IconGroup";
-import { Button, Flex, NextLink } from "src/components/shared";
+import { Flex, NextLink } from "src/components/shared";
 import type { TweetCardProps } from "src/components/TweetCard";
 import { ICON_PHOTO_SIZE } from "src/constants/icon";
 import { styled } from "src/utils";
@@ -29,12 +30,8 @@ export const TweetDetailCard: VFC<TweetDetailCardProps> = (props) => {
 		return `/${props?.userId}`;
 	}, [props.userId]);
 
-	const handleSubmit = useCallback(() => {
-		console.info("aaaaaaa");
-	}, []);
-
 	return (
-		<TweetDetailWrap>
+		<Wrap>
 			<UserInfoWrap>
 				<HoverUserCard
 					userId={props.user.id}
@@ -98,28 +95,12 @@ export const TweetDetailCard: VFC<TweetDetailCardProps> = (props) => {
 				<IconGroup detail />
 			</IconGroupWrap>
 
-			<CommentGroupWrap>
-				<Flex items="center" gap={1}>
-					<NextLink href={href}>
-						<Image
-							src="/myicon.jpg"
-							alt="Picture of the author"
-							className="rounded-full"
-							width={ICON_PHOTO_SIZE}
-							height={ICON_PHOTO_SIZE}
-						/>
-					</NextLink>
-					<CommentArea>返信をツイート</CommentArea>
-					<Button color="primary" onClick={handleSubmit}>
-						返信
-					</Button>
-				</Flex>
-			</CommentGroupWrap>
-		</TweetDetailWrap>
+			<CommentForm userId={props.userId} />
+		</Wrap>
 	);
 };
 
-const TweetDetailWrap = styled("div", {
+const Wrap = styled("div", {
 	paddingX: "1rem",
 	paddingTop: "0.75rem",
 	width: "100%",
@@ -181,16 +162,5 @@ const CountText = styled("span", {
 
 const IconGroupWrap = styled("div", {
 	borderTop: "1px solid $slate6",
-});
-
-const CommentGroupWrap = styled("div", {
-	paddingTop: "1.25rem",
-	paddingBottom: "0.75rem",
-	borderTop: "1px solid $slate6",
-});
-
-const CommentArea = styled("div", {
-	flexGrow: 1,
-	color: "$slate10",
-	fontSize: "1.25rem",
+	borderBottom: "1px solid $slate6",
 });

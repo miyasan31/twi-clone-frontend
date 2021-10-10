@@ -3,7 +3,7 @@ import { MainBody } from "src/components/layout/MainBody";
 import { TopContentTitle } from "src/components/layout/TopContentTitle";
 import { NextLink } from "src/components/shared";
 import { TweetCard } from "src/components/TweetCard";
-import { TweetFrom } from "src/components/TweetFrom";
+import { TweetForm } from "src/components/TweetForm";
 import { useGetAllUserTweetsQuery } from "src/graphql/gql";
 import { styled } from "src/utils";
 
@@ -22,19 +22,19 @@ const HomePage: NextPage = () => {
 			<TopContentTitle title="ホーム" />
 
 			<TweetDetailCardWrap>
-				<TweetFrom userId={"miyahara"} />
-
-				{data
-					? data.tweets.map((tweet) => {
-							const href = `/${tweet.userId}/tweet/${tweet.id}`;
-							return (
-								<NextLink key={tweet.id} href={href}>
-									<TweetCard {...tweet} />
-								</NextLink>
-							);
-					  })
-					: null}
+				<TweetForm type="tweet" userId={"miyahara"} isEdit />
 			</TweetDetailCardWrap>
+
+			{data
+				? data.tweets.map((tweet) => {
+						const href = `/${tweet.userId}/tweet/${tweet.id}`;
+						return (
+							<NextLink key={tweet.id} href={href}>
+								<TweetCard {...tweet} />
+							</NextLink>
+						);
+				  })
+				: null}
 		</MainBody>
 	);
 };
@@ -44,4 +44,7 @@ export default HomePage;
 
 const TweetDetailCardWrap = styled("div", {
 	marginTop: "3.25rem",
+	paddingX: "1rem",
+
+	borderBottom: "1px solid $slate6",
 });
