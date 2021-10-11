@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import { HoverUserCard } from "src/components/HoverUserCard";
 import { MainBody } from "src/components/layout/MainBody";
+import { TopContentTitle } from "src/components/layout/TopContentTitle";
 import {
 	AllowLeftIcon,
 	AllowRightIcon,
@@ -22,7 +23,12 @@ import {
 	Text,
 } from "src/components/shared";
 import { ColorChanger, ThemeChanger } from "src/components/theme";
+import { TweetCard } from "src/components/TweetCard";
+import { TweetDetailCard } from "src/components/TweetDetailCard";
+import { TweetForm } from "src/components/TweetForm";
 import { BUTTON_ICON_SIZE, ICON_PHOTO_SIZE } from "src/constants/icon";
+import { TWEET_DATA } from "src/constants/tweet";
+import { styled } from "src/utils";
 
 const handleClick = () => {
 	console.info("click!!");
@@ -31,7 +37,17 @@ const handleClick = () => {
 const IndexPage: NextPage = () => {
 	return (
 		<MainBody>
-			<div className="flex justify-center items-center py-20">
+			<TopContentTitle title="コンポーネント集" />
+
+			<TweetDetailCardWrap>
+				<TweetForm type="tweet" userId={"miyahara"} isEdit />
+			</TweetDetailCardWrap>
+
+			<TweetDetailCard {...TWEET_DATA} />
+
+			<TweetCard {...TWEET_DATA} />
+
+			<div className="flex justify-center items-center pt-5 pb-20">
 				<div className="grid gap-3">
 					<Text>ダークモード変更</Text>
 					<ThemeChanger />
@@ -40,7 +56,7 @@ const IndexPage: NextPage = () => {
 					<ColorChanger />
 
 					<Text>アイコン</Text>
-					<div className="flex gap-2 justify-between">
+					<div className="flex gap-10">
 						<CountLabelIconButton color="primary" count={"1"}>
 							<ReplyIcon size={18} />
 						</CountLabelIconButton>
@@ -131,18 +147,18 @@ const IndexPage: NextPage = () => {
 					</div>
 
 					<Text>ユーザーカード</Text>
-					<div>
+					<div className="">
 						<HoverUserCard
 							userId="miyasan_0301"
 							userName="みやさん | 学生"
 							profileBody="みやさんです。hogehogehogehogehogehogehogehogehogehogehogehogehogehoge"
 							followingCount="40"
 							followerCount="130"
-							iconPhoto="/myIcon.jpg"
+							iconPhoto="/oden.jpg"
 						>
-							<NextLink href="/">
+							<NextLink href="/" btn>
 								<Image
-									src="/myicon.jpg"
+									src="/oden.jpg"
 									alt="Picture of the author"
 									className="rounded-full"
 									width={ICON_PHOTO_SIZE}
@@ -184,6 +200,16 @@ const IndexPage: NextPage = () => {
 	);
 };
 
+// eslint-disable-next-line import/no-default-export
+export default IndexPage;
+
+const TweetDetailCardWrap = styled("div", {
+	marginTop: "3.25rem",
+	paddingX: "1rem",
+
+	borderBottom: "1px solid $slate6",
+});
+
 type OptionsProps = {
 	id: string;
 	label: string;
@@ -195,6 +221,3 @@ const RADIO_OPTIONOS: OptionsProps[] = [
 	{ id: "1", label: "OFF", value: "off" },
 	{ id: "2", label: "ON", value: "on" },
 ];
-
-// eslint-disable-next-line import/no-default-export
-export default IndexPage;
