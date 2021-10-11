@@ -93,8 +93,8 @@ export const IconButton = styled("button", {
 			yellow: {
 				"&:hover": {
 					color: "$yellow10",
-					backgroundColor: "$yellow2",
-					[`& ${CountLabel}`]: { color: "$yellow10" },
+					backgroundColor: "$amber3",
+					[`& ${CountLabel}`]: { color: "$yellow9" },
 				},
 			},
 		},
