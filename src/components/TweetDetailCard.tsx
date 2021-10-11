@@ -3,8 +3,8 @@ import type { VFC } from "react";
 import { useMemo } from "react";
 import { CommentForm } from "src/components/CommentForm";
 import { HoverUserCard } from "src/components/HoverUserCard";
-import { IconGroup } from "src/components/IconGroup";
 import { Flex, NextLink } from "src/components/shared";
+import { TweetActionGroup } from "src/components/TweetActionGroup";
 import type { TweetCardProps } from "src/components/TweetCard";
 import { ICON_PHOTO_SIZE } from "src/constants/icon";
 import { styled } from "src/utils";
@@ -91,9 +91,9 @@ export const TweetDetailCard: VFC<TweetDetailCardProps> = (props) => {
 				</TextWrap>
 			</CountGroupWrap>
 
-			<IconGroupWrap>
-				<IconGroup detail />
-			</IconGroupWrap>
+			<TweetActionGroupWrap>
+				<TweetActionGroup detail />
+			</TweetActionGroupWrap>
 
 			<CommentForm userId={props.userId} />
 		</Wrap>
@@ -160,7 +160,7 @@ const CountText = styled("span", {
 	fontSize: "1rem",
 });
 
-const IconGroupWrap = styled("div", {
+const TweetActionGroupWrap = styled("div", {
 	borderTop: "1px solid $slate6",
 	borderBottom: "1px solid $slate6",
 });

@@ -20,7 +20,7 @@ const animationConfig = {
 	autoplay: true,
 };
 
-export const IconGroup: VFC<Props> = (props) => {
+export const TweetActionGroup: VFC<Props> = (props) => {
 	const [isLiked, setIsLiked] = useState(false);
 
 	const handleClickDisabled = useCallback((e: MouseEvent) => {
@@ -43,7 +43,11 @@ export const IconGroup: VFC<Props> = (props) => {
 			</CountLabelIconButton>
 
 			<CountLabelIconButton color="yellow" count={props.likeCount} onClick={(e) => handleClickLike(e)}>
-				{isLiked ? <Lottie config={animationConfig} speed={1.3} /> : <FavoriteIcon size={ICON_SIZE} />}
+				{isLiked ? (
+					<Lottie config={animationConfig} speed={1} width="30px" height="30px" />
+				) : (
+					<FavoriteIcon size={ICON_SIZE} />
+				)}
 			</CountLabelIconButton>
 
 			<CountLabelIconButton color="blue" count="" onClick={(e) => handleClickDisabled(e)}>

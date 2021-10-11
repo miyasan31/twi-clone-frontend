@@ -2,9 +2,9 @@ import Image from "next/image";
 import type { VFC } from "react";
 import { useMemo } from "react";
 import { HoverUserCard } from "src/components/HoverUserCard";
-import { IconGroup } from "src/components/IconGroup";
 import { NextLink } from "src/components/shared";
 import { Tooltip } from "src/components/Tooltip";
+import { TweetActionGroup } from "src/components/TweetActionGroup";
 import { ICON_PHOTO_SIZE } from "src/constants/icon";
 import { styled } from "src/utils";
 
@@ -78,7 +78,7 @@ export const TweetCard: VFC<TweetCardProps> = (props) => {
 
 				<TweetBody>{props.tweetBody}</TweetBody>
 
-				<IconGroup
+				<TweetActionGroup
 					retweetCount={props.retweetCount.count}
 					likeCount={props.likeCount.count}
 					commentCount={props.commentCount.count}
