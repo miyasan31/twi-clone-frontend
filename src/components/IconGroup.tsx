@@ -34,11 +34,11 @@ export const IconGroup: VFC<Props> = (props) => {
 
 	return (
 		<IconGroupWrap detail={props.detail}>
-			<CountLabelIconButton color="blue" count={"100"} onClick={(e) => handleClickDisabled(e)}>
+			<CountLabelIconButton color="blue" count={props.commentCount} onClick={(e) => handleClickDisabled(e)}>
 				<ReplyIcon size={ICON_SIZE} />
 			</CountLabelIconButton>
 
-			<CountLabelIconButton color="green" count={"10"} onClick={(e) => handleClickDisabled(e)}>
+			<CountLabelIconButton color="green" count={props.retweetCount} onClick={(e) => handleClickDisabled(e)}>
 				<RetweetIcon size={ICON_SIZE} />
 			</CountLabelIconButton>
 

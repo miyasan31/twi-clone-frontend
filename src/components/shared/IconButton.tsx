@@ -6,7 +6,7 @@ type Props = {
 	color: "primary" | "blue" | "red" | "slate" | "amber" | "yellow" | "green";
 	size?: "lg" | "xl";
 	count?: string;
-	onClick: MouseEventHandler<HTMLButtonElement>;
+	onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 const ZeroCheck = (count: string | undefined): string | null => {
@@ -92,9 +92,9 @@ export const IconButton = styled("button", {
 			},
 			yellow: {
 				"&:hover": {
-					color: "$yellow9",
-					backgroundColor: "$yellow3",
-					[`& ${CountLabel}`]: { color: "$yellow9" },
+					color: "$yellow10",
+					backgroundColor: "$yellow2",
+					[`& ${CountLabel}`]: { color: "$yellow10" },
 				},
 			},
 		},

@@ -13,7 +13,7 @@ export const { styled, css, globalCss, keyframes, getCssText, createTheme, theme
 		md: "(min-width: 987px)",
 		lg: "(min-width: 1077px)",
 		xl: "(min-width: 1260px)",
-		xxl: "(min-width: 1440px)",
+		xxl: "(min-width: 1450px)",
 	},
 	theme: {
 		colors: {},
