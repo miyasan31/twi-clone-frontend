@@ -41,7 +41,7 @@ export const TweetForm: VFC<Props> = (props) => {
 				<IconPhotoWrap>
 					<NextLink href={href}>
 						<Image
-							src="/myicon.jpg"
+							src="/oden.jpg"
 							alt="Picture of the author"
 							className="rounded-full"
 							width={ICON_PHOTO_SIZE}

@@ -35,13 +35,13 @@ export const TweetCard: VFC<TweetCardProps> = (props) => {
 					userId={props.user.id}
 					userName={props.user.userName}
 					profileBody={props.user.profileBody}
-					iconPhoto="/myicon.jpg"
+					iconPhoto="/oden.jpg"
 					followingCount="40"
 					followerCount="130"
 				>
 					<NextLink href={href}>
 						<Image
-							src="/myicon.jpg"
+							src="/oden.jpg"
 							alt="Picture of the author"
 							className="rounded-full"
 							width={ICON_PHOTO_SIZE}
@@ -61,7 +61,7 @@ export const TweetCard: VFC<TweetCardProps> = (props) => {
 						userId={props.user.id}
 						userName={props.user.userName}
 						profileBody={props.user.profileBody}
-						iconPhoto="/myicon.jpg"
+						iconPhoto="/oden.jpg"
 						followingCount="40"
 						followerCount="130"
 					>
