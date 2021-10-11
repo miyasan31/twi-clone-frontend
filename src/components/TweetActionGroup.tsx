@@ -44,7 +44,7 @@ export const TweetActionGroup: VFC<Props> = (props) => {
 
 			<CountLabelIconButton color="yellow" count={props.likeCount} onClick={(e) => handleClickLike(e)}>
 				{isLiked ? (
-					<Lottie config={animationConfig} speed={1} width="30px" height="30px" />
+					<Lottie config={animationConfig} speed={1} width="32px" height="32px" />
 				) : (
 					<FavoriteIcon size={ICON_SIZE} />
 				)}
