@@ -116,7 +116,7 @@ export const StitchesButton = styled("button", {
 			slate: {
 				color: "white",
 				backgroundColor: "$slate9",
-				"&:hover": { backgroundColor: "$slate10" },
+				"&:hover": { backgroundColor: "$slate11" },
 			},
 		},
 	},

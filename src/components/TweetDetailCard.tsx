@@ -121,7 +121,7 @@ const UserName = styled("span", {
 });
 
 const UserId = styled("span", {
-	color: "$slate10",
+	color: "$slate11",
 	textDecoration: "none",
 	lineHeight: "1rem",
 	fontSize: "0.95rem",
@@ -134,7 +134,7 @@ const TweetBody = styled("div", {
 
 const CreatedAt = styled("div", {
 	paddingY: "0.75rem",
-	color: "$slate10",
+	color: "$slate11",
 	"&:hover": { textDecoration: "underline" },
 });
 
@@ -150,7 +150,7 @@ const TextWrap = styled("span", {
 });
 
 const CountWrap = styled("span", {
-	color: "$slate10",
+	color: "$slate11",
 	fontSize: "0.85rem",
 });
 

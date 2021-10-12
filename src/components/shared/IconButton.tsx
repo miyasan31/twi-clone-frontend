@@ -51,9 +51,9 @@ export const IconButton = styled("button", {
 		color: {
 			slate: {
 				color: "$slate12",
-				border: "1px solid $slate11",
+				border: "1px solid $slate9",
 				boxSizing: "border-box",
-				"&:hover": { backgroundColor: "$slate6", color: "$primary10" },
+				"&:hover": { backgroundColor: "$slate6" },
 			},
 
 			primary: {
@@ -92,7 +92,7 @@ export const IconButton = styled("button", {
 			},
 			yellow: {
 				"&:hover": {
-					color: "$yellow10",
+					color: "$yellow9",
 					backgroundColor: "$amber3",
 					[`& ${CountLabel}`]: { color: "$yellow9" },
 				},

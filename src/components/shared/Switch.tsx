@@ -29,7 +29,7 @@ const SwitchRoot = styled(SwitchPrimitive.Root, {
 	height: 24,
 	backgroundColor: "$slate7",
 	borderRadius: "9999px",
-	border: "1px solid $slate11",
+	border: "1px solid $slate9",
 	boxSizing: "border-box",
 	'&[data-state="checked"]': { backgroundColor: "$primary9" },
 
@@ -37,7 +37,7 @@ const SwitchRoot = styled(SwitchPrimitive.Root, {
 		isDark: {
 			true: {
 				backgroundColor: "$slate7",
-				'&[data-state="checked"]': { backgroundColor: "$slate9" },
+				'&[data-state="checked"]': { backgroundColor: "$slate6" },
 			},
 		},
 	},

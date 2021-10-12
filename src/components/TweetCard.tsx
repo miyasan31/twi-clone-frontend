@@ -112,7 +112,7 @@ const IconPhotoWrap = styled("div", {
 // 	position: "absolute",
 // 	top: 0,
 // 	height: 45,
-// 	borderLeft: "2px solid $slate9",
+// 	borderLeft: "2px solid $slate11",
 // });
 
 const TweetInfoWrap = styled("div", {
@@ -124,7 +124,7 @@ const TweetInfoWrap = styled("div", {
 
 const UserInfoWrap = styled("div", {
 	display: "flex",
-	color: "$slate10",
+	color: "$slate11",
 });
 
 const UserName = styled("span", {

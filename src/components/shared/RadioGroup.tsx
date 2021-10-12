@@ -41,7 +41,7 @@ const RadioGroupRadio = styled(RadioGroupPrimitive.Item, {
 	width: 25,
 	height: 25,
 	borderRadius: "100%",
-	border: "1px solid $slate11",
+	border: "1px solid $slate9",
 	boxSizing: "border-box",
 
 	variants: {

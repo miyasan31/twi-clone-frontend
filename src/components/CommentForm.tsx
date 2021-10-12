@@ -33,7 +33,7 @@ export const CommentForm: VFC<Props> = (props) => {
 
 const SentUserIdWrap = styled("div", {
 	paddingLeft: "3.75rem",
-	color: "$slate10",
+	color: "$slate11",
 });
 
 const SentUserId = styled("span", {

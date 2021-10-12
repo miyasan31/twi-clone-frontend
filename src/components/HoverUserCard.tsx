@@ -78,7 +78,7 @@ export const HoverUserCard: VFC<Props> = (props) => {
 								<NextLink href={followingHref}>
 									<FollowCount>
 										<CountText>{props.followingCount}</CountText>
-										&nbsp;フォロー
+										&nbsp;フォロー中
 									</FollowCount>
 								</NextLink>
 							</TextWrap>
@@ -99,7 +99,7 @@ export const HoverUserCard: VFC<Props> = (props) => {
 };
 
 const FollowCount = styled("span", {
-	color: "$slate10",
+	color: "$slate11",
 	fontSize: "0.85rem",
 });
 

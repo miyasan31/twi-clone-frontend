@@ -11,7 +11,7 @@ export const Input = styled("input", {
 	padding: "0 10px",
 	fontSize: 13,
 	lineHeight: 1,
-	color: "$violet11",
+	color: "$slate12",
 	boxShadow: "0 0 0 1px $violet7",
 	height: 25,
 
