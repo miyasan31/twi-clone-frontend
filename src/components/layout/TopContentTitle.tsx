@@ -6,7 +6,8 @@ import { ALLOW_ICON_SIZE } from "src/constants/icon";
 import { styled } from "src/utils";
 
 type Props = {
-	title: string;
+	title?: string | string[];
+	subtitle?: string;
 	isBrowserBack?: true;
 };
 
@@ -26,7 +27,10 @@ export const TopContentTitle: VFC<Props> = (props) => {
 					</BackButton>
 				) : null}
 
-				<TitleLabel>{props.title}</TitleLabel>
+				<TitleWrap>
+					<TitleLabel>{props.title}</TitleLabel>
+					<SubtitleLabel>{props.subtitle}</SubtitleLabel>
+				</TitleWrap>
 			</TopContent>
 		</TopContentWrap>
 	);
@@ -65,8 +69,18 @@ const BackButton = styled("button", {
 	},
 });
 
+const TitleWrap = styled("div", {});
+
 const TitleLabel = styled("div", {
 	paddingLeft: "0.5rem",
 	fontSize: "1.25rem",
 	fontWeight: 700,
+	lineHeight: "1.5rem",
+});
+
+const SubtitleLabel = styled("div", {
+	paddingLeft: "0.5rem",
+	color: "$slate11",
+	lineHeight: "1rem",
+	fontSize: "0.9rem",
 });
