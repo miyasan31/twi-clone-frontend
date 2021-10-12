@@ -4,6 +4,7 @@ import Image from "next/image";
 import { HoverUserCard } from "src/components/HoverUserCard";
 import { MainBody } from "src/components/layout/MainBody";
 import { TopContentTitle } from "src/components/layout/TopContentTitle";
+import { ProfileDetailCard } from "src/components/ProfileDetailCard";
 import {
 	AllowLeftIcon,
 	AllowRightIcon,
@@ -37,15 +38,16 @@ const handleClick = () => {
 const IndexPage: NextPage = () => {
 	return (
 		<MainBody>
-			<TopContentTitle title="コンポーネント集" />
+			<TopContentTitle title="コンポーネント集" isBrowserBack />
+
+			<ProfileDetailCard />
+			<TweetCard {...TWEET_DATA} />
 
 			<TweetDetailCardWrap>
 				<TweetForm type="tweet" userId={"miyahara"} isEdit />
 			</TweetDetailCardWrap>
 
 			<TweetDetailCard {...TWEET_DATA} />
-
-			<TweetCard {...TWEET_DATA} />
 
 			<div className="flex justify-center items-center pt-5 pb-20">
 				<div className="grid gap-3">
@@ -204,9 +206,7 @@ const IndexPage: NextPage = () => {
 export default IndexPage;
 
 const TweetDetailCardWrap = styled("div", {
-	marginTop: "3.25rem",
 	paddingX: "1rem",
-
 	borderBottom: "1px solid $slate6",
 });
 
