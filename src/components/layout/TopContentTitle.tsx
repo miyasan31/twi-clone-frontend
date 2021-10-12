@@ -73,7 +73,7 @@ const TitleWrap = styled("div", {});
 
 const TitleLabel = styled("div", {
 	paddingLeft: "0.5rem",
-	fontSize: "1.25rem",
+	fontSize: "1.2rem",
 	fontWeight: 700,
 	lineHeight: "1.5rem",
 });
@@ -82,5 +82,5 @@ const SubtitleLabel = styled("div", {
 	paddingLeft: "0.5rem",
 	color: "$slate11",
 	lineHeight: "1rem",
-	fontSize: "0.9rem",
+	fontSize: "0.8rem",
 });
