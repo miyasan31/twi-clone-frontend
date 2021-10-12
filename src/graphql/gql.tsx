@@ -18,13 +18,13 @@ export type Scalars = {
 
 export type Comment = {
   __typename?: 'Comment';
-  id: Scalars['Int'];
-  userId: Scalars['String'];
-  tweetId: Scalars['Int'];
+  GetTweetByComment: Tweet;
+  GetUserByComment: User;
   commentBody: Scalars['String'];
   createdAt: Scalars['DateTime'];
-  GetUserByComment: User;
-  GetTweetByComment: Tweet;
+  id: Scalars['Int'];
+  tweetId: Scalars['Int'];
+  userId: Scalars['String'];
 };
 
 export type Count = {
@@ -33,121 +33,74 @@ export type Count = {
 };
 
 export type CreateCommentDto = {
-  userId: Scalars['String'];
-  tweetId: Scalars['Float'];
   commentBody: Scalars['String'];
+  tweetId: Scalars['Float'];
+  userId: Scalars['String'];
 };
 
 export type CreateFollowDto = {
-  userId: Scalars['String'];
   followingUserId: Scalars['String'];
+  userId: Scalars['String'];
 };
 
 export type CreateLikeDto = {
-  userId: Scalars['String'];
   tweetId: Scalars['Float'];
+  userId: Scalars['String'];
 };
 
 export type CreateRetweetDto = {
-  userId: Scalars['String'];
   tweetId: Scalars['Float'];
+  userId: Scalars['String'];
 };
 
 export type CreateTweetDto = {
-  userId: Scalars['String'];
   tweetBody: Scalars['String'];
+  userId: Scalars['String'];
 };
 
 export type CreateUserDto = {
-  id: Scalars['String'];
-  userName: Scalars['String'];
-  profileBody: Scalars['String'];
-  iconPhoto: Scalars['String'];
   headerPhoto: Scalars['String'];
+  iconPhoto: Scalars['String'];
+  id: Scalars['String'];
+  profileBody: Scalars['String'];
+  userName: Scalars['String'];
 };
-
 
 export type Follow = {
   __typename?: 'Follow';
+  GetUserByFollower: User;
+  GetUserByFollowing: User;
+  createdAt: Scalars['DateTime'];
+  followingUserId: Scalars['String'];
   id: Scalars['Int'];
   userId: Scalars['String'];
-  followingUserId: Scalars['String'];
-  createdAt: Scalars['DateTime'];
-  GetUserByFollowing: User;
-  GetUserByFollower: User;
 };
 
 export type Like = {
   __typename?: 'Like';
-  id: Scalars['Int'];
-  userId: Scalars['String'];
-  tweetId: Scalars['Int'];
-  createdAt: Scalars['DateTime'];
-  GetUserByLike: User;
   GetTweetByLike: Tweet;
+  GetUserByLike: User;
+  createdAt: Scalars['DateTime'];
+  id: Scalars['Int'];
+  tweetId: Scalars['Int'];
+  userId: Scalars['String'];
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
-  CreateUser: User;
-  UpdateUser: User;
-  DeleteUser: Scalars['Boolean'];
-  CreateTweet: Tweet;
-  DeleteTweet: Scalars['Boolean'];
-  CreateRetweet: Retweet;
-  DeleteRetweet: Scalars['Boolean'];
-  CreateLike: Like;
-  DeleteLike: Scalars['Boolean'];
   CreateComment: Comment;
-  DeleteComment: Scalars['Boolean'];
   CreateFollow: Follow;
+  CreateLike: Like;
+  CreateRetweet: Retweet;
+  CreateTweet: Tweet;
+  CreateUser: User;
+  DeleteComment: Scalars['Boolean'];
   DeleteFollow: Scalars['Boolean'];
-};
-
-
-export type MutationCreateUserArgs = {
-  userDto: CreateUserDto;
-};
-
-
-export type MutationUpdateUserArgs = {
-  userDto: UpdateUserDto;
-  id: Scalars['String'];
-};
-
-
-export type MutationDeleteUserArgs = {
-  id: Scalars['String'];
-};
-
-
-export type MutationCreateTweetArgs = {
-  tweetDto: CreateTweetDto;
-};
-
-
-export type MutationDeleteTweetArgs = {
-  id: Scalars['Int'];
-};
-
-
-export type MutationCreateRetweetArgs = {
-  retweetDto: CreateRetweetDto;
-};
-
-
-export type MutationDeleteRetweetArgs = {
-  id: Scalars['Int'];
-};
-
-
-export type MutationCreateLikeArgs = {
-  likeDto: CreateLikeDto;
-};
-
-
-export type MutationDeleteLikeArgs = {
-  id: Scalars['Int'];
+  DeleteLike: Scalars['Boolean'];
+  DeleteRetweet: Scalars['Boolean'];
+  DeleteTweet: Scalars['Boolean'];
+  DeleteUser: Scalars['Boolean'];
+  UpdateUser: User;
 };
 
 
@@ -156,13 +109,33 @@ export type MutationCreateCommentArgs = {
 };
 
 
-export type MutationDeleteCommentArgs = {
-  id: Scalars['Int'];
+export type MutationCreateFollowArgs = {
+  followDto: CreateFollowDto;
 };
 
 
-export type MutationCreateFollowArgs = {
-  followDto: CreateFollowDto;
+export type MutationCreateLikeArgs = {
+  likeDto: CreateLikeDto;
+};
+
+
+export type MutationCreateRetweetArgs = {
+  retweetDto: CreateRetweetDto;
+};
+
+
+export type MutationCreateTweetArgs = {
+  tweetDto: CreateTweetDto;
+};
+
+
+export type MutationCreateUserArgs = {
+  userDto: CreateUserDto;
+};
+
+
+export type MutationDeleteCommentArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -170,21 +143,67 @@ export type MutationDeleteFollowArgs = {
   id: Scalars['Int'];
 };
 
-export type Query = {
-  __typename?: 'Query';
-  GetUser: User;
-  GetTweets: Array<Tweet>;
-  GetTweet: Tweet;
-  GetTweetsByUser: Array<Tweet>;
-  GetRetweetsByUser: Array<Retweet>;
-  GetLikesByUser: Array<Like>;
-  GetCommentsByUser: Array<Comment>;
-  GetFollowings: Array<Follow>;
-  GetFollowers: Array<Follow>;
+
+export type MutationDeleteLikeArgs = {
+  id: Scalars['Int'];
 };
 
 
-export type QueryGetUserArgs = {
+export type MutationDeleteRetweetArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationDeleteTweetArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type MutationDeleteUserArgs = {
+  id: Scalars['String'];
+};
+
+
+export type MutationUpdateUserArgs = {
+  id: Scalars['String'];
+  userDto: UpdateUserDto;
+};
+
+export type Query = {
+  __typename?: 'Query';
+  GetCommentsByUser: Array<Comment>;
+  GetFollowers: Array<Follow>;
+  GetFollowings: Array<Follow>;
+  GetLikesByUser: Array<Like>;
+  GetRetweetsByUser: Array<Retweet>;
+  GetTweet: Tweet;
+  GetTweets: Array<Tweet>;
+  GetTweetsByUser: Array<Tweet>;
+  GetUser: User;
+};
+
+
+export type QueryGetCommentsByUserArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryGetFollowersArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryGetFollowingsArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryGetLikesByUserArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryGetRetweetsByUserArgs = {
   id: Scalars['String'];
 };
 
@@ -199,78 +218,58 @@ export type QueryGetTweetsByUserArgs = {
 };
 
 
-export type QueryGetRetweetsByUserArgs = {
-  id: Scalars['String'];
-};
-
-
-export type QueryGetLikesByUserArgs = {
-  id: Scalars['String'];
-};
-
-
-export type QueryGetCommentsByUserArgs = {
-  id: Scalars['String'];
-};
-
-
-export type QueryGetFollowingsArgs = {
-  id: Scalars['String'];
-};
-
-
-export type QueryGetFollowersArgs = {
+export type QueryGetUserArgs = {
   id: Scalars['String'];
 };
 
 export type Retweet = {
   __typename?: 'Retweet';
-  id: Scalars['Int'];
-  userId: Scalars['String'];
-  tweetId: Scalars['Int'];
-  createdAt: Scalars['DateTime'];
-  GetUserByRetweet: User;
   GetTweetByRetweet: Tweet;
+  GetUserByRetweet: User;
+  createdAt: Scalars['DateTime'];
+  id: Scalars['Int'];
+  tweetId: Scalars['Int'];
+  userId: Scalars['String'];
 };
 
 export type Tweet = {
   __typename?: 'Tweet';
-  id: Scalars['Int'];
-  userId: Scalars['String'];
-  tweetBody: Scalars['String'];
-  createdAt: Scalars['DateTime'];
-  GetUserByTweet: User;
-  GetRetweetsByTweet: Array<Retweet>;
-  GetLikesByTweet: Array<Like>;
+  GetCommentCount: Count;
   GetCommentsByTweet: Array<Comment>;
   GetLikeCount: Count;
+  GetLikesByTweet: Array<Like>;
   GetRetweetCount: Count;
-  GetCommentCount: Count;
+  GetRetweetsByTweet: Array<Retweet>;
+  GetUserByTweet: User;
+  createdAt: Scalars['DateTime'];
+  id: Scalars['Int'];
+  tweetBody: Scalars['String'];
+  userId: Scalars['String'];
 };
 
 export type UpdateUserDto = {
-  userName: Scalars['String'];
-  profileBody: Scalars['String'];
-  iconPhoto: Scalars['String'];
   headerPhoto: Scalars['String'];
+  iconPhoto: Scalars['String'];
+  profileBody: Scalars['String'];
+  userName: Scalars['String'];
 };
 
 export type User = {
   __typename?: 'User';
-  id: Scalars['String'];
-  userName: Scalars['String'];
-  profileBody: Scalars['String'];
-  iconPhoto: Scalars['String'];
-  headerPhoto: Scalars['String'];
-  createdAt: Scalars['DateTime'];
-  GetTweetsByUser: Array<Tweet>;
-  GetRetweetsByUser: Array<Retweet>;
-  GetLikesByUser: Array<Like>;
   GetCommentsByUser: Array<Comment>;
-  GetFollowersByUser: Array<Follow>;
-  GetFollowingsByUser: Array<Follow>;
-  GetFollowingCount: Count;
   GetFollowerCount: Count;
+  GetFollowersByUser: Array<Follow>;
+  GetFollowingCount: Count;
+  GetFollowingsByUser: Array<Follow>;
+  GetLikesByUser: Array<Like>;
+  GetRetweetsByUser: Array<Retweet>;
+  GetTweetsByUser: Array<Tweet>;
+  createdAt: Scalars['DateTime'];
+  headerPhoto: Scalars['String'];
+  iconPhoto: Scalars['String'];
+  id: Scalars['String'];
+  profileBody: Scalars['String'];
+  userName: Scalars['String'];
 };
 
 export type GetUserCommentsQueryVariables = Exact<{
@@ -313,7 +312,7 @@ export type GetUserTweetsQueryVariables = Exact<{
 }>;
 
 
-export type GetUserTweetsQuery = { __typename?: 'Query', tweets: Array<{ __typename?: 'Tweet', id: number, tweetBody: string, createdAt: any, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> };
+export type GetUserTweetsQuery = { __typename?: 'Query', tweets: Array<{ __typename?: 'Tweet', id: number, userId: string, tweetBody: string, createdAt: any, user: { __typename?: 'User', id: string, userName: string, profileBody: string, iconPhoto: string }, retweetCount: { __typename?: 'Count', count: string }, likeCount: { __typename?: 'Count', count: string }, commentCount: { __typename?: 'Count', count: string } }> };
 
 export type GetUserLikesQueryVariables = Exact<{
   userId: Scalars['String'];
@@ -605,8 +604,15 @@ export const GetUserTweetsDocument = gql`
     query GetUserTweets($userId: String!) {
   tweets: GetTweetsByUser(id: $userId) {
     id
+    userId
     tweetBody
     createdAt
+    user: GetUserByTweet {
+      id
+      userName
+      profileBody
+      iconPhoto
+    }
     retweetCount: GetRetweetCount {
       count
     }
