@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
+import { TweetDetailCard } from "src/components/card/TweetDetailCard";
+import { FixedHeader } from "src/components/layout/FixedHeader";
 import { MainBody } from "src/components/layout/MainBody";
-import { TopContentTitle } from "src/components/layout/TopContentTitle";
-import { TweetDetailCard } from "src/components/TweetDetailCard";
 import { useGetTweetDetailQuery } from "src/graphql/gql";
 import { styled } from "src/utils";
 
@@ -23,7 +23,7 @@ const TweetDetailPage: NextPage = () => {
 
 	return (
 		<MainBody>
-			<TopContentTitle title="ツイート" isBrowserBack />
+			<FixedHeader title="ツイート" isBrowserBack />
 
 			<TweetDetailCardWrap>{data ? <TweetDetailCard {...data.tweet} /> : null}</TweetDetailCardWrap>
 		</MainBody>

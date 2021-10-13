@@ -1,34 +1,29 @@
 import { MixerHorizontalIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
 import Image from "next/image";
-import { HoverUserCard } from "src/components/HoverUserCard";
+import { ProfileDetailCard } from "src/components/card/ProfileDetailCard";
+import { TweetCard } from "src/components/card/TweetCard";
+import { TweetDetailCard } from "src/components/card/TweetDetailCard";
+import { Dialog } from "src/components/dialog/Dialog";
+import { TweetForm } from "src/components/form/TweetForm";
+import { FixedHeader } from "src/components/layout/FixedHeader";
 import { MainBody } from "src/components/layout/MainBody";
-import { TopContentTitle } from "src/components/layout/TopContentTitle";
-import { ProfileDetailCard } from "src/components/ProfileDetailCard";
+import { Button, CountLabelIconButton, IconButton, NextLink, RadioGroup, Switch, Text } from "src/components/shared";
 import {
-	AllowLeftIcon,
-	AllowRightIcon,
-	Button,
-	CloseIcon,
-	CountLabelIconButton,
-	Dialog,
-	DotsIcon,
-	FavoriteIcon,
-	IconButton,
-	NextLink,
-	RadioGroup,
-	ReplyIcon,
+	ArrowLeftIcon,
+	ArrowRightIcon,
+	CommentIcon,
+	CrossIcon,
+	DotsHorizontalIcon,
+	DotsVerticalIcon,
 	RetweetIcon,
 	ShareIcon,
-	Switch,
-	Text,
-} from "src/components/shared";
+	StarIcon,
+} from "src/components/shared/Icon";
 import { ColorChanger, ThemeChanger } from "src/components/theme";
-import { TweetCard } from "src/components/TweetCard";
-import { TweetDetailCard } from "src/components/TweetDetailCard";
-import { TweetForm } from "src/components/TweetForm";
-import { BUTTON_ICON_SIZE, ICON_PHOTO_SIZE } from "src/constants/icon";
-import { TWEET_DATA } from "src/constants/tweet";
+import { HoverUserCard } from "src/components/tooltip/HoverUserCard";
+import { ICON_PHOTO_SIZE } from "src/constants/icon";
+import { TWEET_DATA, USER_DATA } from "src/constants/tweet";
 import { styled } from "src/utils";
 
 const handleClick = () => {
@@ -38,12 +33,13 @@ const handleClick = () => {
 const IndexPage: NextPage = () => {
 	return (
 		<MainBody>
-			<TopContentTitle title="コンポーネント集" isBrowserBack />
+			<FixedHeader title="コンポーネント集" isBrowserBack />
 
-			<ProfileDetailCard />
+			<ProfileDetailCard {...USER_DATA} />
 			<TweetCard {...TWEET_DATA} />
 
 			<TweetDetailCardWrap>
+				{/* todo */}
 				<TweetForm type="tweet" userId={"miyahara"} isEdit />
 			</TweetDetailCardWrap>
 
@@ -60,20 +56,26 @@ const IndexPage: NextPage = () => {
 					<Text>アイコン</Text>
 					<div className="flex gap-10">
 						<CountLabelIconButton color="primary" count={"1"}>
-							<ReplyIcon size={18} />
+							<CommentIcon />
 						</CountLabelIconButton>
 						<CountLabelIconButton color="green" count={"2"}>
-							<RetweetIcon size={18} />
+							<RetweetIcon />
 						</CountLabelIconButton>
 						<CountLabelIconButton color="amber" count={"9"}>
-							<FavoriteIcon size={18} />
+							<StarIcon />
 						</CountLabelIconButton>
 
 						<IconButton color="primary">
-							<ShareIcon size={18} />
+							<ShareIcon />
 						</IconButton>
 						<IconButton color="primary">
-							<DotsIcon size={18} />
+							<DotsHorizontalIcon />
+						</IconButton>
+						<IconButton color="primary">
+							<DotsVerticalIcon />
+						</IconButton>
+						<IconButton color="primary">
+							<CrossIcon btn />
 						</IconButton>
 					</div>
 
@@ -118,15 +120,15 @@ const IndexPage: NextPage = () => {
 					<Text>アイコン付き</Text>
 					<div className="flex gap-2">
 						<Button color="primary" onClick={handleClick}>
-							<AllowLeftIcon size={BUTTON_ICON_SIZE} />
+							<ArrowLeftIcon btn />
 							Back
 						</Button>
 						<Button color="primary" isOutline onClick={handleClick}>
 							Next
-							<AllowRightIcon size={BUTTON_ICON_SIZE} />
+							<ArrowRightIcon btn />
 						</Button>
 						<Button color="primary" isGhost onClick={handleClick}>
-							<CloseIcon size={BUTTON_ICON_SIZE} />
+							<CrossIcon btn />
 							Close
 						</Button>
 					</div>
@@ -151,6 +153,7 @@ const IndexPage: NextPage = () => {
 					<Text>ユーザーカード</Text>
 					<div className="">
 						<HoverUserCard
+							align="start"
 							userId="miyasan_0301"
 							userName="みやさん | 学生"
 							profileBody="みやさんです。hogehogehogehogehogehogehogehogehogehogehogehogehogehoge"

@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
+import { TweetCard } from "src/components/card/TweetCard";
+import { TweetForm } from "src/components/form/TweetForm";
+import { FixedHeader } from "src/components/layout/FixedHeader";
 import { MainBody } from "src/components/layout/MainBody";
-import { TopContentTitle } from "src/components/layout/TopContentTitle";
 import { NextLink } from "src/components/shared";
-import { TweetCard } from "src/components/TweetCard";
-import { TweetForm } from "src/components/TweetForm";
 import { useGetAllUserTweetsQuery } from "src/graphql/gql";
 import { styled } from "src/utils";
 
@@ -19,21 +19,19 @@ const HomePage: NextPage = () => {
 
 	return (
 		<MainBody>
-			<TopContentTitle title="ホーム" />
+			<FixedHeader title="ホーム" />
 
 			<TweetDetailCardWrap>
+				{/* todo */}
 				<TweetForm type="tweet" userId={"miyahara"} isEdit />
 			</TweetDetailCardWrap>
 
 			{data
-				? data.tweets.map((tweet) => {
-						const href = `/${tweet.userId}/tweet/${tweet.id}`;
-						return (
-							<NextLink key={tweet.id} href={href}>
-								<TweetCard {...tweet} />
-							</NextLink>
-						);
-				  })
+				? data.tweets.map((tweet) => (
+						<NextLink key={tweet.id} href={`/${tweet.userId}/tweet/${tweet.id}`}>
+							<TweetCard {...tweet} />
+						</NextLink>
+				  ))
 				: null}
 		</MainBody>
 	);
