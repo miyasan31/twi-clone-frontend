@@ -43,6 +43,7 @@ export const IconButton = styled("button", {
 
 	variants: {
 		size: {
+			sm: { square: 30 },
 			base: { square: 35 },
 			lg: { square: 40 },
 			xl: { square: 45 },

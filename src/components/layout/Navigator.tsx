@@ -1,36 +1,39 @@
 import { NextLink } from "src/components/shared";
-import { TwitterIcon } from "src/components/shared/Icon";
-import { NAVIGATOR } from "src/constants/navigator";
+import { BellIcon, HomeIcon, MagicWandIcon, PencilIcon, PersonIcon, TwitterIcon } from "src/components/shared/Icon";
 import { styled } from "src/utils";
+
+export const NAVIGATOR = [
+	{ href: "/home", label: "ホーム", icon: <HomeIcon /> },
+	{ href: "/home", label: "通知", icon: <BellIcon /> },
+	{ href: "/home", label: "プロフィール", icon: <PersonIcon /> },
+	{ href: "/setting/theme", label: "テーマ変更", icon: <MagicWandIcon /> },
+];
 
 export const Navigator = () => {
 	return (
 		<Wrapper>
 			<NextLink href="/">
-				<NavigatorButtonWrap>
-					<NavigatorButton>
-						<TwitterIcon size={30} />
-					</NavigatorButton>
-				</NavigatorButtonWrap>
+				<TwitterIconButton>
+					<TwitterIcon />
+				</TwitterIconButton>
 			</NextLink>
 
-			{NAVIGATOR.map((item) => {
-				return (
-					<NextLink key={item.label} href={item.href} display="inlineBlock" wFull>
-						<NavigatorButtonWrap>
-							<NavigatorButton>
-								<TwitterIcon size={30} />
-								{item.label ? <Label>{item.label}</Label> : null}
-							</NavigatorButton>
-						</NavigatorButtonWrap>
-					</NextLink>
-				);
-			})}
+			{NAVIGATOR.map((item) => (
+				<NextLink key={item.label} href={item.href} display="inlineBlock" wFull>
+					<NavigatorButtonWrap>
+						<NavigatorButton>
+							{item.icon}
+							{item.label ? <Label>{item.label}</Label> : null}
+						</NavigatorButton>
+					</NavigatorButtonWrap>
+				</NextLink>
+			))}
 
 			<TweetButton>
-				<TweetIconWrap>
-					<TwitterIcon size={35} />
-				</TweetIconWrap>
+				<PencilIconWrap>
+					<PencilIcon />
+				</PencilIconWrap>
+
 				<TweetLabel>ツイートする</TweetLabel>
 			</TweetButton>
 		</Wrapper>
@@ -52,6 +55,21 @@ const Wrapper = styled("div", {
 	"@xl": {
 		minWidth: "280px",
 		alignItems: "start",
+	},
+});
+
+const TwitterIconButton = styled("button", {
+	width: "fit-content",
+	marginX: "auto",
+	padding: "0.75rem",
+
+	fontSize: "1.2rem",
+	color: "$slate12",
+	backgroundColor: "none",
+	borderRadius: 99999,
+
+	"&:hover": {
+		backgroundColor: "$primary4",
 	},
 });
 
@@ -106,7 +124,7 @@ const TweetButton = styled("button", {
 	},
 });
 
-const TweetIconWrap = styled("span", {
+const PencilIconWrap = styled("span", {
 	display: "block",
 	"@xl": { display: "none" },
 });
