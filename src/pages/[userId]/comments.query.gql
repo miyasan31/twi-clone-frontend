@@ -1,4 +1,17 @@
 query GetUserComments($userId: String!) {
+	user: GetUser(id: $userId) {
+		id
+		userName
+		profileBody
+		iconPhoto
+		followerCount: GetFollowerCount {
+			count
+		}
+		followingCount: GetFollowingCount {
+			count
+		}
+	}
+
 	comments: GetCommentsByUser(id: $userId) {
 		tweet: GetTweetByComment {
 			id

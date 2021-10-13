@@ -1,4 +1,17 @@
 query GetUserTweets($userId: String!) {
+	user: GetUser(id: $userId) {
+		id
+		userName
+		profileBody
+		iconPhoto
+		followerCount: GetFollowerCount {
+			count
+		}
+		followingCount: GetFollowingCount {
+			count
+		}
+	}
+
 	tweets: GetTweetsByUser(id: $userId) {
 		id
 		userId
