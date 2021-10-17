@@ -24,7 +24,7 @@
 # 	}
 # }
 
-query GetAllUserTweets {
+query GetAllUserTweets($userId: String!) {
 	tweets: GetTweets {
 		id
 		userId
@@ -35,7 +35,10 @@ query GetAllUserTweets {
 			userName
 			profileBody
 			iconPhoto
+			isFollow: GetIsFollowByUser(userId: $userId)
 		}
+		isRetweet: GetIsRetweetByUser(userId: $userId)
+		isLike: GetIsLikeByUser(userId: $userId)
 		retweetCount: GetRetweetCount {
 			count
 		}

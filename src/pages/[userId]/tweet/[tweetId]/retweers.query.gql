@@ -1,4 +1,4 @@
-query GetTweetRetweets($tweetId: Int!) {
+query GetTweetRetweets($tweetId: Int!, $userId: String!) {
 	tweet: GetTweet(id: $tweetId) {
 		retweets: GetRetweetsByTweet {
 			id
@@ -7,6 +7,7 @@ query GetTweetRetweets($tweetId: Int!) {
 				id
 				userName
 				profileBody
+				isFollow: GetIsFollowByUser(userId: $userId)
 			}
 		}
 	}

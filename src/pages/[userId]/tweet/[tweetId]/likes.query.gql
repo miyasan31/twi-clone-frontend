@@ -1,4 +1,4 @@
-query GetTweetLikes($tweetId: Int!) {
+query GetTweetLikes($tweetId: Int!, $userId: String!) {
 	tweet: GetTweet(id: $tweetId) {
 		likes: GetLikesByTweet {
 			id
@@ -7,6 +7,7 @@ query GetTweetLikes($tweetId: Int!) {
 				id
 				userName
 				profileBody
+				isFollow: GetIsFollowByUser(userId: $userId)
 			}
 		}
 	}

@@ -22,7 +22,10 @@ query GetUserRetweets($userId: String!) {
 				userName
 				profileBody
 				iconPhoto
+				isFollow: GetIsFollowByUser(userId: $userId)
 			}
+			isRetweet: GetIsRetweetByUser(userId: $userId)
+			isLike: GetIsLikeByUser(userId: $userId)
 			retweetCount: GetRetweetCount {
 				count
 			}

@@ -1,4 +1,4 @@
-query GetTweetDetail($tweetId: Int!) {
+query GetTweetDetail($tweetId: Int!, $userId: String!) {
 	tweet: GetTweet(id: $tweetId) {
 		id
 		userId
@@ -9,7 +9,10 @@ query GetTweetDetail($tweetId: Int!) {
 			userName
 			profileBody
 			iconPhoto
+			isFollow: GetIsFollowByUser(userId: $userId)
 		}
+		isRetweet: GetIsRetweetByUser(userId: $userId)
+		isLike: GetIsLikeByUser(userId: $userId)
 		retweetCount: GetRetweetCount {
 			count
 		}
