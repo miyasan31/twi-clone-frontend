@@ -8,7 +8,9 @@ import { useGetAllUserTweetsQuery } from "src/graphql/gql";
 import { styled } from "src/utils";
 
 const HomePage: NextPage = () => {
-	const { data, loading, error } = useGetAllUserTweetsQuery();
+	const { data, loading, error } = useGetAllUserTweetsQuery({
+		variables: { userId: "miyahara" },
+	});
 
 	if (loading) {
 		<div>ローティング中</div>;

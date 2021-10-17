@@ -10,7 +10,7 @@ const TweetDetailPage: NextPage = () => {
 	const router = useRouter();
 
 	const { data, loading, error } = useGetTweetDetailQuery({
-		variables: { tweetId: Number(router.query.tweetId) },
+		variables: { tweetId: Number(router.query.tweetId), userId: "miyahara" },
 	});
 
 	if (loading) {

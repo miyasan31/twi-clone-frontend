@@ -14,7 +14,7 @@ type Props = {
 
 export const RetweetDetailDialog: VFC<Props> = (props) => {
 	const { data, loading, error } = useGetTweetRetweetsQuery({
-		variables: { tweetId: Number(props.tweetId) },
+		variables: { tweetId: Number(props.tweetId), userId: "miyahara" },
 	});
 
 	if (loading) {

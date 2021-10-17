@@ -14,7 +14,7 @@ type Props = {
 
 export const LikeDetailDialog: VFC<Props> = (props) => {
 	const { data, loading, error } = useGetTweetLikesQuery({
-		variables: { tweetId: Number(props.tweetId) },
+		variables: { tweetId: Number(props.tweetId), userId: "miyahara" },
 	});
 
 	if (loading) {

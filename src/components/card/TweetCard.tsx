@@ -18,7 +18,10 @@ export type TweetCardProps = {
 		userName: string;
 		profileBody: string;
 		iconPhoto: string;
+		isFollow: boolean;
 	};
+	isLike: boolean;
+	isRetweet: boolean;
 	commentCount: { count: string };
 	retweetCount: { count: string };
 	likeCount: { count: string };
@@ -40,6 +43,7 @@ export const TweetCard: VFC<TweetCardProps> = (props) => {
 					iconPhoto="/oden.jpg"
 					followingCount="40"
 					followerCount="130"
+					isFollow={props.user.isFollow}
 				>
 					<NextLink href={`/${props.userId}`}>
 						<Image
@@ -67,6 +71,7 @@ export const TweetCard: VFC<TweetCardProps> = (props) => {
 						iconPhoto="/oden.jpg"
 						followingCount="40"
 						followerCount="130"
+						isFollow={props.user.isFollow}
 					>
 						<NextLink href={`/${props.userId}`}>
 							<UserName>{props.user.userName}</UserName>
@@ -84,6 +89,8 @@ export const TweetCard: VFC<TweetCardProps> = (props) => {
 				<TweetBody>{props.tweetBody}</TweetBody>
 
 				<TweetActionGroup
+					isLike={props.isLike}
+					isRetweet={props.isRetweet}
 					retweetCount={props.retweetCount.count}
 					likeCount={props.likeCount.count}
 					commentCount={props.commentCount.count}

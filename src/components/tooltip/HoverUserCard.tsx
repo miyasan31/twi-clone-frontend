@@ -16,6 +16,7 @@ type Props = {
 	iconPhoto: string;
 	followingCount: string;
 	followerCount: string;
+	isFollow?: boolean;
 };
 
 export const HoverUserCard: VFC<Props> = (props) => {
@@ -46,7 +47,7 @@ export const HoverUserCard: VFC<Props> = (props) => {
 							/>
 						</NextLink>
 						<Button color="primary" onClick={handleClick}>
-							フォロー
+							{props.isFollow ? "フォロー中" : "フォローする"}
 						</Button>
 					</Flex>
 

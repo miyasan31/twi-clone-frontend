@@ -9,6 +9,7 @@ export type UserType = {
 	id: string;
 	userName: string;
 	profileBody: string;
+	isFollow?: boolean;
 };
 
 export type ProfileCardProps = {
@@ -34,6 +35,7 @@ export const ProfileCard: VFC<ProfileCardProps> = (props) => {
 					iconPhoto="/oden.jpg"
 					followingCount="40"
 					followerCount="130"
+					isFollow={props.user.isFollow}
 				>
 					<NextLink href={`/${props.userId}`}>
 						<Image
@@ -58,6 +60,7 @@ export const ProfileCard: VFC<ProfileCardProps> = (props) => {
 							iconPhoto="/oden.jpg"
 							followingCount="40"
 							followerCount="130"
+							isFollow={props.user.isFollow}
 						>
 							<NextLink href={`/${props.userId}`}>
 								<UserName>{props.user.userName}</UserName>

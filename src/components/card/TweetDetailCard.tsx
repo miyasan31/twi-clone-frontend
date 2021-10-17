@@ -21,7 +21,10 @@ export type Comment = {
 		userName: string;
 		profileBody: string;
 		iconPhoto: string;
+		isFollow: boolean;
 	};
+	isLike: boolean;
+	isRetweet: boolean;
 };
 
 export type TweetDetailCardProps = TweetCardProps & {
@@ -44,6 +47,7 @@ export const TweetDetailCard: VFC<TweetDetailCardProps> = (props) => {
 					iconPhoto="/oden.jpg"
 					followingCount="40"
 					followerCount="130"
+					isFollow={props.user.isFollow}
 				>
 					<NextLink href={`/${props.userId}`}>
 						<Image
@@ -64,6 +68,7 @@ export const TweetDetailCard: VFC<TweetDetailCardProps> = (props) => {
 					iconPhoto="/oden.jpg"
 					followingCount="40"
 					followerCount="130"
+					isFollow={props.user.isFollow}
 				>
 					<NextLink href={`/${props.userId}`}>
 						<Flex direction="col">
@@ -103,7 +108,7 @@ export const TweetDetailCard: VFC<TweetDetailCardProps> = (props) => {
 			) : null}
 
 			<TweetActionGroupWrap>
-				<TweetActionGroup detail />
+				<TweetActionGroup detail isLike={props.isLike} isRetweet={props.isRetweet} />
 			</TweetActionGroupWrap>
 
 			<CommentForm userId={props.userId} />
