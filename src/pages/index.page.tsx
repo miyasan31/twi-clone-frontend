@@ -26,11 +26,11 @@ import { ICON_PHOTO_SIZE } from "src/constants/icon";
 import { TWEET_DATA, USER_DATA } from "src/constants/tweet";
 import { styled } from "src/utils";
 
-const handleClick = () => {
-	console.info("click!!");
-};
-
 const IndexPage: NextPage = () => {
+	const handleClick = () => {
+		console.info("click!!");
+	};
+
 	return (
 		<MainBody>
 			<FixedHeader title="コンポーネント集" isBrowserBack />
