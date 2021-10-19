@@ -16,9 +16,10 @@ generates:
       - "typescript-operations"
       - "typescript-react-apollo"
     config:
+      - reactApolloVersion: 3 # SSR設定
+      - withHOC: false # SSR設定
       - skipTypename: false
       - withHooks: true
-      - withHOC: false
       - withComponent: false
       - preResolveTypes: false
       - namingConvention:
