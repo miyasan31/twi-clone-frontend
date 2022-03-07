@@ -28,7 +28,7 @@
 		"apollo-link-http": "^1.5.17",
 		"autoprefixer": "^10.3.7",
 		"graphql": "^15.6.1",
-		"next": "11.1.2",
+		"next": "12.1.0",
 		"next-themes": "^0.0.15",
 		"postcss": "^8.3.9",
 		"react": "17.0.2",
